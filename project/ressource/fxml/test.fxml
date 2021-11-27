@@ -8,10 +8,10 @@
 
 <BorderPane xmlns="http://javafx.com/javafx"
             xmlns:fx="http://javafx.com/fxml"
-            fx:controller="../view.Mario"
+            fx:controller="../view.test"
             prefHeight="400.0" prefWidth="600.0">
     <bottom>
-        <Label fx:id="labelAafficher" text="cliqueSurBouton"/>
+        <Label fx:id="labelAfficher" text="cliqueSurBouton"/>
     </bottom>
     <center>
         <Button text="Cliquer" fx:id="button" onAction="#cliqueSurBouton"/>
