@@ -11,7 +11,7 @@ import java.io.IOException;
 
 public class Launch extends Application {
     public void start(Stage stage) throws IOException {
-        Parent root = (Parent) FXMLLoader.load(getClass().getClassLoader().getResource("../ressource/fxml/mario.fxml"));
+        Parent root = (Parent) FXMLLoader.load(getClass().getClassLoader().getResource("../ressource/fxml/test.fxml"));
         Scene scene = new Scene(root, 400, 400);
         stage.setScene(scene);
         stage.show();
