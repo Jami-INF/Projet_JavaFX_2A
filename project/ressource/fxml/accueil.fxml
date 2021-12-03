@@ -3,12 +3,34 @@
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/11.0.2" xmlns:fx="http://javafx.com/fxml/1"
-   fx:controller="view.accueil"
-   >
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/11.0.2" xmlns:fx="http://javafx.com/fxml/1" fx:controller="view.accueil">
    <children>
-      <Button layoutX="207.0" layoutY="139.0" fx:id="Jouer" onAction = "#cliqueSurBoutonJouer" mnemonicParsing="false" prefHeight="68.0" prefWidth="185.0" text="Nouvelle partie" BorderPane.alignment="CENTER" />
-      <Button layoutX="207.0" layoutY="240.0" prefHeight="68.0" prefWidth="185.0" text="Charger partie"/>
+      <Button fx:id="Jouer"
+              alignment="CENTER"
+              layoutX="208.0"
+              layoutY="110.0"
+              mnemonicParsing="false"
+              onAction="#cliqueSurBoutonNewGame"
+              prefHeight="68.0"
+              prefWidth="185.0"
+              text="Nouvelle partie"
+              textAlignment="CENTER"
+              BorderPane.alignment="CENTER" />
+      <Button fx:id="Charger"
+              alignment="CENTER"
+              layoutX="207.0"
+              layoutY="212.0"
+              prefHeight="68.0"
+              prefWidth="185.0"
+              onAction="#cliqueSurBoutonCharger"
+              text="Charger partie" />
+      <Button fx:id="Quit"
+              alignment="CENTER"
+              layoutX="268.0"
+              layoutY="330.0"
+              onAction="#cliqueSurBoutonQuitter"
+              text="Quitter"
+              textAlignment="CENTER" />
       <Label fx:id="labelAfficher" layoutX="244.0" layoutY="64.0" prefHeight="17.0" prefWidth="111.0" />
    </children>
 </AnchorPane>
