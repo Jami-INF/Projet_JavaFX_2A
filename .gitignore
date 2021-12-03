@@ -13,3 +13,6 @@ out/production/projet_javafx/fxml/test.fxml
 .idea/misc.xml
 .idea/modules.xml
 .idea/libraries/lib.xml
+out/production/projet_javafx/view/accueil.class
+out/production/projet_javafx/fxml/accueil.fxml
+out/production/projet_javafx/Image/testpers.png

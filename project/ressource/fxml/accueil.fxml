@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/11.0.2" xmlns:fx="http://javafx.com/fxml/1"
+   fx:controller="view.accueil"
+   >
+   <children>
+      <Button layoutX="207.0" layoutY="139.0" fx:id="Jouer" onAction = "#cliqueSurBoutonJouer" mnemonicParsing="false" prefHeight="68.0" prefWidth="185.0" text="Nouvelle partie" BorderPane.alignment="CENTER" />
+      <Button layoutX="207.0" layoutY="240.0" prefHeight="68.0" prefWidth="185.0" text="Charger partie"/>
+      <Label fx:id="labelAfficher" layoutX="244.0" layoutY="64.0" prefHeight="17.0" prefWidth="111.0" />
+   </children>
+</AnchorPane>

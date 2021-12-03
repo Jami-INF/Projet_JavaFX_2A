@@ -12,4 +12,5 @@ public class test {
         labelAfficher.setVisible(true);
         labelAfficher.setText("RIEN");
     }
+
 }
