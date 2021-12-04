@@ -1,18 +1,22 @@
 package model;
 
-public class Consommable extends ElementCarte{
+import javafx.scene.image.Image;
+
+public class Consommable extends Entite {
     boolean utilise;
 
-    public Consommable(int cordx, int cordy, int hitbox, boolean utilise) {
-        super(cordx, cordy, hitbox);
+    public Consommable(int SpawnX, int SpawnY, Image Skin, int XHitBox, int YHitBox, boolean utilise) {
+        super(SpawnX, SpawnY,  Skin, XHitBox, YHitBox);
         this.utilise = utilise;
     }
 
     public boolean isUtilise() {
+
         return utilise;
     }
 
     public void setUtilise(boolean utilise) {
+
         this.utilise = utilise;
     }
 }

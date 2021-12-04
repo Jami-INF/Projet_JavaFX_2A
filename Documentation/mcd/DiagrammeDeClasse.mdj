@@ -600,13 +600,30 @@
 											"height": 13,
 											"text": "+stats",
 											"horizontalAlignment": 0
+										},
+										{
+											"_type": "UMLAttributeView",
+											"_id": "AAAAAAF9h6l001Fii5M=",
+											"_parent": {
+												"$ref": "AAAAAAF9Uvgv2Y3XHNo="
+											},
+											"model": {
+												"$ref": "AAAAAAF9h6l0tVFft0k="
+											},
+											"font": "Arial;13;0",
+											"left": 621,
+											"top": 1672,
+											"width": 167,
+											"height": 13,
+											"text": "+skin",
+											"horizontalAlignment": 0
 										}
 									],
 									"font": "Arial;13;0",
 									"left": 616,
 									"top": 1577,
 									"width": 177,
-									"height": 98
+									"height": 113
 								},
 								{
 									"_type": "UMLOperationCompartmentView",
@@ -619,7 +636,7 @@
 									},
 									"font": "Arial;13;0",
 									"left": 616,
-									"top": 1675,
+									"top": 1690,
 									"width": 177,
 									"height": 10
 								},
@@ -661,7 +678,7 @@
 							"left": 616,
 							"top": 1552,
 							"width": 177,
-							"height": 145,
+							"height": 148,
 							"nameCompartment": {
 								"$ref": "AAAAAAF9Uvgv2Y3StJE="
 							},
@@ -2018,7 +2035,7 @@
 											"top": 1591,
 											"width": 110,
 											"height": 13,
-											"text": "ElementCarte"
+											"text": "Entite"
 										},
 										{
 											"_type": "LabelView",
@@ -3118,6 +3135,14 @@
 							},
 							"name": "stats",
 							"type": ""
+						},
+						{
+							"_type": "UMLAttribute",
+							"_id": "AAAAAAF9h6l0tVFft0k=",
+							"_parent": {
+								"$ref": "AAAAAAF9Uvgv2Y3P3sw="
+							},
+							"name": "skin"
 						}
 					]
 				},
@@ -3368,7 +3393,7 @@
 					"_parent": {
 						"$ref": "AAAAAAF9UvgSEo3KOF0="
 					},
-					"name": "ElementCarte",
+					"name": "Entite",
 					"ownedElements": [
 						{
 							"_type": "UMLAssociation",

@@ -16,3 +16,14 @@ out/production/projet_javafx/fxml/test.fxml
 out/production/projet_javafx/view/accueil.class
 out/production/projet_javafx/fxml/accueil.fxml
 out/production/projet_javafx/Image/testpers.png
+.idea/uiDesigner.xml
+out/production/projet_javafx/controller/mouvement.class
+out/production/projet_javafx/fxml/game.fxml
+out/production/projet_javafx/model/Entite.class
+out/production/projet_javafx/model/Joueur.class
+out/production/projet_javafx/view/game.class
+out/production/projet_javafx/view/earth.png
+out/production/projet_javafx/view/saves.class
+out/production/projet_javafx/view/space.png
+out/production/projet_javafx/fxml/saves.fxml
+out/production/projet_javafx/view/sun.png

@@ -33,6 +33,7 @@ public class accueil {
     private javafx.scene.control.Button Charger;
     @FXML
     private void cliqueSurBoutonCharger(){
+        //
         //Changer d'affichage
         //Scene scene = new Scene();
     }
