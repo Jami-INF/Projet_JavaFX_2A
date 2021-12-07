@@ -74,4 +74,19 @@ public abstract class Entite {
     public void setY(int y) {
         y = y;
     }
+    public void mouvementavantX() {
+        x = (x + 10);
+    }
+
+    public void mouvementarriereX() {
+        x = (x - 10);
+    }
+
+    public void mouvementY() {
+        y = (y + 10);
+    }
+    public void saut(int Y) {
+        y = (y + Y);
+    }
 }
+

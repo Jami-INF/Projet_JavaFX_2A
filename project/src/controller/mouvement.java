@@ -24,5 +24,14 @@ public class mouvement {
     {
         input.remove(s);
     }
+    public void actionClavier(Joueur p)
+    {
+        if (input.contains("UP"))
+            p.saut(20);
+        if (input.contains("RIGHT"))
+            p.mouvementavantX();
+        else if (input.contains("LEFT"))
+            p.mouvementarriereX();
+    }
 
 }

@@ -3,10 +3,10 @@ import javafx.scene.image.Image;
 
 public class Joueur extends Entite {
     private int vie;
-    private char pseudo;
+    private String pseudo;
 
 
-    public Joueur(int SpawnX, int SpawnY, Image Skin, int XHitBox, int YHitBox, char Pseudo) {
+    public Joueur(int SpawnX, int SpawnY, Image Skin, int XHitBox, int YHitBox, String Pseudo) {
         super(SpawnX, SpawnY,  Skin, XHitBox, YHitBox);
         vie=10;//A modifier peut etre ?
         Pseudo = pseudo;
@@ -21,11 +21,14 @@ public class Joueur extends Entite {
         vie=pv;
     }
 
-    public char getPseudo() {
+    public String getPseudo() {
+
         return pseudo;
     }
 
-    public void setPseudo(char pseudo) {
+    public void setPseudo(String pseudo) {
+
         this.pseudo = pseudo;
     }
+
 }
