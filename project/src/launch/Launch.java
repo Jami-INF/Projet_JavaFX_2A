@@ -20,11 +20,11 @@ public class Launch extends Application {
     static int HEIGHT = 720;
 
     @Override
-    public void start(Stage mainStage)
+    public void start(Stage stage)
     {
         Group g = new Group();
         s = new Scene(g);
-        mainStage.setScene(s);
+        stage.setScene(s);
         mouvement mouvementJoueur = new mouvement();
         Canvas canvas = new Canvas(WIDTH, HEIGHT);
         g.getChildren().add(canvas);
@@ -39,11 +39,11 @@ public class Launch extends Application {
         {
             public void handle(long currentNanoTime)
             {
-                tickAndRender(mouvementJoueur, j1, mainStage, canvas);
+                tickAndRender(mouvementJoueur, j1, stage, canvas);
             }
         }.start();
 
-        mainStage.show();
+        stage.show();
         //Parent root = (Parent) FXMLLoader.load(getClass().getClassLoader().getResource("fxml/accueil.fxml"));
         //stage.setTitle("Mutltitarget Points Plot");
         //stage.setScene(new Scene(root, 883.0, 558.0));
@@ -51,14 +51,9 @@ public class Launch extends Application {
         //Parent root = (Parent) FXMLLoader.load(getClass().getClassLoader().getResource("fxml/accueil.fxml"));
         //Scene scene = new Scene(root, 900, 520);
         //stage.setScene(scene);
-        //stage.show();
-
-
+        //.show();
     }
-
-
-
-
+    
     private static void prepareActionHandlers(mouvement mouvementJoueur)
     {
         s.setOnKeyPressed(
