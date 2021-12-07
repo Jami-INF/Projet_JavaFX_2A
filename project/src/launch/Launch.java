@@ -28,7 +28,7 @@ public class Launch extends Application {
         mouvement mouvementJoueur = new mouvement();
         Canvas canvas = new Canvas(WIDTH, HEIGHT);
         g.getChildren().add(canvas);
-        prepareActionHandlers(mouvementJoueur);
+        ActionMouvement(mouvementJoueur);
 
         graphicsContext = canvas.getGraphicsContext2D();
 
@@ -39,7 +39,7 @@ public class Launch extends Application {
         {
             public void handle(long currentNanoTime)
             {
-                tickAndRender(mouvementJoueur, j1, stage, canvas);
+                ActionLectureListe(mouvementJoueur, j1, stage, canvas);
             }
         }.start();
 
@@ -53,8 +53,8 @@ public class Launch extends Application {
         //stage.setScene(scene);
         //.show();
     }
-    
-    private static void prepareActionHandlers(mouvement mouvementJoueur)
+
+    private static void ActionMouvement (mouvement mouvementJoueur)
     {
         s.setOnKeyPressed(
                 new EventHandler<KeyEvent>()
@@ -78,7 +78,7 @@ public class Launch extends Application {
                 });
     }
 
-    void tickAndRender(mouvement mouvementJoueur, Joueur j1, Stage stage, Canvas canvas){
+    void ActionLectureListe (mouvement mouvementJoueur, Joueur j1, Stage stage, Canvas canvas){
         GraphicsContext gc;
         Image image;
 
@@ -97,6 +97,16 @@ public class Launch extends Application {
         {
             graphicsContext.clearRect(0, 0, WIDTH, HEIGHT);
             j1.mouvementavantX();
+            gc = canvas.getGraphicsContext2D();
+            stage.setTitle( "Bienvenue sur le jeu" );
+            //stage.setScene(s);
+            image = new Image("testpers.png");
+            gc.drawImage(image, j1.getX(), j1.getY());
+        }
+        if (mouvementJoueur.getInput().contains("UP"))
+        {
+            graphicsContext.clearRect(0, 0, WIDTH, HEIGHT);
+            j1.saut();
             gc = canvas.getGraphicsContext2D();
             stage.setTitle( "Bienvenue sur le jeu" );
             //stage.setScene(s);

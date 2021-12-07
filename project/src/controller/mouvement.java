@@ -22,6 +22,7 @@ public class mouvement {
 
     public void removeInput(String s)
     {
+
         input.remove(s);
     }
     public void actionClavier(Joueur p)

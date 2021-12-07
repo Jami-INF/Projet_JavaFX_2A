@@ -75,18 +75,25 @@ public abstract class Entite {
         y = y;
     }
     public void mouvementavantX() {
-        x = (x + 10);
+
+        x = (x + 30);
     }
 
     public void mouvementarriereX() {
-        x = (x - 10);
+
+        x = (x - 20);
+    }
+    public void saut() {
+
+        y = (y - 20);
     }
 
     public void mouvementY() {
+
         y = (y + 10);
     }
     public void saut(int Y) {
+
         y = (y + Y);
     }
 }
-

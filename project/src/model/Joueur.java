@@ -14,6 +14,7 @@ public class Joueur extends Entite {
     }
     public int getVie()
     {
+
         return vie;
     }
     public void setVie(int pv)
