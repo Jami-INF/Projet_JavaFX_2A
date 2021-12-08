@@ -90,10 +90,19 @@ public abstract class Entite {
 
     public void mouvementY() {
 
-        y = (y + 10);
+        y = (y + 20);
     }
     public void saut(int Y) {
 
         y = (y + Y);
+    }
+    public void mouvementbas(){
+
+        y = (y + 20);
+    }
+
+    public void mouvementhaut(){
+
+        y = (y - 20);
     }
 }
