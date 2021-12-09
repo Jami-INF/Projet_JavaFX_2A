@@ -36,6 +36,7 @@ public class game {
 
     public void startgame(Stage stage)
     {
+        System.out.println("fdfzfzdfzf");
         Group g = new Group();
         s = new Scene(g);
         stage.setScene(s);
@@ -54,12 +55,14 @@ public class game {
             public void handle(long currentNanoTime)
             {
                 ActionLectureListe(mouvementJoueur, j1, stage, canvas);
+
+
+
             }
         }.start();
-        //Parent root = (Parent) FXMLLoader.load(getClass().getClassLoader().getResource("fxml/accueil.fxml"));
-        //Scene scene = new Scene(root, 900, 520);
-        //stage.setScene(scene);
-        //.show();
+        stage.show();
+
+
     }
 
     private static void ActionMouvement (mouvement mouvementJoueur)
@@ -92,6 +95,7 @@ public class game {
 
         if (mouvementJoueur.getInput().contains("LEFT"))
         {
+            System.out.println("LEFT");
             graphicsContext.clearRect(0, 0, WIDTH, HEIGHT);
             j1.mouvementarriereX();
             gc = canvas.getGraphicsContext2D();
@@ -99,10 +103,11 @@ public class game {
             //stage.setScene(s);
             image = new Image("testpers.png");
             gc.drawImage(image, j1.getX(), j1.getY());
-        }
 
+        }
         if (mouvementJoueur.getInput().contains("RIGHT"))
         {
+            System.out.println("right");
             graphicsContext.clearRect(0, 0, WIDTH, HEIGHT);
             j1.mouvementavantX();
             gc = canvas.getGraphicsContext2D();
@@ -131,5 +136,5 @@ public class game {
             image = new Image("testpers.png");
             gc.drawImage(image, j1.getX(), j1.getY());
         }
-
-    }}
+    }
+}

@@ -5,21 +5,34 @@ import javafx.scene.Parent;
 import javafx.scene.control.Label;
 import javafx.scene.layout.*;
 import javafx.stage.Stage;
-
+import view.game;
 import java.io.IOException;
 
 public class accueil {
     @FXML
+
+    private javafx.scene.control.Button Jouer;
+
     private Label labelAfficher;
     @FXML
     private void cliqueSurBoutonNewGame(){
-        labelAfficher.setVisible(true);
+        //Stage stage = (Stage) Quit.getScene().getWindow();
+        //Stage stage = new Stage();
+        //Stage newstage = new Stage();
+        Stage stage = (Stage) Jouer.getScene().getWindow();
+        stage.close();
+        game g = new game();
+        g.startgame(stage);
+        /*labelAfficher.setVisible(true);
+
         String text = "Bienvenue sur le jeu";
         if(labelAfficher.getText() != text)
             labelAfficher.setText("Bienvenue sur le jeu");
         else
-            labelAfficher.setText("BYE BYE");
+            labelAfficher.setText("BYE BYE");*/
     }
+
+
     @FXML
     private javafx.scene.control.Button Quit;
     @FXML
@@ -33,7 +46,7 @@ public class accueil {
     private javafx.scene.control.Button Charger;
     @FXML
     private void cliqueSurBoutonCharger(){
-        //
+        Stage stage = (Stage) Charger.getScene().getWindow();
         //Changer d'affichage
         //Scene scene = new Scene();
     }
