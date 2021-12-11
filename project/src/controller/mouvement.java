@@ -10,21 +10,30 @@ public class mouvement {
 
     public mouvement()
     {
+
         input = new ArrayList<String>();
     }
 
     public ArrayList<String> getInput()
     {
+
         return input;
     }
     public void addInput(String s)
     {
+
         input.add(s);
     }
 
     public void removeInput(String s) {
 
         input.remove(s);
+    }
+    public void clearInput(){
+        for (String in: input) {
+            input.remove(in);
+        }
+
     }
 
     public void actionClavier(Joueur p) {

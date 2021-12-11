@@ -1,12 +1,23 @@
 package view;
-
+import javafx.application.Application;
+import javafx.fxml.FXMLLoader;
+import javafx.stage.Stage;
+import javafx.scene.Scene;
+import javafx.scene.Group;
+import javafx.scene.canvas.Canvas;
+import javafx.scene.canvas.GraphicsContext;
+import javafx.scene.image.Image;
+import javafx.scene.Parent;
+import java.io.IOException;
 import com.sun.prism.paint.ImagePattern;
 import java.util.ArrayList;
 import controller.mouvement;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.geometry.VPos;
 import javafx.scene.Group;
+import javafx.scene.Parent;
 import javafx.scene.canvas.Canvas;
 import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.control.Label;
@@ -71,11 +82,20 @@ public class game {
 
         new AnimationTimer() {
             public void handle(long currentNanoTime) {
+                Boolean exit = true;
                 timetmp++;
-                timejeu = timetmp/1000;
+                timejeu = timetmp/60;
                 //long startTime = System.nanoTime();
-                ActionLectureListe(mouvementJoueur, j1, stage, canvas);
+                if(exit=false){
+                    stop();
+                }
+                exit = ActionLectureListe(mouvementJoueur, j1, stage, canvas);
+                System.out.println(exit);
+
+
+
                 AffichTimeHautEcran(timejeu.toString(), canvas);
+
                 mouvementJoueur.CheckCollision(j1, plateformeArrayList);
             }
         }.start();
@@ -112,7 +132,7 @@ public class game {
                 });
     }
 
-    void ActionLectureListe (mouvement mouvementJoueur, Joueur j1, Stage stage, Canvas canvas){
+    Boolean ActionLectureListe (mouvement mouvementJoueur, Joueur j1, Stage stage, Canvas canvas){
         GraphicsContext gc;
         Image image;
 
@@ -125,6 +145,7 @@ public class game {
             //stage.setScene(s);
             image = new Image("testpers.png");
             gc.drawImage(j1.getImage(), j1.getX(), j1.getY());
+            return true;
 
         }
         if (mouvementJoueur.getInput().contains("RIGHT")) {
@@ -136,6 +157,7 @@ public class game {
             //stage.setScene(s);
             image = new Image("testpers.png");
             gc.drawImage(j1.getImage(), j1.getX(), j1.getY());
+            return true;
         }
         if (mouvementJoueur.getInput().contains("UP")) {
             graphicsContext.clearRect(j1.getX(), j1.getY(), j1.getImage().getWidth(), j1.getImage().getHeight());
@@ -145,6 +167,7 @@ public class game {
             //stage.setScene(s);
             image = new Image("testpers.png");
             gc.drawImage(j1.getImage(), j1.getX(), j1.getY());
+            return true;
         }
         if (mouvementJoueur.getInput().contains("DOWN")) {
             graphicsContext.clearRect(j1.getX(), j1.getY(), j1.getImage().getWidth(), j1.getImage().getHeight());
@@ -154,7 +177,27 @@ public class game {
             //stage.setScene(s);
             image = new Image("testpers.png");
             gc.drawImage(j1.getImage(), j1.getX(), j1.getY());
+            return true;
         }
+        if (mouvementJoueur.getInput().contains("ESCAPE")) {
+            //sauvegarde auto
+            //lance nouveau menu avec comme option : recommencer le jeu et quitter
+            System.out.println("quitter");
+            stage.close();
+            Parent root = null;
+            try {
+                root = (Parent) FXMLLoader.load(getClass().getClassLoader().getResource("fxml/accueil.fxml"));
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+            Scene scene = new Scene(root, 900, 520);
+            stage.setScene(scene);
+            //mouvementJoueur.clearInput();
+
+            //stage.show();
+            return false;
+        }
+        return true;
     }
 
 }
