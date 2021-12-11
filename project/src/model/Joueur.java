@@ -6,17 +6,17 @@ public class Joueur extends Entite {
     private String pseudo;
 
 
-    public Joueur(int SpawnX, int SpawnY, Image Skin, int XHitBox, int YHitBox, String Pseudo) {
-        super(SpawnX, SpawnY,  Skin, XHitBox, YHitBox);
+    public Joueur(int SpawnX, int SpawnY, Image skin, int XHitBox, int YHitBox, String Pseudo) {
+        super(SpawnX, SpawnY,  skin, XHitBox, YHitBox);
         vie=10;//A modifier peut etre ?
         Pseudo = pseudo;
 
     }
     public int getVie()
     {
-
         return vie;
     }
+
     public void setVie(int pv)
     {
         vie=pv;

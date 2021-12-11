@@ -1,8 +1,10 @@
 //class de test ou il y aura le perso qui bouge j'espere
 package view;
+import com.sun.prism.paint.ImagePattern;
 import controller.mouvement;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
+import javafx.geometry.VPos;
 import javafx.scene.Group;
 import javafx.scene.canvas.Canvas;
 import javafx.scene.canvas.GraphicsContext;
@@ -10,6 +12,9 @@ import javafx.scene.control.Label;
 import javafx.scene.image.Image;
 import javafx.scene.input.KeyEvent;
 import javafx.scene.layout.*;
+import javafx.scene.paint.Color;
+import javafx.scene.text.Font;
+import javafx.scene.text.TextAlignment;
 import javafx.stage.Stage;
 import model.Joueur;
 import javafx.application.Application;
@@ -33,6 +38,9 @@ public class game {
     static GraphicsContext graphicsContext;
     static int WIDTH = 1280;
     static int HEIGHT = 720;
+    long timegame = 0;
+    private Integer timejeu = 0;
+    private Integer timetmp = 0;
 
     public void startgame(Stage stage)
     {
@@ -50,21 +58,39 @@ public class game {
         Image Skin = new Image( "testpers.png" );
         Joueur j1 = new Joueur(50, 50, Skin, 50, 50, "Joueur1");
 
+        //Image backgr = new Image("background.jpg");
+        s.setFill(Color.grayRgb(35));
+
+        Image platform = new Image("platform.PNG");
+        Plateforme p1 = new Plateforme(500, 500, platform, 100, 100, true);
+        graphicsContext.drawImage(platform, p1.getX(), p1.getY());
+
         new AnimationTimer()
         {
             public void handle(long currentNanoTime)
             {
+                timetmp ++;
+
+                timejeu = timetmp/60;
+
+                //long startTime = System.nanoTime();
                 ActionLectureListe(mouvementJoueur, j1, stage, canvas);
-
-
+                AffichTimeHautEcran(timejeu.toString(), canvas);
 
             }
         }.start();
         stage.show();
 
-
+    //Long.toString(System.currentTimeMillis()-currentNanoTime)
     }
-
+    private void AffichTimeHautEcran(String time, Canvas canvas){
+        graphicsContext.clearRect(20, 20, canvas.getWidth(),30);
+        graphicsContext.setTextAlign(TextAlignment.CENTER);
+        graphicsContext.setTextBaseline(VPos.CENTER);
+        graphicsContext.setFont(new Font(30));
+        graphicsContext.fillText(time, Math.round(canvas.getWidth()  / 2), 30);
+        graphicsContext.setFill(Color.WHITESMOKE);
+    }
     private static void ActionMouvement (mouvement mouvementJoueur)
     {
         s.setOnKeyPressed(
@@ -96,45 +122,45 @@ public class game {
         if (mouvementJoueur.getInput().contains("LEFT"))
         {
             System.out.println("LEFT");
-            graphicsContext.clearRect(0, 0, WIDTH, HEIGHT);
+            graphicsContext.clearRect(j1.getX(), j1.getY(), j1.getImage().getWidth(), j1.getImage().getHeight());
             j1.mouvementarriereX();
             gc = canvas.getGraphicsContext2D();
             stage.setTitle( "Bienvenue sur le jeu" );
             //stage.setScene(s);
-            image = new Image("testpers.png");
-            gc.drawImage(image, j1.getX(), j1.getY());
+            gc.drawImage(j1.getImage(), j1.getX(), j1.getY());
 
         }
         if (mouvementJoueur.getInput().contains("RIGHT"))
         {
             System.out.println("right");
-            graphicsContext.clearRect(0, 0, WIDTH, HEIGHT);
+            graphicsContext.clearRect(j1.getX(), j1.getY(), j1.getImage().getWidth(), j1.getImage().getHeight());
             j1.mouvementavantX();
             gc = canvas.getGraphicsContext2D();
             stage.setTitle( "Bienvenue sur le jeu" );
             //stage.setScene(s);
             image = new Image("testpers.png");
-            gc.drawImage(image, j1.getX(), j1.getY());
+            gc.drawImage(j1.getImage(), j1.getX(), j1.getY());
         }
         if (mouvementJoueur.getInput().contains("UP"))
         {
-            graphicsContext.clearRect(0, 0, WIDTH, HEIGHT);
+            graphicsContext.clearRect(j1.getX(), j1.getY(), j1.getImage().getWidth(), j1.getImage().getHeight());
             j1.mouvementhaut();
             gc = canvas.getGraphicsContext2D();
             stage.setTitle( "Bienvenue sur le jeu" );
             //stage.setScene(s);
             image = new Image("testpers.png");
-            gc.drawImage(image, j1.getX(), j1.getY());
+            gc.drawImage(j1.getImage(), j1.getX(), j1.getY());
         }
         if (mouvementJoueur.getInput().contains("DOWN"))
         {
-            graphicsContext.clearRect(0, 0, WIDTH, HEIGHT);
+            graphicsContext.clearRect(j1.getX(), j1.getY(), j1.getImage().getWidth(), j1.getImage().getHeight());
             j1.mouvementbas();
             gc = canvas.getGraphicsContext2D();
             stage.setTitle( "Bienvenue sur le jeu" );
             //stage.setScene(s);
             image = new Image("testpers.png");
-            gc.drawImage(image, j1.getX(), j1.getY());
+            gc.drawImage(j1.getImage(), j1.getX(), j1.getY());
         }
     }
+
 }

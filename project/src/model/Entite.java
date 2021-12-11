@@ -105,4 +105,7 @@ public abstract class Entite {
 
         y = (y - 20);
     }
+    public Image getImage(){
+        return skin;
+    }
 }

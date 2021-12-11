@@ -19,17 +19,12 @@ public class accueil {
         //Stage stage = (Stage) Quit.getScene().getWindow();
         //Stage stage = new Stage();
         //Stage newstage = new Stage();
+
         Stage stage = (Stage) Jouer.getScene().getWindow();
         stage.close();
         game g = new game();
         g.startgame(stage);
-        /*labelAfficher.setVisible(true);
 
-        String text = "Bienvenue sur le jeu";
-        if(labelAfficher.getText() != text)
-            labelAfficher.setText("Bienvenue sur le jeu");
-        else
-            labelAfficher.setText("BYE BYE");*/
     }
 
 
