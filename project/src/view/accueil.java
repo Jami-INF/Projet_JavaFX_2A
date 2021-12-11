@@ -10,39 +10,35 @@ import java.io.IOException;
 
 public class accueil {
     @FXML
-
     private javafx.scene.control.Button Jouer;
-
     private Label labelAfficher;
+
     @FXML
     private void cliqueSurBoutonNewGame(){
-        //Stage stage = (Stage) Quit.getScene().getWindow();
-        //Stage stage = new Stage();
-        //Stage newstage = new Stage();
-
         Stage stage = (Stage) Jouer.getScene().getWindow();
         stage.close();
         game g = new game();
         g.startgame(stage);
-
     }
-
 
     @FXML
     private javafx.scene.control.Button Quit;
     @FXML
     private void cliqueSurBoutonQuitter(){
         Stage stage = (Stage) Quit.getScene().getWindow();
-        //Sauvegarde ou temps d'arret
+        //Sauvegarde
         labelAfficher.setText("Aurevoir!");
         stage.close();
     }
+
     @FXML
     private javafx.scene.control.Button Charger;
+
     @FXML
     private void cliqueSurBoutonCharger(){
         Stage stage = (Stage) Charger.getScene().getWindow();
-        //Changer d'affichage
-        //Scene scene = new Scene();
+        stage.close();
+        saves s = new saves();
+        s.sauvegardes(stage);
     }
 }

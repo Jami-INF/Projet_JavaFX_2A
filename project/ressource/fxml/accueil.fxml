@@ -31,6 +31,10 @@
               onAction="#cliqueSurBoutonQuitter"
               text="Quitter"
               textAlignment="CENTER" />
-      <Label fx:id="labelAfficher" layoutX="244.0" layoutY="64.0" prefHeight="17.0" prefWidth="111.0" />
+      <Label fx:id="labelAfficher"
+             layoutX="244.0"
+             layoutY="64.0"
+             prefHeight="17.0"
+             prefWidth="111.0" />
    </children>
 </AnchorPane>

@@ -1,6 +1,7 @@
-//class de test ou il y aura le perso qui bouge j'espere
 package view;
+
 import com.sun.prism.paint.ImagePattern;
+import java.util.ArrayList;
 import controller.mouvement;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
@@ -32,6 +33,7 @@ import controller.*;
 
 
 import java.awt.event.ActionEvent;
+import java.util.ArrayList;
 
 public class game {
     static Scene s;
@@ -42,9 +44,8 @@ public class game {
     private Integer timejeu = 0;
     private Integer timetmp = 0;
 
-    public void startgame(Stage stage)
-    {
-        System.out.println("fdfzfzdfzf");
+    public void startgame(Stage stage) {
+        //System.out.println("fdfzfzdfzf");
         Group g = new Group();
         s = new Scene(g);
         stage.setScene(s);
@@ -54,35 +55,35 @@ public class game {
         ActionMouvement(mouvementJoueur);
 
         graphicsContext = canvas.getGraphicsContext2D();
-
-        Image Skin = new Image( "testpers.png" );
-        Joueur j1 = new Joueur(50, 50, Skin, 50, 50, "Joueur1");
+        Image Skin = new Image(getClass().getClassLoader().getResource( "Image/testpers.png" ).toExternalForm());
+        Joueur j1 = new Joueur(500, 500, Skin, 50, 50, "Joueur1");
 
         //Image backgr = new Image("background.jpg");
         s.setFill(Color.grayRgb(35));
-
+        ArrayList<Plateforme> plateformeArrayList = new ArrayList<Plateforme>();
         Image platform = new Image("platform.PNG");
-        Plateforme p1 = new Plateforme(500, 500, platform, 100, 100, true);
+        Plateforme p1 = new Plateforme(50, 50, platform, 100, 100, true);
+        Plateforme p2 = new Plateforme(550, 60, platform, 100, 100, true);
+        plateformeArrayList.add(p1);
+        plateformeArrayList.add(p1);
         graphicsContext.drawImage(platform, p1.getX(), p1.getY());
+        graphicsContext.drawImage(platform, p2.getX(), p2.getY());
 
-        new AnimationTimer()
-        {
-            public void handle(long currentNanoTime)
-            {
-                timetmp ++;
-
-                timejeu = timetmp/60;
-
+        new AnimationTimer() {
+            public void handle(long currentNanoTime) {
+                timetmp++;
+                timejeu = timetmp/1000;
                 //long startTime = System.nanoTime();
                 ActionLectureListe(mouvementJoueur, j1, stage, canvas);
                 AffichTimeHautEcran(timejeu.toString(), canvas);
-
+                mouvementJoueur.CheckCollision(j1, plateformeArrayList);
             }
         }.start();
         stage.show();
 
     //Long.toString(System.currentTimeMillis()-currentNanoTime)
     }
+
     private void AffichTimeHautEcran(String time, Canvas canvas){
         graphicsContext.clearRect(20, 20, canvas.getWidth(),30);
         graphicsContext.setTextAlign(TextAlignment.CENTER);
@@ -91,13 +92,11 @@ public class game {
         graphicsContext.fillText(time, Math.round(canvas.getWidth()  / 2), 30);
         graphicsContext.setFill(Color.WHITESMOKE);
     }
-    private static void ActionMouvement (mouvement mouvementJoueur)
-    {
+
+    private static void ActionMouvement (mouvement mouvementJoueur) {
         s.setOnKeyPressed(
-                new EventHandler<KeyEvent>()
-                {
-                    public void handle(KeyEvent e)
-                    {
+                new EventHandler<KeyEvent>() {
+                    public void handle(KeyEvent e) {
                         String in = e.getCode().toString();
                         if ( !mouvementJoueur.getInput().contains(in) )
                             mouvementJoueur.addInput( in );
@@ -105,10 +104,8 @@ public class game {
                 });
         s.setOnKeyReleased(
 
-                new EventHandler<KeyEvent>()
-                {
-                    public void handle(KeyEvent e)
-                    {
+                new EventHandler<KeyEvent>() {
+                    public void handle(KeyEvent e) {
                         String in = e.getCode().toString();
                         mouvementJoueur.removeInput( in );
                     }
@@ -119,20 +116,19 @@ public class game {
         GraphicsContext gc;
         Image image;
 
-        if (mouvementJoueur.getInput().contains("LEFT"))
-        {
-            System.out.println("LEFT");
+        if (mouvementJoueur.getInput().contains("LEFT")) {
+            //System.out.println("LEFT");
             graphicsContext.clearRect(j1.getX(), j1.getY(), j1.getImage().getWidth(), j1.getImage().getHeight());
             j1.mouvementarriereX();
             gc = canvas.getGraphicsContext2D();
             stage.setTitle( "Bienvenue sur le jeu" );
             //stage.setScene(s);
+            image = new Image("testpers.png");
             gc.drawImage(j1.getImage(), j1.getX(), j1.getY());
 
         }
-        if (mouvementJoueur.getInput().contains("RIGHT"))
-        {
-            System.out.println("right");
+        if (mouvementJoueur.getInput().contains("RIGHT")) {
+            //System.out.println("RIGHT");
             graphicsContext.clearRect(j1.getX(), j1.getY(), j1.getImage().getWidth(), j1.getImage().getHeight());
             j1.mouvementavantX();
             gc = canvas.getGraphicsContext2D();
@@ -141,8 +137,7 @@ public class game {
             image = new Image("testpers.png");
             gc.drawImage(j1.getImage(), j1.getX(), j1.getY());
         }
-        if (mouvementJoueur.getInput().contains("UP"))
-        {
+        if (mouvementJoueur.getInput().contains("UP")) {
             graphicsContext.clearRect(j1.getX(), j1.getY(), j1.getImage().getWidth(), j1.getImage().getHeight());
             j1.mouvementhaut();
             gc = canvas.getGraphicsContext2D();
@@ -151,8 +146,7 @@ public class game {
             image = new Image("testpers.png");
             gc.drawImage(j1.getImage(), j1.getX(), j1.getY());
         }
-        if (mouvementJoueur.getInput().contains("DOWN"))
-        {
+        if (mouvementJoueur.getInput().contains("DOWN")) {
             graphicsContext.clearRect(j1.getX(), j1.getY(), j1.getImage().getWidth(), j1.getImage().getHeight());
             j1.mouvementbas();
             gc = canvas.getGraphicsContext2D();
