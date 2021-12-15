@@ -9,8 +9,10 @@ public abstract class Entite {
     private Image skin;
     private int xHitBox;
     private int yHitBox;
+    private int velociteX; //😊
+    private int velociteY;
 
-    public Entite(int SpawnX, int SpawnY, Image Skin, int XHitBox, int YHitBox){
+    public Entite(int SpawnX, int SpawnY, Image Skin, int XHitBox, int YHitBox, int velocitex, int velociteY){
         spawnX = SpawnX;
         spawnY = SpawnY;
         skin = Skin;
@@ -18,6 +20,8 @@ public abstract class Entite {
         y = SpawnY;
         xHitBox = XHitBox;
         yHitBox = YHitBox;
+        velocitex = 0;
+        velociteY = 0;
     }
 
     public int getSpawnX() {
@@ -102,5 +106,20 @@ public abstract class Entite {
     }
     public Image getImage(){
         return skin;
+    }
+    public int getVelociteX() {
+        return velociteX;
+    }
+
+    public int getVelociteY() {
+        return velociteY;
+    }
+
+    public void setVelociteX(int velociteX) {
+        this.velociteX = velociteX;
+    }
+
+    public void setVelociteY(int velociteY) {
+        this.velociteY = velociteY;
     }
 }

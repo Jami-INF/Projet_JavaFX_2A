@@ -7,8 +7,8 @@ public class Piege extends Entite {
     boolean active;
     boolean visible;
 
-    public Piege(int SpawnX, int SpawnY, Image Skin, int XHitBox, int YHitBox, int degats, boolean active, boolean visible) {
-        super(SpawnX, SpawnY,  Skin, XHitBox, YHitBox);
+    public Piege(int SpawnX, int SpawnY, Image Skin, int XHitBox, int YHitBox, int velociteX, int velociteY, int degats, boolean active, boolean visible) {
+        super(SpawnX, SpawnY,  Skin, XHitBox, YHitBox, velociteX, velociteY);
         this.degats = degats;
         this.active = active;
         this.visible = visible;
