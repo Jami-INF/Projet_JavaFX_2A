@@ -14,14 +14,10 @@ public class mouvement {
         input = new ArrayList<String>();
     }
 
-    public ArrayList<String> getInput()
-    {
-
+    public ArrayList<String> getInput() {
         return input;
     }
-    public void addInput(String s)
-    {
-
+    public void addInput(String s) {
         input.add(s);
     }
 
@@ -55,14 +51,13 @@ public class mouvement {
             int HeightP = (int) p.getImage().getHeight();
 
             //System.out.println(p.getX());
-            //if (j.getX() <= p.getX()  && j.getY() >= p.getY()) {
-            if (j.getX() == p.getX() + WidthP && j.getY() == p.getY() + HeightP || j.getX() == p.getX() + WidthP && j.getY() == p.getY() + HeightP || j.getX() + WidthP == p.getX() && j.getY() + HeightP == p.getY() || j.getY() + WidthP == p.getY() && j.getX() + HeightP == p.getX()) {
+            if (j.getX() <= p.getX() && j.getY() >= p.getY()) {
                 System.out.println("Collision");
             }
-            System.out.println(j.getX());
-            System.out.println(j.getY());
-            System.out.println(p.getX());
-            System.out.println(p.getY());
+            //System.out.println(j.getX());
+            //System.out.println(j.getY());
+            //System.out.println(p.getX());
+            //System.out.println(p.getY());
         }
     }//Y hauteur // X largeur
 

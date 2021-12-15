@@ -1,5 +1,4 @@
 package view;
-import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.stage.Stage;
 import javafx.scene.Scene;
@@ -9,42 +8,17 @@ import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.image.Image;
 import javafx.scene.Parent;
 import java.io.IOException;
-import com.sun.prism.paint.ImagePattern;
 import java.util.ArrayList;
 import controller.mouvement;
 import javafx.event.EventHandler;
-import javafx.fxml.FXML;
-import javafx.fxml.FXMLLoader;
 import javafx.geometry.VPos;
-import javafx.scene.Group;
-import javafx.scene.Parent;
-import javafx.scene.canvas.Canvas;
-import javafx.scene.canvas.GraphicsContext;
-import javafx.scene.control.Label;
-import javafx.scene.image.Image;
 import javafx.scene.input.KeyEvent;
-import javafx.scene.layout.*;
 import javafx.scene.paint.Color;
 import javafx.scene.text.Font;
 import javafx.scene.text.TextAlignment;
-import javafx.stage.Stage;
 import model.Joueur;
-import javafx.application.Application;
-import javafx.stage.Stage;
-import javafx.scene.Scene;
-import javafx.scene.Group;
-import javafx.scene.canvas.Canvas;
-import javafx.scene.canvas.GraphicsContext;
-import javafx.scene.image.Image;
 import model.*;
-import javafx.event.EventHandler;
 import javafx.animation.AnimationTimer;
-import javafx.scene.input.KeyEvent;
-import controller.*;
-
-
-import java.awt.event.ActionEvent;
-import java.util.ArrayList;
 
 public class game {
     static Scene s;
@@ -66,15 +40,16 @@ public class game {
         ActionMouvement(mouvementJoueur);
 
         graphicsContext = canvas.getGraphicsContext2D();
-        Image Skin = new Image(getClass().getClassLoader().getResource( "Image/testpers.png" ).toExternalForm());
+        Image Skin = new Image(getClass().getClassLoader().getResource("image/testpers.png").toExternalForm());
         Joueur j1 = new Joueur(500, 500, Skin, 50, 50, "Joueur1");
 
-        //Image backgr = new Image("background.jpg");
+        //Image bg = new Image(getClass().getClassLoader().getResource("image/background.png").toExternalForm());
+
         s.setFill(Color.grayRgb(35));
         ArrayList<Plateforme> plateformeArrayList = new ArrayList<Plateforme>();
-        Image platform = new Image(getClass().getClassLoader().getResource( "Image/platform.png" ).toExternalForm());
-        Plateforme p1 = new Plateforme(50, 400, platform, 100, 100, true);
-        Plateforme p2 = new Plateforme(550, 400, platform, 100, 100, true);
+        Image platform = new Image(getClass().getClassLoader().getResource("image/platform.png").toExternalForm());
+        Plateforme p1 = new Plateforme(50, 50, platform, 100, 100, true);
+        Plateforme p2 = new Plateforme(550, 60, platform, 100, 100, true);
         plateformeArrayList.add(p1);
         plateformeArrayList.add(p1);
         graphicsContext.drawImage(platform, p1.getX(), p1.getY());
@@ -85,11 +60,14 @@ public class game {
                 Boolean exit = true;
                 timetmp++;
                 timejeu = timetmp/60;
+                //long startTime = System.nanoTime();
                 if(exit=false){
                     stop();
                 }
                 exit = ActionLectureListe(mouvementJoueur, j1, stage, canvas);
-                System.out.println(exit);
+                //System.out.println(exit);
+
+
 
                 AffichTimeHautEcran(timejeu.toString(), canvas);
 
@@ -140,6 +118,7 @@ public class game {
             gc = canvas.getGraphicsContext2D();
             stage.setTitle( "Bienvenue sur le jeu" );
             //stage.setScene(s);
+            image = new Image(getClass().getClassLoader().getResource("image/testpers.png").toExternalForm());
             gc.drawImage(j1.getImage(), j1.getX(), j1.getY());
             return true;
 
@@ -151,6 +130,7 @@ public class game {
             gc = canvas.getGraphicsContext2D();
             stage.setTitle( "Bienvenue sur le jeu" );
             //stage.setScene(s);
+            image = new Image(getClass().getClassLoader().getResource("image/testpers.png").toExternalForm());
             gc.drawImage(j1.getImage(), j1.getX(), j1.getY());
             return true;
         }
@@ -160,6 +140,7 @@ public class game {
             gc = canvas.getGraphicsContext2D();
             stage.setTitle( "Bienvenue sur le jeu" );
             //stage.setScene(s);
+            image = new Image(getClass().getClassLoader().getResource("image/testpers.png").toExternalForm());
             gc.drawImage(j1.getImage(), j1.getX(), j1.getY());
             return true;
         }
@@ -169,6 +150,7 @@ public class game {
             gc = canvas.getGraphicsContext2D();
             stage.setTitle( "Bienvenue sur le jeu" );
             //stage.setScene(s);
+            image = new Image(getClass().getClassLoader().getResource("image/testpers.png").toExternalForm());
             gc.drawImage(j1.getImage(), j1.getX(), j1.getY());
             return true;
         }
