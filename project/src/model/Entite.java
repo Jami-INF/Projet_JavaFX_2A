@@ -81,29 +81,24 @@ public abstract class Entite {
 
     public void mouvementarriereX() {
 
-        x = (x - 20);
+        x = (x - 8);
     }
     public void saut() {
-
         y = (y - 2);
     }
 
     public void mouvementY() {
-
-        y = (y + 20);
+        y = (y + 8);
     }
     public void saut(int Y) {
-
         y = (y + Y);
     }
     public void mouvementbas(){
-
-        y = (y + 20);
+        y = (y + 8);
     }
 
     public void mouvementhaut(){
-
-        y = (y - 20);
+        y = (y - 8);
     }
     public Image getImage(){
         return skin;
