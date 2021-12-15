@@ -187,7 +187,7 @@ public class game {
             stage.setScene(scene);
             //mouvementJoueur.clearInput();
 
-            //stage.show();
+            stage.show();
             return false;
         }
         return true;
