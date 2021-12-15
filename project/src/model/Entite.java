@@ -76,12 +76,12 @@ public abstract class Entite {
     }
     public void mouvementavantX() {
 
-        x = (x + 2);
+        x = (x + 20);
     }
 
     public void mouvementarriereX() {
 
-        x = (x - 2);
+        x = (x - 20);
     }
     public void saut() {
 
@@ -90,7 +90,7 @@ public abstract class Entite {
 
     public void mouvementY() {
 
-        y = (y + 2);
+        y = (y + 20);
     }
     public void saut(int Y) {
 
@@ -98,12 +98,12 @@ public abstract class Entite {
     }
     public void mouvementbas(){
 
-        y = (y + 2);
+        y = (y + 20);
     }
 
     public void mouvementhaut(){
 
-        y = (y - 2);
+        y = (y - 20);
     }
     public Image getImage(){
         return skin;

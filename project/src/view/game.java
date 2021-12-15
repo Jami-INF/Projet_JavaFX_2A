@@ -72,9 +72,9 @@ public class game {
         //Image backgr = new Image("background.jpg");
         s.setFill(Color.grayRgb(35));
         ArrayList<Plateforme> plateformeArrayList = new ArrayList<Plateforme>();
-        Image platform = new Image("platform.PNG");
-        Plateforme p1 = new Plateforme(50, 50, platform, 100, 100, true);
-        Plateforme p2 = new Plateforme(550, 60, platform, 100, 100, true);
+        Image platform = new Image(getClass().getClassLoader().getResource( "Image/platform.png" ).toExternalForm());
+        Plateforme p1 = new Plateforme(50, 400, platform, 100, 100, true);
+        Plateforme p2 = new Plateforme(550, 400, platform, 100, 100, true);
         plateformeArrayList.add(p1);
         plateformeArrayList.add(p1);
         graphicsContext.drawImage(platform, p1.getX(), p1.getY());
@@ -85,14 +85,11 @@ public class game {
                 Boolean exit = true;
                 timetmp++;
                 timejeu = timetmp/60;
-                //long startTime = System.nanoTime();
                 if(exit=false){
                     stop();
                 }
                 exit = ActionLectureListe(mouvementJoueur, j1, stage, canvas);
                 System.out.println(exit);
-
-
 
                 AffichTimeHautEcran(timejeu.toString(), canvas);
 
@@ -143,7 +140,6 @@ public class game {
             gc = canvas.getGraphicsContext2D();
             stage.setTitle( "Bienvenue sur le jeu" );
             //stage.setScene(s);
-            image = new Image("testpers.png");
             gc.drawImage(j1.getImage(), j1.getX(), j1.getY());
             return true;
 
@@ -155,7 +151,6 @@ public class game {
             gc = canvas.getGraphicsContext2D();
             stage.setTitle( "Bienvenue sur le jeu" );
             //stage.setScene(s);
-            image = new Image("testpers.png");
             gc.drawImage(j1.getImage(), j1.getX(), j1.getY());
             return true;
         }
@@ -165,7 +160,6 @@ public class game {
             gc = canvas.getGraphicsContext2D();
             stage.setTitle( "Bienvenue sur le jeu" );
             //stage.setScene(s);
-            image = new Image("testpers.png");
             gc.drawImage(j1.getImage(), j1.getX(), j1.getY());
             return true;
         }
@@ -175,7 +169,6 @@ public class game {
             gc = canvas.getGraphicsContext2D();
             stage.setTitle( "Bienvenue sur le jeu" );
             //stage.setScene(s);
-            image = new Image("testpers.png");
             gc.drawImage(j1.getImage(), j1.getX(), j1.getY());
             return true;
         }

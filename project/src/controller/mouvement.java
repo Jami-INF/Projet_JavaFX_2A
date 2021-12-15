@@ -47,12 +47,23 @@ public class mouvement {
 
     public void CheckCollision (Joueur j, ArrayList<Plateforme> plateformeArrayList) {
         //System.out.println(J.getX());
-        for (Plateforme p : plateformeArrayList){                    //pour toutes les plateformes dans la liste
+        int widthJ = (int) j.getImage().getWidth();
+        int HeightJ = (int) j.getImage().getHeight();
+
+        for (Plateforme p : plateformeArrayList){//pour toutes les plateformes dans la liste
+            int WidthP = (int) p.getImage().getWidth();
+            int HeightP = (int) p.getImage().getHeight();
+
             //System.out.println(p.getX());
-            if (j.getX() <= p.getX()  && j.getY() >= p.getY()) {
+            //if (j.getX() <= p.getX()  && j.getY() >= p.getY()) {
+            if (j.getX() == p.getX() + WidthP && j.getY() == p.getY() + HeightP || j.getX() == p.getX() + WidthP && j.getY() == p.getY() + HeightP || j.getX() + WidthP == p.getX() && j.getY() + HeightP == p.getY() || j.getY() + WidthP == p.getY() && j.getX() + HeightP == p.getX()) {
                 System.out.println("Collision");
             }
+            System.out.println(j.getX());
+            System.out.println(j.getY());
+            System.out.println(p.getX());
+            System.out.println(p.getY());
         }
-    }
+    }//Y hauteur // X largeur
 
 }
