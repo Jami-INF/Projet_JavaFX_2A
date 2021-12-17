@@ -5,8 +5,8 @@ import javafx.scene.image.Image;
 public class Plateforme extends Entite {
     boolean visible;
 
-    public Plateforme(int SpawnX, int SpawnY, Image Skin, int XHitBox, int YHitBox, boolean visible) {
-        super(SpawnX, SpawnY,  Skin, XHitBox, YHitBox);
+    public Plateforme(int SpawnX, int SpawnY, Image Skin, int XHitBox, int YHitBox, int velociteX, int velociteY, boolean visible) {
+        super(SpawnX, SpawnY,  Skin, XHitBox, YHitBox, velociteX, velociteY);
         this.visible = visible;
     }
 
