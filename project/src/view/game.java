@@ -41,7 +41,7 @@ public class game {
 
         graphicsContext = canvas.getGraphicsContext2D();
         Image Skin = new Image(getClass().getClassLoader().getResource("image/testpers.png").toExternalForm());
-        Joueur j1 = new Joueur(500, 500, Skin, 50, 50, 0,0,"Joueur1");
+        Joueur j1 = new Joueur(500, 500, Skin, 50, 50, "Joueur1");
 
         //Image bg = new Image(getClass().getClassLoader().getResource("image/background.png").toExternalForm());
 
@@ -50,20 +50,23 @@ public class game {
         ArrayList<Entite> entites = new ArrayList<Entite>();
 
         Image platform = new Image(getClass().getClassLoader().getResource("image/platform.png").toExternalForm());
-        Plateforme p1 = new Plateforme(50, 600, platform, 100, 100,0,0, true);
-        Plateforme p2 = new Plateforme(550, 600, platform, 100, 100, 0,0,true);
+        Plateforme p1 = new Plateforme(750, 500, platform, 100, 100, true);
+        Plateforme p2 = new Plateforme(510, 80, platform, 100, 100, true);
+        Plateforme p3 = new Plateforme(810, 80, platform, 100, 100, true);
+        Plateforme p4 = new Plateforme(320, 80, platform, 100, 100, true);
+
+
         plateformeArrayList.add(p1);
         plateformeArrayList.add(p2);
-
-        entites.add(p1);
-        entites.add(p2);
-        entites.add(j1);
-
-        graphicsContext.drawImage(platform, p1.getX(), p1.getY());
-        graphicsContext.drawImage(platform, p2.getX(), p2.getY());
+        plateformeArrayList.add(p3);
+        plateformeArrayList.add(p4);
 
 
+        for (Plateforme p : plateformeArrayList) {
+            graphicsContext.drawImage(platform, p.getX(), p.getY());
+        }
 
+        //thread a faire
         new AnimationTimer() {
             public void handle(long currentNanoTime) {
                 Boolean exit = true;
@@ -169,7 +172,7 @@ public class game {
             stage.setScene(scene);
             //mouvementJoueur.clearInput();
 
-            stage.show();
+            //stage.show();
             return false;
         }
         return true;

@@ -13,7 +13,7 @@ import view.game;
 public class Launch extends Application {
 
     public void start(Stage stage) throws IOException {
-
+        //view image fxml
         Parent root = (Parent) FXMLLoader.load(getClass().getClassLoader().getResource("fxml/accueil.fxml"));
         Scene scene = new Scene(root, 900, 520);
         stage.setScene(scene);
