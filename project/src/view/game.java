@@ -41,15 +41,15 @@ public class game {
 
         graphicsContext = canvas.getGraphicsContext2D();
         Image Skin = new Image(getClass().getClassLoader().getResource("image/testpers.png").toExternalForm());
-        Joueur j1 = new Joueur(500, 500, Skin, 50, 50, "Joueur1");
+        Joueur j1 = new Joueur(500, 500, Skin, 50, 50, 0,0,"Joueur1");
 
         //Image bg = new Image(getClass().getClassLoader().getResource("image/background.png").toExternalForm());
 
         s.setFill(Color.grayRgb(35));
         ArrayList<Plateforme> plateformeArrayList = new ArrayList<Plateforme>();
         Image platform = new Image(getClass().getClassLoader().getResource("image/platform.png").toExternalForm());
-        Plateforme p1 = new Plateforme(50, 50, platform, 100, 100, true);
-        Plateforme p2 = new Plateforme(550, 60, platform, 100, 100, true);
+        Plateforme p1 = new Plateforme(50, 50, platform, 100, 100,0,0, true);
+        Plateforme p2 = new Plateforme(550, 60, platform, 100, 100, 0,0,true);
         plateformeArrayList.add(p1);
         plateformeArrayList.add(p1);
         graphicsContext.drawImage(platform, p1.getX(), p1.getY());
