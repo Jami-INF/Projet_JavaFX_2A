@@ -47,13 +47,22 @@ public class game {
 
         s.setFill(Color.grayRgb(35));
         ArrayList<Plateforme> plateformeArrayList = new ArrayList<Plateforme>();
+        ArrayList<Entite> entites = new ArrayList<Entite>();
+
         Image platform = new Image(getClass().getClassLoader().getResource("image/platform.png").toExternalForm());
-        Plateforme p1 = new Plateforme(50, 50, platform, 100, 100,0,0, true);
-        Plateforme p2 = new Plateforme(550, 60, platform, 100, 100, 0,0,true);
+        Plateforme p1 = new Plateforme(50, 600, platform, 100, 100,0,0, true);
+        Plateforme p2 = new Plateforme(550, 600, platform, 100, 100, 0,0,true);
         plateformeArrayList.add(p1);
-        plateformeArrayList.add(p1);
+        plateformeArrayList.add(p2);
+
+        entites.add(p1);
+        entites.add(p2);
+        entites.add(j1);
+
         graphicsContext.drawImage(platform, p1.getX(), p1.getY());
         graphicsContext.drawImage(platform, p2.getX(), p2.getY());
+
+
 
         new AnimationTimer() {
             public void handle(long currentNanoTime) {
@@ -64,11 +73,8 @@ public class game {
                 if(exit=false){
                     stop();
                 }
-                exit = ActionLectureListe(mouvementJoueur, j1, stage, canvas);
+                exit = ActionLectureListe(mouvementJoueur, j1, stage, canvas, entites);
                 //System.out.println(exit);
-
-
-
                 AffichTimeHautEcran(timejeu.toString(), canvas);
 
                 mouvementJoueur.CheckCollision(j1, plateformeArrayList);
@@ -107,52 +113,46 @@ public class game {
                 });
     }
 
-    Boolean ActionLectureListe (mouvement mouvementJoueur, Joueur j1, Stage stage, Canvas canvas){
+    Boolean ActionLectureListe (mouvement mouvementJoueur, Joueur j1, Stage stage, Canvas canvas, ArrayList<Entite> entites){
         GraphicsContext gc;
-        Image image;
 
         if (mouvementJoueur.getInput().contains("LEFT")) {
-            //System.out.println("LEFT");
             graphicsContext.clearRect(j1.getX(), j1.getY(), j1.getImage().getWidth(), j1.getImage().getHeight());
             j1.mouvementarriereX();
             gc = canvas.getGraphicsContext2D();
-            stage.setTitle( "Bienvenue sur le jeu" );
-            //stage.setScene(s);
-            image = new Image(getClass().getClassLoader().getResource("image/testpers.png").toExternalForm());
-            gc.drawImage(j1.getImage(), j1.getX(), j1.getY());
+            for(Entite e : entites)
+            {
+                gc.drawImage( e.getImage(), e.getX(), e.getY());
+            }
             return true;
 
         }
         if (mouvementJoueur.getInput().contains("RIGHT")) {
-            //System.out.println("RIGHT");
             graphicsContext.clearRect(j1.getX(), j1.getY(), j1.getImage().getWidth(), j1.getImage().getHeight());
             j1.mouvementavantX();
             gc = canvas.getGraphicsContext2D();
-            stage.setTitle( "Bienvenue sur le jeu" );
-            //stage.setScene(s);
-            image = new Image(getClass().getClassLoader().getResource("image/testpers.png").toExternalForm());
-            gc.drawImage(j1.getImage(), j1.getX(), j1.getY());
-            return true;
+            for(Entite e : entites)
+            {
+                gc.drawImage( e.getImage(), e.getX(), e.getY());
+            }            return true;
         }
         if (mouvementJoueur.getInput().contains("UP")) {
             graphicsContext.clearRect(j1.getX(), j1.getY(), j1.getImage().getWidth(), j1.getImage().getHeight());
             j1.mouvementhaut();
             gc = canvas.getGraphicsContext2D();
-            stage.setTitle( "Bienvenue sur le jeu" );
-            //stage.setScene(s);
-            image = new Image(getClass().getClassLoader().getResource("image/testpers.png").toExternalForm());
-            gc.drawImage(j1.getImage(), j1.getX(), j1.getY());
-            return true;
+            for(Entite e : entites)
+            {
+                gc.drawImage( e.getImage(), e.getX(), e.getY());
+            }            return true;
         }
         if (mouvementJoueur.getInput().contains("DOWN")) {
             graphicsContext.clearRect(j1.getX(), j1.getY(), j1.getImage().getWidth(), j1.getImage().getHeight());
             j1.mouvementbas();
             gc = canvas.getGraphicsContext2D();
-            stage.setTitle( "Bienvenue sur le jeu" );
-            //stage.setScene(s);
-            image = new Image(getClass().getClassLoader().getResource("image/testpers.png").toExternalForm());
-            gc.drawImage(j1.getImage(), j1.getX(), j1.getY());
-            return true;
+            for(Entite e : entites)
+            {
+                gc.drawImage( e.getImage(), e.getX(), e.getY());
+            }            return true;
         }
         if (mouvementJoueur.getInput().contains("ESCAPE")) {
             //sauvegarde auto
