@@ -1,7 +1,7 @@
 package model;
 import javafx.scene.image.Image;
 
-public abstract class Entite {
+public abstract class Entite{
     private int spawnX;
     private int spawnY;
     private int x;
@@ -76,29 +76,29 @@ public abstract class Entite {
     }
     public void mouvementavantX() {
 
-        x = (x + 20);
+        x = (x + 5);
     }
 
     public void mouvementarriereX() {
 
-        x = (x - 8);
+        x = (x - 5);
     }
     public void saut() {
         y = (y - 2);
     }
 
     public void mouvementY() {
-        y = (y + 8);
+        y = (y + 5);
     }
     public void saut(int Y) {
         y = (y + Y);
     }
     public void mouvementbas(){
-        y = (y + 8);
+        y = (y + 5);
     }
 
     public void mouvementhaut(){
-        y = (y - 8);
+        y = (y - 5);
     }
     public Image getImage(){
         return skin;

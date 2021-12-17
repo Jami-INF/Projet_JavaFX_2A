@@ -48,13 +48,23 @@ public class game {
         s.setFill(Color.grayRgb(35));
         ArrayList<Plateforme> plateformeArrayList = new ArrayList<Plateforme>();
         Image platform = new Image(getClass().getClassLoader().getResource("image/platform.png").toExternalForm());
-        Plateforme p1 = new Plateforme(50, 50, platform, 100, 100, true);
-        Plateforme p2 = new Plateforme(550, 60, platform, 100, 100, true);
-        plateformeArrayList.add(p1);
-        plateformeArrayList.add(p1);
-        graphicsContext.drawImage(platform, p1.getX(), p1.getY());
-        graphicsContext.drawImage(platform, p2.getX(), p2.getY());
+        Plateforme p1 = new Plateforme(750, 500, platform, 100, 100, true);
+        Plateforme p2 = new Plateforme(510, 80, platform, 100, 100, true);
+        Plateforme p3 = new Plateforme(810, 80, platform, 100, 100, true);
+        Plateforme p4 = new Plateforme(320, 80, platform, 100, 100, true);
 
+
+        plateformeArrayList.add(p1);
+        plateformeArrayList.add(p2);
+        plateformeArrayList.add(p3);
+        plateformeArrayList.add(p4);
+
+
+        for (Plateforme p : plateformeArrayList) {
+            graphicsContext.drawImage(platform, p.getX(), p.getY());
+        }
+
+        //thread a faire
         new AnimationTimer() {
             public void handle(long currentNanoTime) {
                 Boolean exit = true;
