@@ -12,6 +12,7 @@ public class Joueur extends Entite {
         Pseudo = pseudo;
 
     }
+
     public int getVie()
     {
         return vie;
@@ -23,12 +24,10 @@ public class Joueur extends Entite {
     }
 
     public String getPseudo() {
-
         return pseudo;
     }
 
     public void setPseudo(String pseudo) {
-
         this.pseudo = pseudo;
     }
 
