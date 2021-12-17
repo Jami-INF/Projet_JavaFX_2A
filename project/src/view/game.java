@@ -28,6 +28,7 @@ public class game {
     long timegame = 0;
     private Integer timejeu = 0;
     private Integer timetmp = 0;
+    Boolean collisee;
 
     public void startgame(Stage stage) {
         //System.out.println("fdfzfzdfzf");
@@ -39,9 +40,10 @@ public class game {
         g.getChildren().add(canvas);
         ActionMouvement(mouvementJoueur);
 
+
         graphicsContext = canvas.getGraphicsContext2D();
         Image Skin = new Image(getClass().getClassLoader().getResource("image/testpers.png").toExternalForm());
-        Joueur j1 = new Joueur(500, 500, Skin, 50, 50, "Joueur1");
+        Joueur j1 = new Joueur(50, 200, Skin, 50, 50,10,10, "Joueur1");
 
         //Image bg = new Image(getClass().getClassLoader().getResource("image/background.png").toExternalForm());
 
@@ -50,16 +52,22 @@ public class game {
         ArrayList<Entite> entites = new ArrayList<Entite>();
 
         Image platform = new Image(getClass().getClassLoader().getResource("image/platform.png").toExternalForm());
-        Plateforme p1 = new Plateforme(750, 500, platform, 100, 100, true);
-        Plateforme p2 = new Plateforme(510, 80, platform, 100, 100, true);
-        Plateforme p3 = new Plateforme(810, 80, platform, 100, 100, true);
-        Plateforme p4 = new Plateforme(320, 80, platform, 100, 100, true);
+        Plateforme p1 = new Plateforme(100, 600, platform, 100, 100, 10,10,true);
+        Plateforme p2 = new Plateforme(300, 600, platform, 100, 100,10,10, true);
+        Plateforme p3 = new Plateforme(600, 600, platform, 100, 100,10,10, true);
+        Plateforme p4 = new Plateforme(800, 600, platform, 100, 100,10,10, true);
 
 
         plateformeArrayList.add(p1);
         plateformeArrayList.add(p2);
         plateformeArrayList.add(p3);
         plateformeArrayList.add(p4);
+
+        entites.add(p1);
+        entites.add(p2);
+        entites.add(p3);
+        entites.add(p4);
+        entites.add(j1);
 
 
         for (Plateforme p : plateformeArrayList) {
@@ -76,11 +84,24 @@ public class game {
                 if(exit=false){
                     stop();
                 }
-                exit = ActionLectureListe(mouvementJoueur, j1, stage, canvas, entites);
-                //System.out.println(exit);
+
                 AffichTimeHautEcran(timejeu.toString(), canvas);
 
-                mouvementJoueur.CheckCollision(j1, plateformeArrayList);
+
+                collisee = mouvementJoueur.CheckCollision(j1, plateformeArrayList);
+                if (collisee == false){
+                    exit = ActionLectureListe(mouvementJoueur, j1, stage, canvas, entites);
+
+                    canvas.getGraphicsContext2D().clearRect(j1.getX(), j1.getY(), j1.getImage().getWidth(), j1.getImage().getHeight());
+                    j1.gravite();
+                    canvas.getGraphicsContext2D().drawImage( j1.getImage(), j1.getX(), j1.getY());
+                }
+                else{//code foireux pour tester les collision, le j1 est teleporté plus haut.
+                    canvas.getGraphicsContext2D().clearRect(j1.getX(), j1.getY(), j1.getImage().getWidth(), j1.getImage().getHeight());
+                    j1.collision();
+                    canvas.getGraphicsContext2D().drawImage( j1.getImage(), j1.getX(), j1.getY());
+                }
+
             }
         }.start();
         stage.show();
@@ -117,12 +138,12 @@ public class game {
     }
 
     Boolean ActionLectureListe (mouvement mouvementJoueur, Joueur j1, Stage stage, Canvas canvas, ArrayList<Entite> entites){
-        GraphicsContext gc;
+        GraphicsContext gc = canvas.getGraphicsContext2D();
+
 
         if (mouvementJoueur.getInput().contains("LEFT")) {
             graphicsContext.clearRect(j1.getX(), j1.getY(), j1.getImage().getWidth(), j1.getImage().getHeight());
             j1.mouvementarriereX();
-            gc = canvas.getGraphicsContext2D();
             for(Entite e : entites)
             {
                 gc.drawImage( e.getImage(), e.getX(), e.getY());
@@ -133,29 +154,29 @@ public class game {
         if (mouvementJoueur.getInput().contains("RIGHT")) {
             graphicsContext.clearRect(j1.getX(), j1.getY(), j1.getImage().getWidth(), j1.getImage().getHeight());
             j1.mouvementavantX();
-            gc = canvas.getGraphicsContext2D();
             for(Entite e : entites)
             {
                 gc.drawImage( e.getImage(), e.getX(), e.getY());
-            }            return true;
+            }
+            return true;
         }
         if (mouvementJoueur.getInput().contains("UP")) {
             graphicsContext.clearRect(j1.getX(), j1.getY(), j1.getImage().getWidth(), j1.getImage().getHeight());
             j1.mouvementhaut();
-            gc = canvas.getGraphicsContext2D();
             for(Entite e : entites)
             {
                 gc.drawImage( e.getImage(), e.getX(), e.getY());
-            }            return true;
+            }
+            return true;
         }
         if (mouvementJoueur.getInput().contains("DOWN")) {
             graphicsContext.clearRect(j1.getX(), j1.getY(), j1.getImage().getWidth(), j1.getImage().getHeight());
             j1.mouvementbas();
-            gc = canvas.getGraphicsContext2D();
             for(Entite e : entites)
             {
                 gc.drawImage( e.getImage(), e.getX(), e.getY());
-            }            return true;
+            }
+            return true;
         }
         if (mouvementJoueur.getInput().contains("ESCAPE")) {
             //sauvegarde auto

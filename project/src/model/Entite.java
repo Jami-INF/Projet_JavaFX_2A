@@ -104,6 +104,12 @@ public abstract class Entite{
     public void mouvementhaut(){
         y = (y - 5);
     }
+    public void gravite(){
+        y = (y + 1);
+    }
+    public void collision(){
+        y = (y - 1);
+    }
     public Image getImage(){
         return skin;
     }
