@@ -1,6 +1,8 @@
 package view;
 import javafx.application.Platform;
 import javafx.fxml.FXMLLoader;
+import javafx.geometry.BoundingBox;
+import javafx.scene.image.ImageView;
 import javafx.stage.Stage;
 import javafx.scene.Scene;
 import javafx.scene.Group;
@@ -30,6 +32,8 @@ public class game {
     private Integer timejeu = 0;
     private Integer timetmp = 0;
     Boolean isCollide;
+    int DureeSaut = 10;//surée saut en tick
+    int tmpDureeSaut;
 
     public void startgame(Stage stage) {
         //System.out.println("fdfzfzdfzf");
@@ -40,11 +44,13 @@ public class game {
         Canvas canvas = new Canvas(WIDTH, HEIGHT);
         g.getChildren().add(canvas);
         ActionMouvement(mouvementJoueur);
+        ImageView bcg = new ImageView(getClass().getClassLoader().getResource("image/background.jpg").toExternalForm());
+
 
 
         graphicsContext = canvas.getGraphicsContext2D();
         Image Skin = new Image(getClass().getClassLoader().getResource("image/testpers.png").toExternalForm());
-        Joueur j1 = new Joueur(50, 200, Skin, 50, 50,10,10, "Joueur1");
+        Joueur j1 = new Joueur(50, 200, Skin, 50, 50,10,10, "Joueur1", false);
 
         //Image bg = new Image(getClass().getClassLoader().getResource("image/background.png").toExternalForm());
 
@@ -99,24 +105,24 @@ public class game {
                 timejeu = timetmp/60;
                 //long startTime = System.nanoTime();
                 if(exit=false){
-                    stop();
+
                 }
 
                 AffichTimeHautEcran(timejeu.toString(), canvas);
 
                 isCollide = mouvementJoueur.CheckCollision(j1, plateformeArrayList);
+                ActionLectureListe(mouvementJoueur, j1, stage, canvas, entites);
                 if (isCollide== false){
-                    exit = ActionLectureListe(mouvementJoueur, j1, stage, canvas, entites);
+                    //exit = ActionLectureListe(mouvementJoueur, j1, stage, canvas, entites);
+                        canvas.getGraphicsContext2D().clearRect(j1.getX(), j1.getY(), j1.getImage().getWidth(), j1.getImage().getHeight());
+                        j1.gravite();
+                        canvas.getGraphicsContext2D().drawImage( j1.getImage(), j1.getX(), j1.getY());
 
-                    canvas.getGraphicsContext2D().clearRect(j1.getX(), j1.getY(), j1.getImage().getWidth(), j1.getImage().getHeight());
-                    j1.gravite();
-                    canvas.getGraphicsContext2D().drawImage( j1.getImage(), j1.getX(), j1.getY());
+
+
                 }
-                else{//code foireux pour tester les collision, le j1 est teleporté plus haut.
-                    canvas.getGraphicsContext2D().clearRect(j1.getX(), j1.getY(), j1.getImage().getWidth(), j1.getImage().getHeight());
-                    j1.collision();
-                    canvas.getGraphicsContext2D().drawImage( j1.getImage(), j1.getX(), j1.getY());
-                }
+
+
             }
         }.start();
         stage.show();
@@ -162,7 +168,7 @@ public class game {
             {
                 gc.drawImage( e.getImage(), e.getX(), e.getY());
             }
-            return true;
+            //return true;
 
         }
         if (mouvementJoueur.getInput().contains("RIGHT")) {
@@ -172,17 +178,23 @@ public class game {
             {
                 gc.drawImage( e.getImage(), e.getX(), e.getY());
             }
-            return true;
+            //return true;
         }
+
         if (mouvementJoueur.getInput().contains("UP")) {
-            graphicsContext.clearRect(j1.getX(), j1.getY(), j1.getImage().getWidth(), j1.getImage().getHeight());
-            j1.mouvementhaut();
-            for(Entite e : entites)
-            {
-                gc.drawImage( e.getImage(), e.getX(), e.getY());
-            }
-            return true;
+            //graphicsContext.clearRect(j1.getX(), j1.getY(), j1.getImage().getWidth(), j1.getImage().getHeight());
+            //j1.mouvementhaut();
+            j1.setInJump(true);
+
+
+
+            //for(Entite e : entites)
+            //{
+            //    gc.drawImage( e.getImage(), e.getX(), e.getY());
+            //}
+            //return true;
         }
+        /* Mouvement vers le bas inutile
         if (mouvementJoueur.getInput().contains("DOWN")) {
             graphicsContext.clearRect(j1.getX(), j1.getY(), j1.getImage().getWidth(), j1.getImage().getHeight());
             j1.mouvementbas();
@@ -192,6 +204,8 @@ public class game {
             }
             return true;
         }
+        $/
+         */
         if (mouvementJoueur.getInput().contains("ESCAPE")) {
             //sauvegarde auto
             //lance nouveau menu avec comme option : recommencer le jeu et quitter
