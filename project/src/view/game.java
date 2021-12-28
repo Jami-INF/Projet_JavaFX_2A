@@ -48,13 +48,14 @@ public class game {
         ////BACKGROUND
         Image background = new Image (getClass().getClassLoader().getResource("image/background.jpg").toExternalForm());
         ImageView backgroundIV = new ImageView (getClass().getClassLoader().getResource("image/background.jpg").toExternalForm());
+        g.getChildren().add(backgroundIV);
 
 
         ////////////
 
         ////JOUEUR
         Image Skin = new Image(getClass().getClassLoader().getResource("image/testpers.png").toExternalForm());
-        Joueur j1 = new Joueur(Skin, 50, 200, 10,"Joueur1");
+        Joueur j1 = new Joueur(Skin, 20, 20, 10, 100, 600,"Joueur1");
 
         //ImageView joueurIV = new ImageView(getClass().getClassLoader().getResource("image/testpers.png").toExternalForm());
         ////////////
@@ -66,11 +67,11 @@ public class game {
         ArrayList<Entite> entites = new ArrayList<Entite>();
 
         Image Platform = new Image(getClass().getClassLoader().getResource("image/platform.png").toExternalForm());
-        Plateforme p1 = new Plateforme(Platform, 100, 600, 100, true);
-        Plateforme p2 = new Plateforme(Platform, 100, 600, 100, true);
-        Plateforme p3 = new Plateforme(Platform, 100, 600, 100, true);
-        Plateforme p4 = new Plateforme(Platform, 100, 600, 100, true);
-        Plateforme p5 = new Plateforme(Platform, 100, 600, 100, true);
+        Plateforme p1 = new Plateforme(Platform, 100, 600, 100, 100, 500, true);
+        Plateforme p2 = new Plateforme(Platform, 100, 600, 100,300, 500,true);
+        Plateforme p3 = new Plateforme(Platform, 100, 600, 100, 500, 500,true);
+        Plateforme p4 = new Plateforme(Platform, 100, 600, 100, 700, 500,true);
+        Plateforme p5 = new Plateforme(Platform, 100, 600, 100, 900, 500,true);
 
 
 
@@ -80,18 +81,17 @@ public class game {
         plateformeArrayList.add(p4);
         plateformeArrayList.add(p5);
 
+        entites.add(j1);
         entites.add(p1);
         entites.add(p2);
         entites.add(p3);
         entites.add(p4);
         entites.add(p5);
-        entites.add(j1);
 
-        g.getChildren().addAll(backgroundIV,j1.getIV());
 
-        //for (Plateforme p : plateformeArrayList) {
-        //    graphicsContext.drawImage(p, p.getX(), p.getY());
-        //}
+        for (Entite enti : entites) {
+            g.getChildren().add(enti.getIV());
+        }
 
         /*Thread t = new Thread(() -> {
             while(true){
@@ -119,12 +119,9 @@ public class game {
                 //AffichTimeHautEcran(timejeu.toString(), canvas);
 
                 //isCollide = mouvementJoueur.CheckCollision(j1, plateformeArrayList);
+                j1.update(plateformeArrayList);
                 mouvementJoueur.ActionLectureListe(mouvementJoueur, j1, stage, entites);
-                j1.update();
-                //System.out.println(j1.getY());
-                //System.out.println(j1.getX());
-                //System.out.println(j1.getisMouvementArriere());
-                System.out.println(j1.getisMouvementAvant());
+
 
 
 

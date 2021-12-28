@@ -21,14 +21,12 @@ public abstract class Entite extends ImageView {
 
     ImageView IV;
 
-    public Entite(Image Skin, double VelociteX, double VelociteY, double Size){
+    public Entite(Image Skin, double VelociteX, double VelociteY, double Size, double SpawnX, double SpawnY){
         IV = new ImageView(Skin);
         skin = Skin;
-        setY(y);
-        setX(x);
-        imageSize = Size;
-        setFitWidth(imageSize);
-        setFitHeight(imageSize);
+        IV.setY(SpawnY);
+        IV.setX(SpawnX);
+
         VelociteY = velociteY;
         VelociteX = velociteX;
 

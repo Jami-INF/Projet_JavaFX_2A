@@ -50,7 +50,7 @@ public class mouvement {
             //return true;
 
         }
-        if (mouvementJoueur.getInput().contains("RIGHT")) {
+        else if (mouvementJoueur.getInput().contains("RIGHT")) {
             j1.mouvementavantX();
             //System.out.println("right");
             //joueurIV.setX(joueurIV.getX()+5);
@@ -58,13 +58,13 @@ public class mouvement {
             //return true;
         }
 
-        if (mouvementJoueur.getInput().contains("UP")) {
+        else if (mouvementJoueur.getInput().contains("UP")) {
             j1.saut();
             j1.setInJump(true);
 
             //return true;
         }
-        if (mouvementJoueur.getInput().contains("ESCAPE")) {
+        else if (mouvementJoueur.getInput().contains("ESCAPE")) {
             //sauvegarde auto
             //lance nouveau menu avec comme option : recommencer le jeu et quitter
             System.out.println("quitter");
@@ -81,7 +81,9 @@ public class mouvement {
             //stage.show();
             return false;
         }
-        j1.arretmouvement();
+        else
+            j1.arretmouvement();
+
         return true;
     }
     public Boolean ActionLectureListe (mouvement mouvementJoueur, Joueur j1, ImageView joueurIV, Stage stage, ArrayList<Entite> entites){
@@ -148,8 +150,6 @@ public class mouvement {
                 System.out.println("Collision");
                 return true;
             }
-
-
         }
         return false;
     }//Y hauteur // X largeur
