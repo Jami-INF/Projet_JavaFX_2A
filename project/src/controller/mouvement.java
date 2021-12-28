@@ -1,7 +1,14 @@
 package controller;
+import java.io.IOException;
 import java.util.ArrayList;
 
+import javafx.fxml.FXMLLoader;
 import javafx.geometry.BoundingBox;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
+import javafx.scene.image.ImageView;
+import javafx.stage.Stage;
+import model.Entite;
 import model.Joueur;
 import model.Plateforme;
 
@@ -32,14 +39,52 @@ public class mouvement {
 
     }
 
-    public void actionClavier(Joueur p) {
-        if (input.contains("UP"))
-            p.saut(20);
-        if (input.contains("RIGHT"))
-            p.mouvementavantX();
-        else if (input.contains("LEFT"))
-            p.mouvementarriereX();
+    public Boolean ActionLectureListe (mouvement mouvementJoueur, Joueur j1, Stage stage, ArrayList<Entite> entites){
+
+        if (mouvementJoueur.getInput().contains("LEFT")) {
+            j1.mouvementarriereX();
+            //System.out.println("left");
+
+            //joueurIV.setX(joueurIV.getX()-5);//méthode bourrin
+
+            //return true;
+
+        }
+        if (mouvementJoueur.getInput().contains("RIGHT")) {
+            j1.mouvementavantX();
+            //System.out.println("right");
+            //joueurIV.setX(joueurIV.getX()+5);
+
+            //return true;
+        }
+
+        if (mouvementJoueur.getInput().contains("UP")) {
+            j1.saut();
+            j1.setInJump(true);
+
+            //return true;
+        }
+        if (mouvementJoueur.getInput().contains("ESCAPE")) {
+            //sauvegarde auto
+            //lance nouveau menu avec comme option : recommencer le jeu et quitter
+            System.out.println("quitter");
+            stage.close();
+            Parent root = null;
+            try {
+                root = (Parent) FXMLLoader.load(getClass().getClassLoader().getResource("fxml/accueil.fxml"));
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+            Scene scene = new Scene(root, 900, 520);
+            stage.setScene(scene);
+            //mouvementJoueur.clearInput();
+            //stage.show();
+            return false;
+        }
+        j1.arretmouvement();
+        return true;
     }
+
 
     public Boolean CheckCollision (Joueur j, ArrayList<Plateforme> plateformeArrayList) {
         //System.out.println(J.getX());

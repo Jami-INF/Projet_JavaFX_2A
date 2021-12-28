@@ -3,18 +3,15 @@ package model;
 import javafx.scene.image.Image;
 
 public class Plateforme extends Entite {
-    boolean visible;
+    private boolean visible;
 
-    public Plateforme(int SpawnX, int SpawnY, Image Skin, int XHitBox, int YHitBox, int velociteX, int velociteY, boolean visible) {
-        super(SpawnX, SpawnY,  Skin, XHitBox, YHitBox, velociteX, velociteY);
+    public Plateforme(Image Skin, double VelociteX, double VelociteY, double Size, boolean visible) {
+        super(Skin, VelociteX, VelociteY, Size);
         this.visible = visible;
     }
 
-    public boolean isVisible() {
+    public boolean getVisible() {
         return visible;
     }
 
-    public void setVisible(boolean visible) {
-        this.visible = visible;
-    }
 }
