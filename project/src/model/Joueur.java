@@ -7,11 +7,10 @@ public class Joueur extends Entite {
     private boolean inJump;
 
 
-    public Joueur(int SpawnX, int SpawnY, Image skin, int XHitBox, int YHitBox, int velociteX, int velociteY, String Pseudo, boolean InJump) {
-        super(SpawnX, SpawnY,  skin, XHitBox, YHitBox, velociteX, velociteY);
+    public Joueur(Image Skin, double VelociteX, double VelociteY, double Size, String Pseudo) {
+        super(Skin, VelociteX, VelociteY, Size);
         vie=10;//A modifier peut etre ?
         Pseudo = pseudo;
-        boolean inJump = InJump;
 
     }
 
