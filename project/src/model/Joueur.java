@@ -147,15 +147,15 @@ public class Joueur extends Entite {
             double HeightP = p.getIV().getImage().getHeight();
             BoundingBox platformBound = new BoundingBox(p.IV.getX(), p.IV.getY(), WidthP, HeightP);
             Bounds bounds = p.getLayoutBounds();
-            if( platformBound.intersects(joueurBound) ) {
+            /*if( platformBound.intersects(joueurBound) ) {
                 System.out.println("Collision");
                 if (isMouvementAvant) {
-                    setX(bounds.getMinX() - imageSize - 0.01);
+                    IV.setX(bounds.getMinX() - imageSize - 0.01);
                 }
                 if (isMouvementArriere) {
-                    setX(bounds.getMaxX() + 0.01);
+                    IV.setX(bounds.getMaxX() + 0.01);
                 }
-            }
+            }*/
         }
 
 
@@ -171,13 +171,16 @@ public class Joueur extends Entite {
             double HeightP = p.getIV().getImage().getHeight();
             BoundingBox platformBound = new BoundingBox(p.IV.getX(), p.IV.getY(), WidthP, HeightP);
             Bounds bounds = p.getLayoutBounds();
-            if( platformBound.intersects(joueurBound) ) {
+            if( platformBound.intersects(joueurBound) == true ) {
                 System.out.println("Collision");
-                setY(bounds.getMinY() - imageSize - 0.01);
-                canJump = true;
                 velociteX = 0;
+                this.IV.setY(IV.getY()-50);
+                canJump = true;
             }
+
         }
+
+
 
     }
 }

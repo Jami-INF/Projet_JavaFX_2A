@@ -49,13 +49,11 @@ public class game {
         Image background = new Image (getClass().getClassLoader().getResource("image/background.jpg").toExternalForm());
         ImageView backgroundIV = new ImageView (getClass().getClassLoader().getResource("image/background.jpg").toExternalForm());
         g.getChildren().add(backgroundIV);
-
-
         ////////////
 
         ////JOUEUR
         Image Skin = new Image(getClass().getClassLoader().getResource("image/testpers.png").toExternalForm());
-        Joueur j1 = new Joueur(Skin, 20, 20, 10, 100, 600,"Joueur1");
+        Joueur j1 = new Joueur(Skin, 20, 20, 10, 0, 0,"Joueur1");
 
         //ImageView joueurIV = new ImageView(getClass().getClassLoader().getResource("image/testpers.png").toExternalForm());
         ////////////
