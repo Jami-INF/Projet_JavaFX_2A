@@ -84,6 +84,52 @@ public class mouvement {
         j1.arretmouvement();
         return true;
     }
+    public Boolean ActionLectureListe (mouvement mouvementJoueur, Joueur j1, ImageView joueurIV, Stage stage, ArrayList<Entite> entites){
+
+        if (mouvementJoueur.getInput().contains("LEFT")) {
+            j1.mouvementarriereX();
+            System.out.println("left");
+
+            joueurIV.setX(joueurIV.getX()-5);//méthode bourrin
+
+
+            //return true;
+
+        }
+        if (mouvementJoueur.getInput().contains("RIGHT")) {
+            j1.mouvementavantX();
+            System.out.println("right");
+            joueurIV.setX(joueurIV.getX()+5);
+
+            //return true;
+        }
+
+        if (mouvementJoueur.getInput().contains("UP")) {
+            //j1.mouvementhaut();
+            j1.setInJump(true);
+
+            //return true;
+        }
+        if (mouvementJoueur.getInput().contains("ESCAPE")) {
+            //sauvegarde auto
+            //lance nouveau menu avec comme option : recommencer le jeu et quitter
+            System.out.println("quitter");
+            stage.close();
+            Parent root = null;
+            try {
+                root = (Parent) FXMLLoader.load(getClass().getClassLoader().getResource("fxml/accueil.fxml"));
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+            Scene scene = new Scene(root, 900, 520);
+            stage.setScene(scene);
+            //mouvementJoueur.clearInput();
+            //stage.show();
+            return false;
+        }
+        return true;
+    }
+
 
 
     public Boolean CheckCollision (Joueur j, ArrayList<Plateforme> plateformeArrayList) {
