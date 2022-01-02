@@ -17,7 +17,7 @@ public class Joueur extends Entite {
     private boolean canJump;
     private boolean isMouvementAvant;
     private boolean isMouvementArriere;
-    private double jumpHauteur = 10;
+    private double jumpHauteur = 40;
     private double gravite = 2;
     private double size;
     private Image skin;
@@ -90,6 +90,7 @@ public class Joueur extends Entite {
     public void saut() {
         if (canJump) {
             velociteY = velociteY-jumpHauteur;
+            gravite = 2;
         }
         canJump = false;
 
@@ -170,11 +171,11 @@ public class Joueur extends Entite {
             double WidthP =  p.getIV().getImage().getWidth();
             double HeightP = p.getIV().getImage().getHeight();
             BoundingBox platformBound = new BoundingBox(p.IV.getX(), p.IV.getY(), WidthP, HeightP);
-            Bounds bounds = p.getLayoutBounds();
             if( platformBound.intersects(joueurBound) == true ) {
                 System.out.println("Collision");
-                velociteX = 0;
-                this.IV.setY(IV.getY()-50);
+                //velociteX = 0;
+                gravite = 0;
+                //IV.setY(IV.getY()-100);
                 canJump = true;
             }
 
