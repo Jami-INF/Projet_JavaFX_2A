@@ -17,11 +17,16 @@ public class Joueur extends Entite {
     private boolean canJump;
     private boolean isMouvementAvant;
     private boolean isMouvementArriere;
-    private double jumpHauteur = 40;
-    private double gravite = 2;
+    private double jumpHauteur = 150;
+    private double gravite = 10;
     private double size;
     private Image skin;
     private double imageSize;
+    private boolean isCollideUp = false;
+    private boolean isCollideDown = false;
+    private boolean isCollideLeft = false;
+    private boolean isCollideRight = false;
+
 
 
     public Joueur(Image Skin, double VelociteX, double VelociteY, double Size, double SpawnX, double SpawnY, String Pseudo) {
@@ -90,7 +95,7 @@ public class Joueur extends Entite {
     public void saut() {
         if (canJump) {
             velociteY = velociteY-jumpHauteur;
-            gravite = 2;
+            gravite = 10;
         }
         canJump = false;
 
@@ -99,6 +104,7 @@ public class Joueur extends Entite {
         updateMouvementX(plateformeArrayList);// obstacle coté
         updateMouvementY(plateformeArrayList);//gravité + plateforme bas
     }
+    /*
     public Boolean CheckCollision (ArrayList<Plateforme> plateformeArrayList) {
         double WidthJ = IV.getImage().getWidth();
         double HeightJ = IV.getImage().getHeight();
@@ -116,8 +122,8 @@ public class Joueur extends Entite {
             }
         }
         return false;
-    }//Y hauteur // X largeur
-
+    }//Y hauteur // X largeur*/
+/*
     public Boolean CheckCollision (Plateforme p) {
         double WidthJ = IV.getImage().getWidth();
         double HeightJ = IV.getImage().getHeight();
@@ -131,67 +137,75 @@ public class Joueur extends Entite {
         }
         return false;
     }//Y hauteur // X largeur
+    */
 
     public void updateMouvementX(ArrayList<Plateforme> plateformeArrayList){
-
-        if (isMouvementAvant) {
-            IV.setX(IV.getX() + velociteX);
+        if (isCollideRight == false){
+            if (isMouvementAvant) {
+                IV.setX(IV.getX() + velociteX);
+            }
         }
-        if (isMouvementArriere) {
-            IV.setX(IV.getX() - velociteX);
+        if (isCollideLeft == false){
+            if (isMouvementArriere) {
+                IV.setX(IV.getX() - velociteX);
+            }
         }
         double WidthJ = IV.getImage().getWidth();
         double HeightJ = IV.getImage().getHeight();
         BoundingBox joueurBound = new BoundingBox(IV.getX(), IV.getY(), WidthJ, HeightJ);
+        //COORDONNES JOUEUR
+        double GaucheJ = joueurBound.getMinX();
+        double DroiteJ = joueurBound.getMaxX();
         for (Plateforme p : plateformeArrayList){
             double WidthP =  p.getIV().getImage().getWidth();
             double HeightP = p.getIV().getImage().getHeight();
             BoundingBox platformBound = new BoundingBox(p.IV.getX(), p.IV.getY(), WidthP, HeightP);
-            Bounds bounds = p.getLayoutBounds();
-            /*if( platformBound.intersects(joueurBound) ) {
-                System.out.println("Collision");
-                if (isMouvementAvant) {
-                    IV.setX(bounds.getMinX() - imageSize - 0.01);
-                }
-                if (isMouvementArriere) {
-                    IV.setX(bounds.getMaxX() + 0.01);
-                }
-            }*/
+            //COORDONNES PLATEFORME
+            double GaucheP = platformBound.getMinX();
+            double DroiteP = platformBound.getMaxX();
+            //Bounds bounds = p.getLayoutBounds();
+            if(GaucheJ <= DroiteP){ // COLLISION PAR LA GAUCHE X
+                isCollideLeft = true;
+                System.out.println("collision gauche");
+            }
+            if(DroiteJ >= GaucheP){ //COLLISION PAR LA DROITE X
+                isCollideRight = true;
+                System.out.println("collision droite");
+            }
         }
-
-
     }
+
     void updateMouvementY(ArrayList<Plateforme> plateformeArrayList) {
         velociteY += gravite;
         IV.setY(getY() + velociteY);
         double WidthJ = IV.getImage().getWidth();
         double HeightJ = IV.getImage().getHeight();
         BoundingBox joueurBound = new BoundingBox(IV.getX(), IV.getY(), WidthJ, HeightJ);
+        //COORDONNES JOUEUR
+        double BasJ = joueurBound.getMinY();
+        double HautJ = joueurBound.getMaxY();
+        System.out.println(HautJ);
+        //POUR TOUTES LES PLATEFORMES
         for (Plateforme p : plateformeArrayList){
             double WidthP =  p.getIV().getImage().getWidth();
             double HeightP = p.getIV().getImage().getHeight();
             BoundingBox platformBound = new BoundingBox(p.IV.getX(), p.IV.getY(), WidthP, HeightP);
-            if( platformBound.intersects(joueurBound) == true ) {
-                System.out.println("Collision");
-                //velociteX = 0;
-                gravite = 0;
-                //IV.setY(IV.getY()-100);
-                canJump = true;
+            //COORDONNES PLATEFORME
+            double BasP = platformBound.getMinY();
+            double HautP = platformBound.getMaxY();
+            System.out.println(HautP);
+            if(BasJ <= HautP){ //COLLISION TETE Y
+                isCollideUp = true;
+                gravite = 10;
+                canJump = false;
+                System.out.println("collision tete");
             }
-
+            if(HautJ >= BasP){ //COLLISION SOL Y
+                isCollideDown = true;
+                gravite = 0;
+                canJump = true;
+                System.out.println("collision sol");
+            }
         }
-
-
-
     }
 }
-/*
-if(CheckCollision(plateformeArrayList)){
-            if (isMouvementAvant) {
-                //setX(bounds.getMinX() - imageSize - 0.01);
-            }
-            if (isMouvementArriere) {
-                IV.setX(IV.getX() - velociteX);
-            }
-        }
- */

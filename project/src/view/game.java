@@ -70,6 +70,7 @@ public class game {
         Plateforme p3 = new Plateforme(Platform, 100, 600, 100, 500, 500,true);
         Plateforme p4 = new Plateforme(Platform, 100, 600, 100, 700, 500,true);
         Plateforme p5 = new Plateforme(Platform, 100, 600, 100, 900, 500,true);
+        Plateforme p6 = new Plateforme(Platform, 100, 600, 100, 800, 400,true);
 
 
 
@@ -78,6 +79,7 @@ public class game {
         plateformeArrayList.add(p3);
         plateformeArrayList.add(p4);
         plateformeArrayList.add(p5);
+        plateformeArrayList.add(p6);
 
         entites.add(j1);
         entites.add(p1);
@@ -85,6 +87,7 @@ public class game {
         entites.add(p3);
         entites.add(p4);
         entites.add(p5);
+        entites.add(p6);
 
 
         for (Entite enti : entites) {

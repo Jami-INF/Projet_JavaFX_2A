@@ -24,6 +24,7 @@ public class mouvement {
     public ArrayList<String> getInput() {
         return input;
     }
+
     public void addInput(String s) {
         input.add(s);
     }
@@ -32,14 +33,15 @@ public class mouvement {
 
         input.remove(s);
     }
-    public void clearInput(){
-        for (String in: input) {
+
+    public void clearInput() {
+        for (String in : input) {
             input.remove(in);
         }
 
     }
 
-    public Boolean ActionLectureListe (mouvement mouvementJoueur, Joueur j1, Stage stage, ArrayList<Entite> entites){
+    public Boolean ActionLectureListe(mouvement mouvementJoueur, Joueur j1, Stage stage, ArrayList<Entite> entites) {
 
         if (mouvementJoueur.getInput().contains("LEFT")) {
             j1.mouvementarriereX();
@@ -49,22 +51,18 @@ public class mouvement {
 
             //return true;
 
-        }
-        else if (mouvementJoueur.getInput().contains("RIGHT")) {
+        } else if (mouvementJoueur.getInput().contains("RIGHT")) {
             j1.mouvementavantX();
             //System.out.println("right");
             //joueurIV.setX(joueurIV.getX()+5);
 
             //return true;
-        }
-
-        else if (mouvementJoueur.getInput().contains("UP")) {
+        } else if (mouvementJoueur.getInput().contains("UP")) {
             j1.saut();
             j1.setInJump(true);
 
             //return true;
-        }
-        else if (mouvementJoueur.getInput().contains("ESCAPE")) {
+        } else if (mouvementJoueur.getInput().contains("ESCAPE")) {
             //sauvegarde auto
             //lance nouveau menu avec comme option : recommencer le jeu et quitter
             System.out.println("quitter");
@@ -80,19 +78,19 @@ public class mouvement {
             //mouvementJoueur.clearInput();
             //stage.show();
             return false;
-        }
-        else
+        } else
             j1.arretmouvement();
 
         return true;
     }
-    public Boolean ActionLectureListe (mouvement mouvementJoueur, Joueur j1, ImageView joueurIV, Stage stage, ArrayList<Entite> entites){
+
+    public Boolean ActionLectureListe(mouvement mouvementJoueur, Joueur j1, ImageView joueurIV, Stage stage, ArrayList<Entite> entites) {
 
         if (mouvementJoueur.getInput().contains("LEFT")) {
             j1.mouvementarriereX();
             System.out.println("left");
 
-            joueurIV.setX(joueurIV.getX()-5);//méthode bourrin
+            joueurIV.setX(joueurIV.getX() - 5);//méthode bourrin
 
 
             //return true;
@@ -101,7 +99,7 @@ public class mouvement {
         if (mouvementJoueur.getInput().contains("RIGHT")) {
             j1.mouvementavantX();
             System.out.println("right");
-            joueurIV.setX(joueurIV.getX()+5);
+            joueurIV.setX(joueurIV.getX() + 5);
 
             //return true;
         }

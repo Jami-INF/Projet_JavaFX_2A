@@ -35,9 +35,4 @@ public abstract class Entite extends ImageView {
     public ImageView getIV(){
         return IV;
     }
-
-
-
-
-
 }
