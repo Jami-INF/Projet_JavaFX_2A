@@ -14,8 +14,14 @@ public class Launch extends Application {
 
     public void start(Stage stage) throws IOException {
         //view image fxml
+
         Parent root = (Parent) FXMLLoader.load(getClass().getClassLoader().getResource("fxml/accueil.fxml"));
         Scene scene = new Scene(root, 900, 520);
+        scene.getStylesheets().addAll(getClass().getClassLoader().getResource("css/style.css").toExternalForm());
+
+        //scene.getStylesheets().addAll(this.getClass().getResource("style.css").toExternalForm());
+
+
         stage.setScene(scene);
         stage.show();
     }
