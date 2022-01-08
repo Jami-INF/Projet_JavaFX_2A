@@ -109,15 +109,10 @@ public class Joueur extends Entite {
 
     }
     public void update(ArrayList<Plateforme> plateformeArrayList) {
-        //updateMouvementX(plateformeArrayList);// obstacle coté
+        //updateMouvementX(plateformeArrayList);//obstacle coté
         //updateMouvementY(plateformeArrayList);//gravité + plateforme bas
         velociteY += gravite;
-        //gravite =10;
-        /*if(isCollideUp == false && isCollideDown == false){
-
-        }*/
         IV.setY(getY() + velociteY);
-
         if (isCollideRight == false){
             if (isMouvementAvant) {
                 IV.setX(IV.getX() + velociteX);
@@ -143,47 +138,54 @@ public class Joueur extends Entite {
             //COORDONNES PLATEFORME
             double BasP = platformBound.getMaxY();
             double HautP = platformBound.getMinY();
-            double GaucheP = platformBound.getMinX()-5;
-            double DroiteP = platformBound.getMaxX()-5;
-            //Bounds bounds = p.getLayoutBounds();
-            if(GaucheJ >= DroiteP && HautJ <= HautP && BasJ >= BasP){ // COLLISION PAR LA GAUCHE X
-                isCollideLeft = true;
-                gravite = 10;
-                System.out.println("collision gauche : gaucheJ");
+            double GaucheP = platformBound.getMinX();
+            double DroiteP = platformBound.getMaxX();
 
-            }/*else{
+            // COLLISION PAR LA GAUCHE X
+            if(GaucheJ >= DroiteP){
+                //isCollideLeft = true;
+                gravite = 10;
+                System.out.println("collision gauche");
+            }
+            if(GaucheJ < DroiteP){
                 isCollideLeft = false;
-            }*/
-            if(DroiteJ >= GaucheP && HautJ <= HautP && BasJ >= BasP){ //COLLISION PAR LA DROITE X
+                //System.out.println("pas de collision gauche");
+            }
+
+            //COLLISION PAR LA DROITE X
+            if(DroiteJ >= GaucheP && HautJ <= HautP && BasJ >= BasP){
                 isCollideRight = true;
                 gravite = 10;
-                System.out.println("collision droite : DroiteJ");
-            }/*else{
-                isCollideRight = false;
+                //System.out.println("collision droite");
+            }
+            /*if(DroiteJ >= GaucheP){
+                //isCollideLeft = false;
+                //System.out.println("pas de collision droite");
             }*/
 
-
-            if(HautJ >= BasP && GaucheJ <= DroiteP && DroiteJ >= GaucheP){ //COLLISION TETE Y
-                isCollideUp = true;
+            //COLLISION TETE Y
+            if(HautP >= BasJ && HautJ >= BasP && GaucheJ <= DroiteP && DroiteJ >= GaucheP){
+                //isCollideUp = true;
                 gravite = 10;
                 velociteY = 0;
                 canJump = false;
-                System.out.println("collision tete");
-            }else{
-                isCollideUp = false;
+                //System.out.println("collision tete");
             }
-            if(BasJ >= HautP && GaucheJ <= DroiteP && DroiteJ >= GaucheP){ //COLLISION SOL Y
+            /*if(HautJ < BasP){
+                //isCollideUp = false;
+                //System.out.println("pas collision tete");
+            }*/
+
+            //COLLISION SOL
+            if(BasJ >= HautP && BasP >= HautJ && GaucheJ <= DroiteP && DroiteJ >= GaucheP){
                 isCollideDown = true;
                 gravite = 0;
                 canJump = true;
                 System.out.println("collision sol");
-
             }else{
-                isCollideDown = false;
+                //System.out.println("pas collision sol");
             }
-
         }
-
     }
     /*
     public Boolean CheckCollision (ArrayList<Plateforme> plateformeArrayList) {
