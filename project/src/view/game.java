@@ -65,12 +65,14 @@ public class game {
         ArrayList<Entite> entites = new ArrayList<Entite>();
 
         Image Platform = new Image(getClass().getClassLoader().getResource("image/platform.png").toExternalForm());
-        Plateforme p1 = new Plateforme(Platform, 100, 600, 100, 100, 500, true);
+        Plateforme p1 = new Plateforme(Platform, 100, 600, 100, 100, 200, true);
         Plateforme p2 = new Plateforme(Platform, 100, 600, 100,300, 500,true);
         Plateforme p3 = new Plateforme(Platform, 100, 600, 100, 500, 500,true);
         Plateforme p4 = new Plateforme(Platform, 100, 600, 100, 700, 500,true);
         Plateforme p5 = new Plateforme(Platform, 100, 600, 100, 900, 500,true);
         Plateforme p6 = new Plateforme(Platform, 100, 600, 100, 800, 400,true);
+        Plateforme p7 = new Plateforme(Platform, 100, 600, 100, 700, 300,true);
+
 
 
 
@@ -80,6 +82,7 @@ public class game {
         plateformeArrayList.add(p4);
         plateformeArrayList.add(p5);
         plateformeArrayList.add(p6);
+        plateformeArrayList.add(p7);
 
         entites.add(j1);
         entites.add(p1);
@@ -88,6 +91,7 @@ public class game {
         entites.add(p4);
         entites.add(p5);
         entites.add(p6);
+        entites.add(p7);
 
 
         for (Entite enti : entites) {
@@ -96,12 +100,20 @@ public class game {
 
         /*Thread t = new Thread(() -> {
             while(true){
-                try{
-                    Thread.sleep(10);
-                    Platform.runLater(() -> {
-                        //joueur.getPlayer().setX(joueur.getPlayer().getX() + 0.1d);
-                    });
-                } catch (InterruptedException e){
+                Boolean exit = true;
+                timetmp++;
+                timejeu = timetmp/60;
+                //long startTime = System.nanoTime();
+
+
+                //AffichTimeHautEcran(timejeu.toString(), canvas);
+
+                //isCollide = mouvementJoueur.CheckCollision(j1, plateformeArrayList);
+                j1.update(plateformeArrayList);
+                mouvementJoueur.ActionLectureListe(mouvementJoueur, j1, stage, entites);
+                try {
+                    Thread.sleep(50);
+                } catch (InterruptedException e) {
                     e.printStackTrace();
                 }
             }

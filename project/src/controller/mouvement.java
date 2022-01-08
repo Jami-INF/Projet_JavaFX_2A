@@ -59,7 +59,7 @@ public class mouvement {
             //return true;
         } else if (mouvementJoueur.getInput().contains("UP")) {
             j1.saut();
-            j1.setInJump(true);
+            //j1.setInJump(true);
 
             //return true;
         } else if (mouvementJoueur.getInput().contains("ESCAPE")) {
