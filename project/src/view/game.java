@@ -42,7 +42,7 @@ public class game {
         Group g = new Group();
         s = new Scene(g,1280,720);
         stage.setScene(s);
-
+        collision collisionController = new collision();
         mouvement mouvementJoueur = new mouvement();
         ActionMouvement(mouvementJoueur);
         ////BACKGROUND
@@ -54,6 +54,7 @@ public class game {
         ////JOUEUR
         Image Skin = new Image(getClass().getClassLoader().getResource("image/testpers.png").toExternalForm());
         Joueur j1 = new Joueur(Skin, 20, 20, 10, 0, 0,"Joueur1");
+
 
         //ImageView joueurIV = new ImageView(getClass().getClassLoader().getResource("image/testpers.png").toExternalForm());
         ////////////
@@ -108,9 +109,12 @@ public class game {
 
                 //AffichTimeHautEcran(timejeu.toString(), canvas);
 
-                //isCollide = mouvementJoueur.CheckCollision(j1, plateformeArrayList);
-                j1.update(plateformeArrayList);
-                mouvementJoueur.ActionLectureListe(mouvementJoueur, j1, stage, entites);
+                javafx.application.Platform.runLater(() -> {
+                    //j1.update(plateformeArrayList);
+                    collisionController.verify(plateformeArrayList);
+                    mouvementJoueur.ActionLectureListe(mouvementJoueur, j1, stage, entites);
+                });
+
                 try {
                     Thread.sleep(50);
                 } catch (InterruptedException e) {

@@ -113,16 +113,7 @@ public class Joueur extends Entite {
         //updateMouvementY(plateformeArrayList);//gravité + plateforme bas
         velociteY += gravite;
         IV.setY(getY() + velociteY);
-        if (isCollideRight == false){
-            if (isMouvementAvant) {
-                IV.setX(IV.getX() + velociteX);
-            }
-        }
-        if (isCollideLeft == false){
-            if (isMouvementArriere) {
-                IV.setX(IV.getX() - velociteX);
-            }
-        }
+
         double WidthJ = IV.getImage().getWidth();
         double HeightJ = IV.getImage().getHeight();
         BoundingBox joueurBound = new BoundingBox(IV.getX(), IV.getY(), WidthJ, HeightJ);
@@ -142,25 +133,21 @@ public class Joueur extends Entite {
             double DroiteP = platformBound.getMaxX();
 
             // COLLISION PAR LA GAUCHE X
-            //if(GaucheJ >= DroiteP && HautP <= HautJ && BasP >= BasJ){
-            if(GaucheJ >= DroiteP){
+            if(GaucheJ >= DroiteP && HautP <= HautJ && BasP >= BasJ){
+            //if(GaucheJ >= DroiteP){
                 isCollideLeft = true;
-                gravite = 10;
                 //System.out.println("collision gauche");
             }
 
             //COLLISION PAR LA DROITE X
             if(DroiteJ >= GaucheP && HautJ <= HautP && BasJ >= BasP){
                 isCollideRight = true;
-                gravite = 10;
                 //System.out.println("collision droite");
             }
 
             //COLLISION TETE Y
             if(HautP >= BasJ && HautJ >= BasP && GaucheJ <= DroiteP && DroiteJ >= GaucheP){
                 isCollideUp = true;
-                gravite = 10;
-                velociteY = 0;
                 canJump = false;
                 //System.out.println("collision tete");
             }
@@ -168,15 +155,31 @@ public class Joueur extends Entite {
             //COLLISION SOL
             if(BasJ >= HautP && BasP >= HautJ && GaucheJ <= DroiteP && DroiteJ >= GaucheP){
                 isCollideDown = true;
-                gravite = 0;
                 canJump = true;
                 //System.out.println("collision sol");
             }
+        }
 
-            //isCollideDown = false;
-            //isCollideUp = false;
-            isCollideLeft = false;
-            isCollideRight = false;
+        isCollideDown = false;
+        isCollideUp = false;
+        isCollideLeft = false;
+        isCollideRight = false;
+        gravite=10;
+
+        if(isCollideUp){
+            velociteY=0;
+        }
+
+        if(isCollideDown){
+            velociteY=0;
+            gravite=0;
+        }
+
+        if (isCollideRight){
+            velociteX=0;
+        }
+        if (isCollideLeft){
+            velociteX=0;
         }
     }
     /*

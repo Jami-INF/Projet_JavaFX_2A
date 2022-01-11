@@ -45,23 +45,13 @@ public class mouvement {
 
         if (mouvementJoueur.getInput().contains("LEFT")) {
             j1.mouvementarriereX();
-            //System.out.println("left");
-
-            //joueurIV.setX(joueurIV.getX()-5);//méthode bourrin
-
-            //return true;
 
         } else if (mouvementJoueur.getInput().contains("RIGHT")) {
             j1.mouvementavantX();
-            //System.out.println("right");
-            //joueurIV.setX(joueurIV.getX()+5);
 
-            //return true;
         } else if (mouvementJoueur.getInput().contains("UP")) {
             j1.saut();
-            //j1.setInJump(true);
 
-            //return true;
         } else if (mouvementJoueur.getInput().contains("ESCAPE")) {
             //sauvegarde auto
             //lance nouveau menu avec comme option : recommencer le jeu et quitter
@@ -75,8 +65,7 @@ public class mouvement {
             }
             Scene scene = new Scene(root, 900, 520);
             stage.setScene(scene);
-            //mouvementJoueur.clearInput();
-            //stage.show();
+
             return false;
         } else
             j1.arretmouvement();
@@ -84,54 +73,7 @@ public class mouvement {
         return true;
     }
 
-    public Boolean ActionLectureListe(mouvement mouvementJoueur, Joueur j1, ImageView joueurIV, Stage stage, ArrayList<Entite> entites) {
-
-        if (mouvementJoueur.getInput().contains("LEFT")) {
-            j1.mouvementarriereX();
-            System.out.println("left");
-
-            joueurIV.setX(joueurIV.getX() - 5);//méthode bourrin
-
-
-            //return true;
-
-        }
-        if (mouvementJoueur.getInput().contains("RIGHT")) {
-            j1.mouvementavantX();
-            System.out.println("right");
-            joueurIV.setX(joueurIV.getX() + 5);
-
-            //return true;
-        }
-
-        if (mouvementJoueur.getInput().contains("UP")) {
-            //j1.mouvementhaut();
-            j1.setInJump(true);
-
-            //return true;
-        }
-        if (mouvementJoueur.getInput().contains("ESCAPE")) {
-            //sauvegarde auto
-            //lance nouveau menu avec comme option : recommencer le jeu et quitter
-            System.out.println("quitter");
-            stage.close();
-            Parent root = null;
-            try {
-                root = (Parent) FXMLLoader.load(getClass().getClassLoader().getResource("fxml/accueil.fxml"));
-            } catch (IOException e) {
-                e.printStackTrace();
-            }
-            Scene scene = new Scene(root, 900, 520);
-            stage.setScene(scene);
-            //mouvementJoueur.clearInput();
-            //stage.show();
-            return false;
-        }
-        return true;
-    }
-
-
-
+/*
     public Boolean CheckCollision (Joueur j, ArrayList<Plateforme> plateformeArrayList) {
         //System.out.println(J.getX());
         int WidthJ = (int) j.getImage().getWidth();
@@ -150,6 +92,6 @@ public class mouvement {
             }
         }
         return false;
-    }//Y hauteur // X largeur
+    }//Y hauteur // X largeur*/
 
 }
