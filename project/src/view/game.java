@@ -98,7 +98,7 @@ public class game {
             g.getChildren().add(enti.getIV());
         }
 
-        /*Thread t = new Thread(() -> {
+        Thread t = new Thread(() -> {
             while(true){
                 Boolean exit = true;
                 timetmp++;
@@ -119,9 +119,9 @@ public class game {
             }
         });
         t.start();
-        stage.show();*/
+        stage.show();
 
-        new AnimationTimer() {
+        /*new AnimationTimer() {
             public void handle(long currentNanoTime) {
                 Boolean exit = true;
                 timetmp++;
@@ -139,7 +139,7 @@ public class game {
 
 
             }
-        }.start();
+        }.start();*/
         stage.setScene(s);
         stage.show();
         //Long.toString(System.currentTimeMillis()-currentNanoTime)

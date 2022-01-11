@@ -142,14 +142,11 @@ public class Joueur extends Entite {
             double DroiteP = platformBound.getMaxX();
 
             // COLLISION PAR LA GAUCHE X
+            //if(GaucheJ >= DroiteP && HautP <= HautJ && BasP >= BasJ){
             if(GaucheJ >= DroiteP){
-                //isCollideLeft = true;
+                isCollideLeft = true;
                 gravite = 10;
-                System.out.println("collision gauche");
-            }
-            if(GaucheJ < DroiteP){
-                isCollideLeft = false;
-                //System.out.println("pas de collision gauche");
+                //System.out.println("collision gauche");
             }
 
             //COLLISION PAR LA DROITE X
@@ -158,33 +155,28 @@ public class Joueur extends Entite {
                 gravite = 10;
                 //System.out.println("collision droite");
             }
-            /*if(DroiteJ >= GaucheP){
-                //isCollideLeft = false;
-                //System.out.println("pas de collision droite");
-            }*/
 
             //COLLISION TETE Y
             if(HautP >= BasJ && HautJ >= BasP && GaucheJ <= DroiteP && DroiteJ >= GaucheP){
-                //isCollideUp = true;
+                isCollideUp = true;
                 gravite = 10;
                 velociteY = 0;
                 canJump = false;
                 //System.out.println("collision tete");
             }
-            /*if(HautJ < BasP){
-                //isCollideUp = false;
-                //System.out.println("pas collision tete");
-            }*/
 
             //COLLISION SOL
             if(BasJ >= HautP && BasP >= HautJ && GaucheJ <= DroiteP && DroiteJ >= GaucheP){
                 isCollideDown = true;
                 gravite = 0;
                 canJump = true;
-                System.out.println("collision sol");
-            }else{
-                //System.out.println("pas collision sol");
+                //System.out.println("collision sol");
             }
+
+            //isCollideDown = false;
+            //isCollideUp = false;
+            isCollideLeft = false;
+            isCollideRight = false;
         }
     }
     /*
