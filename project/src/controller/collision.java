@@ -14,21 +14,84 @@ import model.Plateforme;
 
 public class collision{
 
-    public void verify(ArrayList<Plateforme> p){
-        updateMouvementX(p);
-        updateMouvementY(p);
+    public void verify(ArrayList<Plateforme> p, Joueur j1){
+        checkCollisionHautBas(p, j1); //Fonction vérifiant collision haut-bas
+        checkCollisionDroiteGauche(p, j1);
     }
+    private void checkCollisionHautBas(ArrayList<Plateforme> plateformeList, Joueur j1){
+        //////////////Bounding box Joueur + points max
+        ImageView jIV = j1.getIV();
+        double WidthJ =  jIV.getImage().getWidth();
+        double HeightJ = jIV.getImage().getHeight();
+        BoundingBox joueurBound = new BoundingBox(jIV.getX(), jIV.getY(), WidthJ, HeightJ);//BoundingBox Joueur
+        double BasJ = joueurBound.getMaxY();
+        double HautJ = joueurBound.getMinY();
+        double GaucheJ = joueurBound.getMinX();
+        double DroiteJ = joueurBound.getMaxX();
+        //////////////
 
-    private void updateMouvementX(ArrayList<Plateforme> plateformeList){
+        //////////////Bounding box plateforme + verification collisions avec chaque plateformes
         for(Plateforme p : plateformeList){
             ImageView pIV = p.getIV();
-            double WidthP =  p.getIV().getImage().getWidth();
-            double HeightP = p.getIV().getImage().getHeight();
-            BoundingBox platformBound = new BoundingBox(p.IV.getX(), p.IV.getY(), WidthP, HeightP);
+            double WidthP =  pIV.getImage().getWidth();
+            double HeightP = pIV.getImage().getHeight();
+            BoundingBox platformBound = new BoundingBox(pIV.getX(), pIV.getY(), WidthP, HeightP);//BoundingBox Platform
+            double BasP = platformBound.getMaxY();
+            double HautP = platformBound.getMinY();
+            double GaucheP = platformBound.getMinX();
+            double DroiteP = platformBound.getMaxX();
+            //////////////
+            //COLLISION TETE Y
+            if(HautP >= BasJ && HautJ >= BasP && GaucheJ <= DroiteP && DroiteJ >= GaucheP){
+                j1.setiscollideUp(true);
+                j1.setCanJump(false);
+                System.out.println("collision tete");
+            }
+
+            //COLLISION SOL
+            if(BasJ >= HautP && BasP >= HautJ && GaucheJ <= DroiteP && DroiteJ >= GaucheP){
+                j1.setiscollideDown(true);
+                j1.setCanJump(true);
+                System.out.println("collision sol");
+            }
         }
     }
 
-    private void updateMouvementY(){
+    private void checkCollisionDroiteGauche(ArrayList<Plateforme> plateformeList, Joueur j1){
+        //////////////Bounding box Joueur + points max
+        ImageView jIV = j1.getIV();
+        double WidthJ =  jIV.getImage().getWidth();
+        double HeightJ = jIV.getImage().getHeight();
+        BoundingBox joueurBound = new BoundingBox(jIV.getX(), jIV.getY(), WidthJ, HeightJ);//BoundingBox Joueur
+        double BasJ = joueurBound.getMaxY();
+        double HautJ = joueurBound.getMinY();
+        double GaucheJ = joueurBound.getMinX();
+        double DroiteJ = joueurBound.getMaxX();
+        //////////////
+
+        //////////////Bounding box plateforme + verification collisions avec chaque plateformes
+        for(Plateforme p : plateformeList){
+            ImageView pIV = p.getIV();
+            double WidthP =  pIV.getImage().getWidth();
+            double HeightP = pIV.getImage().getHeight();
+            BoundingBox platformBound = new BoundingBox(pIV.getX(), pIV.getY(), WidthP, HeightP);//BoundingBox Platform
+            double BasP = platformBound.getMaxY();
+            double HautP = platformBound.getMinY();
+            double GaucheP = platformBound.getMinX();
+            double DroiteP = platformBound.getMaxX();
+            //////////////
+            // COLLISION PAR LA GAUCHE X
+            if(GaucheJ >= DroiteP && HautP <= HautJ && BasP >= BasJ){
+                j1.setiscollideLeft(true);
+                System.out.println("collision gauche");
+            }
+
+            //COLLISION PAR LA DROITE X
+            if(DroiteJ >= GaucheP && HautJ <= HautP && BasJ >= BasP){
+                j1.setiscollideDown(true);
+                System.out.println("collision droite");
+            }
+        }
 
     }
 }

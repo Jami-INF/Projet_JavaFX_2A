@@ -43,8 +43,10 @@ public class game {
         s = new Scene(g,1280,720);
         stage.setScene(s);
         collision collisionController = new collision();
+        actionClavier action = new actionClavier();
         mouvement mouvementJoueur = new mouvement();
-        ActionMouvement(mouvementJoueur);
+
+        //ActionMouvement(mouvementJoueur);
         ////BACKGROUND
         Image background = new Image (getClass().getClassLoader().getResource("image/background.jpg").toExternalForm());
         ImageView backgroundIV = new ImageView (getClass().getClassLoader().getResource("image/background.jpg").toExternalForm());
@@ -111,8 +113,9 @@ public class game {
 
                 javafx.application.Platform.runLater(() -> {
                     //j1.update(plateformeArrayList);
-                    collisionController.verify(plateformeArrayList);
-                    mouvementJoueur.ActionLectureListe(mouvementJoueur, j1, stage, entites);
+                    action.ActionLectureListe(action, j1, stage, entites);
+                    collisionController.verify(plateformeArrayList, j1);
+                    mouvementJoueur.UpdateJoueur(j1);
                 });
 
                 try {
@@ -158,13 +161,13 @@ public class game {
         graphicsContext.setFill(Color.WHITESMOKE);
     }
 */
-    private static void ActionMouvement (mouvement mouvementJoueur) {
+    private static void ActionMouvement (actionClavier action) {
         s.setOnKeyPressed(
                 new EventHandler<KeyEvent>() {
                     public void handle(KeyEvent e) {
                         String in = e.getCode().toString();
-                        if ( !mouvementJoueur.getInput().contains(in) )
-                            mouvementJoueur.addInput( in );
+                        if ( !action.getInput().contains(in) )
+                            action.addInput( in );
                     }
                 });
         s.setOnKeyReleased(
@@ -172,7 +175,7 @@ public class game {
                 new EventHandler<KeyEvent>() {
                     public void handle(KeyEvent e) {
                         String in = e.getCode().toString();
-                        mouvementJoueur.removeInput( in );
+                        action.removeInput( in );
                     }
                 });
     }

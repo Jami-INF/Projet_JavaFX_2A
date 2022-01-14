@@ -70,6 +70,106 @@ public class Joueur extends Entite {
     public void setInJump (Boolean b) {
         inJump = b;
     }
+    public Boolean getiscollideUp() {
+        return isCollideUp;
+    }
+    public void setiscollideUp(Boolean b) {
+        isCollideUp = b;
+    }
+    public Boolean getiscollideDown() {
+        return isCollideDown;
+    }
+    public void setiscollideDown(Boolean b) {
+        isCollideDown = b;
+    }
+    public Boolean getiscollideLeft() {
+        return isCollideLeft;
+    }
+    public void setiscollideLeft(Boolean b) {
+        isCollideLeft = b;
+    }
+    public Boolean getiscollideRight() {
+        return isCollideRight;
+    }
+    public void setiscollideRight(Boolean b) {
+        isCollideRight = b;
+    }
+
+    public void setVelociteX(double velociteX) {
+        this.velociteX = velociteX;
+    }
+
+    public void setVelociteY(double velociteY) {
+        this.velociteY = velociteY;
+    }
+
+    public double getVelociteX() {
+        return velociteX;
+    }
+
+    public double getVelociteY() {
+        return velociteY;
+    }
+
+    public void setJumpHauteur(double jumpHauteur) {
+        this.jumpHauteur = jumpHauteur;
+    }
+
+    public double getJumpHauteur() {
+        return jumpHauteur;
+    }
+
+    public void setGravite(double gravite) {
+        this.gravite = gravite;
+    }
+
+    public double getGravite() {
+        return gravite;
+    }
+
+    public void setSize(double size) {
+        this.size = size;
+    }
+
+    public double getSize() {
+        return size;
+    }
+
+    public void setSkin(Image skin) {
+        this.skin = skin;
+    }
+
+    public Image getSkin() {
+        return skin;
+    }
+
+    public void setImageSize(double imageSize) {
+        this.imageSize = imageSize;
+    }
+
+    public double getImageSize() {
+        return imageSize;
+    }
+
+    public void setIsMouvementAvant(boolean isMouvementAvant) {
+        this.isMouvementAvant = isMouvementAvant;
+    }
+
+    public void setIsMouvementArriere(boolean isMouvementArriere) {
+        this.isMouvementArriere = isMouvementArriere;
+    }
+
+    public boolean isMouvementAvant() {
+        return isMouvementAvant;
+    }
+
+    public boolean isMouvementArriere() {
+        return isMouvementArriere;
+    }
+
+    public void setCanJump(boolean canJump) {
+        this.canJump = canJump;
+    }
     public void mouvementavantX() {
         isMouvementAvant = true;
         isMouvementArriere = false;
@@ -108,6 +208,8 @@ public class Joueur extends Entite {
 
 
     }
+
+/*
     public void update(ArrayList<Plateforme> plateformeArrayList) {
         //updateMouvementX(plateformeArrayList);//obstacle coté
         //updateMouvementY(plateformeArrayList);//gravité + plateforme bas
@@ -182,7 +284,7 @@ public class Joueur extends Entite {
             velociteX=0;
         }
     }
-    /*
+
     public Boolean CheckCollision (ArrayList<Plateforme> plateformeArrayList) {
         double WidthJ = IV.getImage().getWidth();
         double HeightJ = IV.getImage().getHeight();
@@ -200,8 +302,8 @@ public class Joueur extends Entite {
             }
         }
         return false;
-    }//Y hauteur // X largeur*/
-/*
+    }//Y hauteur // X largeur
+
     public Boolean CheckCollision (Plateforme p) {
         double WidthJ = IV.getImage().getWidth();
         double HeightJ = IV.getImage().getHeight();
@@ -215,9 +317,9 @@ public class Joueur extends Entite {
         }
         return false;
     }//Y hauteur // X largeur
-    */
 
-    /*public void updateMouvementX(ArrayList<Plateforme> plateformeArrayList){
+
+    public void updateMouvementX(ArrayList<Plateforme> plateformeArrayList){
         if (isCollideRight == false){
             if (isMouvementAvant) {
                 IV.setX(IV.getX() + velociteX);

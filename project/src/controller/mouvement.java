@@ -1,6 +1,7 @@
 package controller;
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.Collection;
 
 import javafx.fxml.FXMLLoader;
 import javafx.geometry.BoundingBox;
@@ -15,83 +16,28 @@ import model.Plateforme;
 // Classe stockant une liste de touche pour les mouvements a finir ??
 
 public class mouvement {
-    private ArrayList<String> input;
 
-    public mouvement() {
-        input = new ArrayList<String>();
-    }
+    public void UpdateJoueur(Joueur j1){
+        if(!j1.getiscollideDown()){
+            j1.setVelociteY(j1.getVelociteY()+j1.getGravite());
+            j1.getIV().setY(j1.getY() + j1.getVelociteY());
+        }
+        if(!j1.getiscollideUp()){
+            j1.setVelociteY(0);
+        }
+        if((!j1.getiscollideLeft()) && j1.getisMouvementArriere()){//mouvement arrière
+            //j1.setVelociteX(j1.getVelociteX()-j1.getVitesse());
+            j1.getIV().setX(j1.getX() - j1.getVelociteX());
+            System.out.println("mouvement arriere");
+        }
+        if((!j1.getiscollideRight()) && j1.getisMouvementAvant()){//mouvement avant
+            j1.getIV().setX(j1.getX() + j1.getVelociteX());
+            System.out.println("mouvement avant");
 
-    public ArrayList<String> getInput() {
-        return input;
-    }
-
-    public void addInput(String s) {
-        input.add(s);
-    }
-
-    public void removeInput(String s) {
-
-        input.remove(s);
-    }
-
-    public void clearInput() {
-        for (String in : input) {
-            input.remove(in);
         }
 
+
+
     }
-
-    public Boolean ActionLectureListe(mouvement mouvementJoueur, Joueur j1, Stage stage, ArrayList<Entite> entites) {
-
-        if (mouvementJoueur.getInput().contains("LEFT")) {
-            j1.mouvementarriereX();
-
-        } else if (mouvementJoueur.getInput().contains("RIGHT")) {
-            j1.mouvementavantX();
-
-        } else if (mouvementJoueur.getInput().contains("UP")) {
-            j1.saut();
-
-        } else if (mouvementJoueur.getInput().contains("ESCAPE")) {
-            //sauvegarde auto
-            //lance nouveau menu avec comme option : recommencer le jeu et quitter
-            System.out.println("quitter");
-            stage.close();
-            Parent root = null;
-            try {
-                root = (Parent) FXMLLoader.load(getClass().getClassLoader().getResource("fxml/accueil.fxml"));
-            } catch (IOException e) {
-                e.printStackTrace();
-            }
-            Scene scene = new Scene(root, 900, 520);
-            stage.setScene(scene);
-
-            return false;
-        } else
-            j1.arretmouvement();
-
-        return true;
-    }
-
-/*
-    public Boolean CheckCollision (Joueur j, ArrayList<Plateforme> plateformeArrayList) {
-        //System.out.println(J.getX());
-        int WidthJ = (int) j.getImage().getWidth();
-        int HeightJ = (int) j.getImage().getHeight();
-        BoundingBox joueurBound = new BoundingBox(j.getX(), j.getY(), WidthJ, HeightJ);
-
-        //pour toutes les plateformes dans la liste
-        for (Plateforme p : plateformeArrayList){
-            int WidthP = (int) p.getImage().getWidth();
-            int HeightP = (int) p.getImage().getHeight();
-            BoundingBox platformBound = new BoundingBox(p.getX(), p.getY(), WidthP, HeightP);
-
-            if( platformBound.intersects(joueurBound) ) {
-                System.out.println("Collision");
-                return true;
-            }
-        }
-        return false;
-    }//Y hauteur // X largeur*/
 
 }
