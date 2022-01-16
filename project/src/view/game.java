@@ -125,6 +125,7 @@ public class game {
                 }
             }
         });
+        t.setDaemon(true);
         t.start();
         stage.show();
 

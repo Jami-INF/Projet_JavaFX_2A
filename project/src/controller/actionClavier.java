@@ -54,15 +54,12 @@ public class actionClavier {
 
         } else if (action.getInput().contains("RIGHT")) {
             j1.mouvementavantX();
-            System.out.println("mouvement avant");
+            //System.out.println("mouvement avant");
 
         } else if (action.getInput().contains("UP")) {
             j1.saut();
 
         } else if (action.getInput().contains("ESCAPE")) {
-            //sauvegarde auto
-            //lance nouveau menu avec comme option : recommencer le jeu et quitter
-            System.out.println("quitter");
             stage.close();
             Parent root = null;
             try {
