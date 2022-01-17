@@ -113,13 +113,15 @@ public class game {
 
                 javafx.application.Platform.runLater(() -> {
                     //j1.update(plateformeArrayList);
+                    ActionMouvement(action);
                     action.ActionLectureListe(action, j1, stage, entites);
                     collisionController.verify(plateformeArrayList, j1);
                     mouvementJoueur.UpdateJoueur(j1);
+
                 });
 
                 try {
-                    Thread.sleep(50);
+                    Thread.sleep(200);
                 } catch (InterruptedException e) {
                     e.printStackTrace();
                 }
