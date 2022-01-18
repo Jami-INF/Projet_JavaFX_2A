@@ -53,7 +53,6 @@ public class Joueur extends Entite {
         setFitWidth(imageSize);
         setFitHeight(imageSize);
 
-
     }
 
     /**

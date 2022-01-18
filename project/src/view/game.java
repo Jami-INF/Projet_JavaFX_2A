@@ -50,9 +50,7 @@ public class game {
             actionClavier action = new actionClavier();
             mouvement mouvementJoueur = new mouvement();
 
-            //ActionMouvement(mouvementJoueur);
             ////BACKGROUND
-            //Image background = new Image (getClass().getClassLoader().getResource("image/background.jpg").toExternalForm());
 
             ImageView backgroundIV = new ImageView (getClass().getClassLoader().getResource("image/background.jpg").toExternalForm());
             g.getChildren().add(backgroundIV);
@@ -62,13 +60,12 @@ public class game {
             Image Skin = new Image(getClass().getClassLoader().getResource("image/testpers.png").toExternalForm());
             Joueur j1 = new Joueur(Skin, 10, 10, 10, 0, 0,"Joueur1");
 
+            ////CHECKPOINT
+            Image ckpt = new Image(getClass().getClassLoader().getResource("image/checkpoint.png").toExternalForm());
+            checkPoint checkpoint = new checkPoint(ckpt, 10, 10, 0.3, 900, 100,0);
+            g.getChildren().add(checkpoint.getIV());
 
-            //ImageView joueurIV = new ImageView(getClass().getClassLoader().getResource("image/testpers.png").toExternalForm());
-            ////////////
 
-            //Image bg = new Image(getClass().getClassLoader().getResource("image/background.png").toExternalForm());
-
-            //s.setFill(Color.grayRgb(35));
             ArrayList<Plateforme> plateformeArrayList = new ArrayList<Plateforme>();
             ArrayList<Entite> entites = new ArrayList<Entite>();
 

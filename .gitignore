@@ -42,3 +42,5 @@ out/production/projet_javafx/css/style.css
 out/production/projet_javafx/image/menubackground.jpg
 out/production/projet_javafx/controller/collision.class
 out/production/projet_javafx/controller/actionClavier.class
+out/production/projet_javafx/image/checkpoint.png
+out/production/projet_javafx/model/checkPoint.class
