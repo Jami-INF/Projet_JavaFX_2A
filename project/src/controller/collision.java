@@ -30,8 +30,8 @@ public class collision{
         BoundingBox joueurBound = new BoundingBox(jIV.getX(), jIV.getY(), WidthJ, HeightJ);//BoundingBox Joueur
         double BasJ = joueurBound.getMaxY();
         double HautJ = joueurBound.getMinY();
-        double GaucheJ = joueurBound.getMinX()+20;//Permet de résoudre le problème de collision avec les plateformes
-        double DroiteJ = joueurBound.getMaxX()-20;//Quand le joueur et dans l'air et qu'il touche une plateforme sur le coté
+        double GaucheJ = joueurBound.getMinX()+10;//Permet de résoudre le problème de collision avec les plateformes
+        double DroiteJ = joueurBound.getMaxX()-10;//Quand le joueur et dans l'air et qu'il touche une plateforme sur le coté
 
 
         //////////////Bounding box plateforme + verification collisions avec chaque plateformes
@@ -46,15 +46,17 @@ public class collision{
             double DroiteP = platformBound.getMaxX();
             //////////////
             //COLLISION TETE Y
-            if(HautP >= BasJ && HautJ >= BasP && GaucheJ <= DroiteP && DroiteJ >= GaucheP){
+            if(HautJ <= BasP && GaucheJ <= DroiteP && DroiteJ >= GaucheP && BasP < BasJ){
                 j1.setiscollideUp(true);
                 j1.setCanJump(false);
+                //System.out.println("collision haut");
             }
 
             //COLLISION SOL
-            if(BasJ >= HautP && BasP >= HautJ && GaucheJ <= DroiteP && DroiteJ >= GaucheP){
+            if(BasJ >= HautP && GaucheJ <= DroiteP && DroiteJ >= GaucheP && HautP > HautJ){
                 j1.setiscollideDown(true);
                 j1.setCanJump(true);
+                //System.out.println("collision bas");
             }
         }
     }

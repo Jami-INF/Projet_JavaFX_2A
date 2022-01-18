@@ -40,7 +40,6 @@ public class game {
     int tmpDureeSaut;
 
     public void startgame(Stage stage) {
-        //System.out.println("fdfzfzdfzf");
         Group g = new Group();
         s = new Scene(g,1280,720);
         stage.setScene(s);
@@ -57,7 +56,7 @@ public class game {
 
         ////JOUEUR
         Image Skin = new Image(getClass().getClassLoader().getResource("image/testpers.png").toExternalForm());
-        Joueur j1 = new Joueur(Skin, 20, 20, 10, 0, 0,"Joueur1");
+        Joueur j1 = new Joueur(Skin, 10, 10, 10, 0, 0,"Joueur1");
 
 
         //ImageView joueurIV = new ImageView(getClass().getClassLoader().getResource("image/testpers.png").toExternalForm());
@@ -129,7 +128,7 @@ public class game {
                 });
 
                 try {
-                    Thread.sleep(200);
+                    Thread.sleep(20);
                 } catch (InterruptedException e) {
                     e.printStackTrace();
                 }

@@ -54,7 +54,6 @@ public class actionClavier {
 
         } else if (action.getInput().contains("RIGHT")) {
             j1.mouvementavantX();
-            System.out.println("mouvement avant");
 
         } else if (action.getInput().contains("UP")) {
             j1.saut();

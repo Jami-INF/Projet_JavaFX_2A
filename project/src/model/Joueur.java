@@ -18,7 +18,7 @@ public class Joueur extends Entite {
     private boolean isMouvementAvant;
     private boolean isMouvementArriere;
     private double jumpHauteur = 150;
-    private double gravite = 10;
+    private double gravite = 5;
     private double size;
     private Image skin;
     private double imageSize;
@@ -295,7 +295,6 @@ public class Joueur extends Entite {
         isMouvementArriere = false;
         isCollideLeft = false;
         //IV.setX(IV.getX()+5);
-        //System.out.println("zefzfezfe");
     }
 
     /**
@@ -341,7 +340,7 @@ public class Joueur extends Entite {
         if (canJump && isCollideDown) {
             inJump = true;
             canJump = false;
-            System.out.println("mouvement saut");
+            //System.out.println("mouvement saut");
         }
 
     }
