@@ -30,8 +30,8 @@ public class collision{
         BoundingBox joueurBound = new BoundingBox(jIV.getX(), jIV.getY(), WidthJ, HeightJ);//BoundingBox Joueur
         double BasJ = joueurBound.getMaxY();
         double HautJ = joueurBound.getMinY();
-        double GaucheJ = joueurBound.getMinX();
-        double DroiteJ = joueurBound.getMaxX();
+        double GaucheJ = joueurBound.getMinX()+20;//Permet de résoudre le problème de collision avec les plateformes
+        double DroiteJ = joueurBound.getMaxX()-20;//Quand le joueur et dans l'air et qu'il touche une plateforme sur le coté
         //System.out.println("Gauche J : " + GaucheJ + " Droite J : " + DroiteJ);
         //System.out.println("Haut J : " + HautJ + " Bas J : " + BasJ);
         //////////////
@@ -94,14 +94,18 @@ public class collision{
             //////////////
             // COLLISION PAR LA GAUCHE DU JOUEUR X
             //if(GaucheJ <= DroiteP && HautP <= HautJ && BasP >= BasJ){
-            if(GaucheJ <= DroiteP && BasJ >= BasP && HautJ <= HautP){
+            if(GaucheJ <= DroiteP && BasJ >= BasP && HautJ <= HautP && GaucheJ > GaucheP){
                 j1.setiscollideLeft(true);
-                System.out.println("collision gauche");
+                //System.out.println("Gauche J : " + GaucheJ + " Droite J : " + DroiteJ);
+                //System.out.println("Haut J : " + HautJ + " Bas J : " + BasJ);
+                //System.out.println("Gauche P : " + GaucheP + "Droite P : " + DroiteP);
+                //System.out.println("Haut P : " + HautP + "Bas P : " + BasP);
+                //System.out.println("collision gauche");
             }
 
             //COLLISION PAR LA DROITE DU JOUEUR X
             //if(DroiteJ >= GaucheP && HautJ <= HautP && BasJ >= BasP){
-            if(DroiteJ >= GaucheP && BasJ >= BasP && HautJ <= HautP){
+            if(DroiteJ >= GaucheP && BasJ >= BasP && HautJ <= HautP && DroiteJ < DroiteP){
                 j1.setiscollideRight(true);
                 //System.out.println("Gauche J : " + GaucheJ + " Droite J : " + DroiteJ);
                 //System.out.println("Haut J : " + HautJ + " Bas J : " + BasJ);
