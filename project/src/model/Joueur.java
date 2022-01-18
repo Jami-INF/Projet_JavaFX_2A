@@ -28,7 +28,16 @@ public class Joueur extends Entite {
     private boolean isCollideRight = false;
 
 
-
+    /**
+     * Constructeur de Joueur
+     * @param Skin
+     * @param VelociteX
+     * @param VelociteY
+     * @param Size
+     * @param SpawnX
+     * @param SpawnY
+     * @param Pseudo
+     */
     public Joueur(Image Skin, double VelociteX, double VelociteY, double Size, double SpawnX, double SpawnY, String Pseudo) {
         super(Skin, VelociteX, VelociteY, Size, SpawnX, SpawnY);
         vie=10;//A modifier peut etre ?
@@ -46,67 +55,148 @@ public class Joueur extends Entite {
 
     }
 
+    /**
+     * Methode qui permet de connaitre la vie du joueur
+     * @return vie du joueur en int
+     */
     public int getVie()
     {
         return vie;
     }
 
+    /**
+     * Methode qui permet de seter la vie du joueur
+     * @param pv
+     */
     public void setVie(int pv)
     {
         vie=pv;
     }
 
+    /**
+     * Methode qui permet de récuperer le pseudo du joueur
+     * @return pseudo du joueur en String
+     */
     public String getPseudo() {
         return pseudo;
     }
 
+    /**
+     * Methode qui permet de seter le pseudo du joueur
+     * @param pseudo
+     */
     public void setPseudo(String pseudo) {
         this.pseudo = pseudo;
     }
 
+    /**
+     * Methode qui permet de savoir si le joueur est en train de sauter
+     * @return inJump en boolean
+     */
     public Boolean isInJump () {
         return inJump;
     }
+
+    /**
+     * Methode qui permet de setter le fait que le joueur soit en train de sauter
+     * @param b
+     */
     public void setInJump (Boolean b) {
         inJump = b;
     }
+
+    /**
+     * Methode qui permet de savoir si le joueur est en collision avec le plafond
+     * @return isCollideUp en boolean
+     */
     public Boolean getiscollideUp() {
         return isCollideUp;
     }
+
+    /**
+     * Methode qui permet de setter si le joueur est en collision avec le plafond
+     * @param b
+     */
     public void setiscollideUp(Boolean b) {
         isCollideUp = b;
     }
+
+    /**
+     * Methode qui permet de savoir si le joueur est en collision avec le sol
+     * @return isCollideDown en boolean
+     */
     public Boolean getiscollideDown() {
         return isCollideDown;
     }
+
+    /**
+     * Methode qui permet de setter si le joueur est en collision avec le sol
+     * @param b
+     */
     public void setiscollideDown(Boolean b) {
         isCollideDown = b;
     }
+
+    /**
+     * Methode qui permet de savoir si le joueur est en collision sur la gauche
+     * @return isCollideLeft en boolean
+     */
     public Boolean getiscollideLeft() {
         return isCollideLeft;
     }
+
+    /**
+     * Methode qui permet de setter si le joueur est en collision sur la gauche
+     * @param b
+     */
     public void setiscollideLeft(Boolean b) {
         isCollideLeft = b;
     }
+
+    /**
+     * Methode qui permet de savoir si le joueur est en collision sur la droite
+     * @return isCollideRight en boolean
+     */
     public Boolean getiscollideRight() {
         return isCollideRight;
     }
+
+    /**
+     * Methode qui permet de setter si le joueur est en collision sur la droite
+     * @param b
+     */
     public void setiscollideRight(Boolean b) {
         isCollideRight = b;
     }
 
+    /**
+     * Methode qui permet de setter la velocitéX du joueur
+     * @param velociteX
+     */
     public void setVelociteX(double velociteX) {
         this.velociteX = velociteX;
     }
 
+    /**
+     * Methode qui permet de setter la velocitéY du joueur
+     * @param velociteY
+     */
     public void setVelociteY(double velociteY) {
         this.velociteY = velociteY;
     }
 
+    /**
+     * Methode qui permet de recupérer la velocitéX du joueur
+     * @return velociteX en double
+     */
     public double getVelociteX() {
         return velociteX;
     }
 
+    /**
+     * Methode qui permet de recupérer la velocitéY du joueur
+     * @return velociteY en double
+     */
     public double getVelociteY() {
         return velociteY;
     }
@@ -119,10 +209,18 @@ public class Joueur extends Entite {
         return jumpHauteur;
     }
 
+    /**
+     * Methode qui permet de seter la gravité pour le joueur
+     * @param gravite
+     */
     public void setGravite(double gravite) {
         this.gravite = gravite;
     }
 
+    /**
+     * Methode qui permet de recupérer la gravité du joueur
+     * @return gravite en double
+     */
     public double getGravite() {
         return gravite;
     }
@@ -167,9 +265,17 @@ public class Joueur extends Entite {
         return isMouvementArriere;
     }
 
+    /**
+     * Methode qui permet de seter la possibiliter de sauter pour le joueur
+     * @param canJump
+     */
     public void setCanJump(boolean canJump) {
         this.canJump = canJump;
     }
+
+    /**
+     * Methode qui permet de setter les booleens de mouvement du joueur si il avance
+     */
     public void mouvementavantX() {
         isMouvementAvant = true;
         isMouvementArriere = false;
@@ -177,11 +283,19 @@ public class Joueur extends Entite {
         //IV.setX(IV.getX()+5);
         //System.out.println("zefzfezfe");
     }
+
+    /**
+     * Methode qui permet de setter les booleens de mouvement du joueur si il recule
+     */
     public void mouvementarriereX() {
         isMouvementArriere = true;
         isMouvementAvant = false;
         isCollideRight = false;
     }
+
+    /**
+     * Methode qui permet de setter les booleens de mouvement du joueur si il arrete de bouger
+     */
     public void arretmouvement(){
         isMouvementArriere = false;
         isMouvementAvant = false;
@@ -189,13 +303,25 @@ public class Joueur extends Entite {
         isCollideRight = false;
     }
 
+    /**
+     * Methode qui permet de récuperer les booleens de mouvement du joueur si il recule
+     * @return isMouvementArriere en boolean
+     */
     public boolean getisMouvementArriere(){
         return isMouvementArriere;
     }
+
+    /**
+     * Methode qui permet de récuperer les booleens de mouvement du joueur si il avance
+     * @return isMouvementAvant en boolean
+     */
     public boolean getisMouvementAvant(){
         return isMouvementAvant;
     }
 
+    /**
+     * Methode qui permet de faire sauter le joueur si il est en collision avec le sol
+     */
     public void saut() {
         if(isCollideUp == false){
             inJump = true;
@@ -209,201 +335,4 @@ public class Joueur extends Entite {
 
     }
 
-/*
-    public void update(ArrayList<Plateforme> plateformeArrayList) {
-        //updateMouvementX(plateformeArrayList);//obstacle coté
-        //updateMouvementY(plateformeArrayList);//gravité + plateforme bas
-        velociteY += gravite;
-        IV.setY(getY() + velociteY);
-
-        double WidthJ = IV.getImage().getWidth();
-        double HeightJ = IV.getImage().getHeight();
-        BoundingBox joueurBound = new BoundingBox(IV.getX(), IV.getY(), WidthJ, HeightJ);
-        //COORDONNES JOUEUR
-        double BasJ = joueurBound.getMaxY();
-        double HautJ = joueurBound.getMinY();
-        double GaucheJ = joueurBound.getMinX();
-        double DroiteJ = joueurBound.getMaxX();
-        for (Plateforme p : plateformeArrayList){
-            double WidthP =  p.getIV().getImage().getWidth();
-            double HeightP = p.getIV().getImage().getHeight();
-            BoundingBox platformBound = new BoundingBox(p.IV.getX(), p.IV.getY(), WidthP, HeightP);
-            //COORDONNES PLATEFORME
-            double BasP = platformBound.getMaxY();
-            double HautP = platformBound.getMinY();
-            double GaucheP = platformBound.getMinX();
-            double DroiteP = platformBound.getMaxX();
-
-            // COLLISION PAR LA GAUCHE X
-            if(GaucheJ >= DroiteP && HautP <= HautJ && BasP >= BasJ){
-            //if(GaucheJ >= DroiteP){
-                isCollideLeft = true;
-                //System.out.println("collision gauche");
-            }
-
-            //COLLISION PAR LA DROITE X
-            if(DroiteJ >= GaucheP && HautJ <= HautP && BasJ >= BasP){
-                isCollideRight = true;
-                //System.out.println("collision droite");
-            }
-
-            //COLLISION TETE Y
-            if(HautP >= BasJ && HautJ >= BasP && GaucheJ <= DroiteP && DroiteJ >= GaucheP){
-                isCollideUp = true;
-                canJump = false;
-                //System.out.println("collision tete");
-            }
-
-            //COLLISION SOL
-            if(BasJ >= HautP && BasP >= HautJ && GaucheJ <= DroiteP && DroiteJ >= GaucheP){
-                isCollideDown = true;
-                canJump = true;
-                //System.out.println("collision sol");
-            }
-        }
-
-        isCollideDown = false;
-        isCollideUp = false;
-        isCollideLeft = false;
-        isCollideRight = false;
-        gravite=10;
-
-        if(isCollideUp){
-            velociteY=0;
-        }
-
-        if(isCollideDown){
-            velociteY=0;
-            gravite=0;
-        }
-
-        if (isCollideRight){
-            velociteX=0;
-        }
-        if (isCollideLeft){
-            velociteX=0;
-        }
-    }
-
-    public Boolean CheckCollision (ArrayList<Plateforme> plateformeArrayList) {
-        double WidthJ = IV.getImage().getWidth();
-        double HeightJ = IV.getImage().getHeight();
-        BoundingBox joueurBound = new BoundingBox(IV.getX(), IV.getY(), WidthJ, HeightJ);
-
-        //pour toutes les plateformes dans la liste
-        for (Plateforme p : plateformeArrayList){
-            double WidthP =  p.getIV().getImage().getWidth();
-            double HeightP = p.getIV().getImage().getHeight();
-            BoundingBox platformBound = new BoundingBox(p.IV.getX(), p.IV.getY(), WidthP, HeightP);
-
-            if( platformBound.intersects(joueurBound) ) {
-                //System.out.println("Collision");
-                return true;
-            }
-        }
-        return false;
-    }//Y hauteur // X largeur
-
-    public Boolean CheckCollision (Plateforme p) {
-        double WidthJ = IV.getImage().getWidth();
-        double HeightJ = IV.getImage().getHeight();
-        BoundingBox joueurBound = new BoundingBox(IV.getX(), IV.getY(), WidthJ, HeightJ);
-        double WidthP =  p.getIV().getImage().getWidth();
-        double HeightP = p.getIV().getImage().getHeight();
-        BoundingBox platformBound = new BoundingBox(p.IV.getX(), p.IV.getY(), WidthP, HeightP);
-        if( platformBound.intersects(joueurBound) ) {
-            //System.out.println("Collision");
-            return true;
-        }
-        return false;
-    }//Y hauteur // X largeur
-
-
-    public void updateMouvementX(ArrayList<Plateforme> plateformeArrayList){
-        if (isCollideRight == false){
-            if (isMouvementAvant) {
-                IV.setX(IV.getX() + velociteX);
-            }
-        }
-        if (isCollideLeft == false){
-            if (isMouvementArriere) {
-                IV.setX(IV.getX() - velociteX);
-            }
-        }
-        double WidthJ = IV.getImage().getWidth();
-        double HeightJ = IV.getImage().getHeight();
-        BoundingBox joueurBound = new BoundingBox(IV.getX(), IV.getY(), WidthJ, HeightJ);
-        //COORDONNES JOUEUR
-        double BasJ = joueurBound.getMaxY();
-        double HautJ = joueurBound.getMinY();
-        double GaucheJ = joueurBound.getMinX();
-        double DroiteJ = joueurBound.getMaxX();
-        for (Plateforme p : plateformeArrayList){
-            double WidthP =  p.getIV().getImage().getWidth();
-            double HeightP = p.getIV().getImage().getHeight();
-            BoundingBox platformBound = new BoundingBox(p.IV.getX(), p.IV.getY(), WidthP, HeightP);
-            //COORDONNES PLATEFORME
-            double BasP = platformBound.getMaxY();
-            double HautP = platformBound.getMinY();
-            double GaucheP = platformBound.getMinX()-5;
-            double DroiteP = platformBound.getMaxX()-5;
-            //Bounds bounds = p.getLayoutBounds();
-            if(GaucheJ >= DroiteP){ // COLLISION PAR LA GAUCHE X
-                isCollideLeft = true;
-                System.out.println("collision gauche : gaucheJ");
-
-            }
-            if(DroiteJ >= GaucheP && HautJ <= HautP && BasJ >= BasP){ //COLLISION PAR LA DROITE X
-                isCollideRight = true;
-                System.out.println("collision droite : DroiteJ");
-                System.out.println(DroiteJ);
-                System.out.println(GaucheP);
-            }
-        }
-    }
-
-    void updateMouvementY(ArrayList<Plateforme> plateformeArrayList) {
-        velociteY += gravite;
-        IV.setY(getY() + velociteY);
-        double WidthJ = IV.getImage().getWidth();
-        double HeightJ = IV.getImage().getHeight();
-
-        BoundingBox joueurBound = new BoundingBox(IV.getX(), IV.getY(), WidthJ, HeightJ);
-        //COORDONNES JOUEUR
-        double BasJ = joueurBound.getMaxY();
-        double HautJ = joueurBound.getMinY();
-        double GaucheJ = joueurBound.getMinX();
-        double DroiteJ = joueurBound.getMaxX();
-        //System.out.println(HautJ);
-        //POUR TOUTES LES PLATEFORMES
-        for (Plateforme p : plateformeArrayList){
-            double WidthP =  p.getIV().getImage().getWidth();
-            double HeightP = p.getIV().getImage().getHeight();
-            BoundingBox platformBound = new BoundingBox(p.IV.getX(), p.IV.getY(), WidthP, HeightP);
-            //COORDONNES PLATEFORME
-            double BasP = platformBound.getMaxY();
-            double HautP = platformBound.getMinY();
-            double GaucheP = platformBound.getMinX();
-            double DroiteP = platformBound.getMaxX();
-            //System.out.println(HautP);
-            //System.out.println("hautP: ");
-            //System.out.println(HautP);
-            //System.out.println("basJ");
-            //System.out.println(BasJ);
-            if(BasJ >= HautP && GaucheJ <= DroiteP && DroiteJ >= GaucheP){ //COLLISION SOL Y
-                isCollideDown = true;
-                gravite = 0;
-                canJump = true;
-                System.out.println("collision sol");
-
-            }
-            if(HautJ >= BasP && GaucheJ <= DroiteP && DroiteJ >= GaucheP){ //COLLISION TETE Y
-                isCollideUp = true;
-                gravite = 10;
-                canJump = false;
-                System.out.println("collision tete");
-
-            }
-        }
-    }*/
 }
