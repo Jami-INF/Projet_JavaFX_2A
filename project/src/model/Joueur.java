@@ -26,6 +26,7 @@ public class Joueur extends Entite {
     private boolean isCollideDown = false;
     private boolean isCollideLeft = false;
     private boolean isCollideRight = false;
+    private int dureesauttmp = 0;//variable temporaire pour savoir depuis combien de temps le joueur est en train de sauter
 
 
     /**
@@ -264,6 +265,12 @@ public class Joueur extends Entite {
     public boolean isMouvementArriere() {
         return isMouvementArriere;
     }
+    public int getDureesauttmp() {
+        return dureesauttmp;
+    }
+    public void setDureesauttmp(int dureesauttmp) {
+        this.dureesauttmp = dureesauttmp;
+    }
 
     /**
      * Methode qui permet de seter la possibiliter de sauter pour le joueur
@@ -271,6 +278,13 @@ public class Joueur extends Entite {
      */
     public void setCanJump(boolean canJump) {
         this.canJump = canJump;
+    }
+    /**
+     * Methode qui permet de savoir si le joueur peut sauter
+     * @return canJump en boolean
+     */
+    public boolean getCanJump() {
+        return canJump;
     }
 
     /**
@@ -323,15 +337,12 @@ public class Joueur extends Entite {
      * Methode qui permet de faire sauter le joueur si il est en collision avec le sol
      */
     public void saut() {
-        if(isCollideUp == false){
-            inJump = true;
-            if (canJump) {
-                velociteY = velociteY-jumpHauteur;//le problème est que le saut se fait en une frame, ducoup en faisant +40, il se tp dans la plateforme sans verifier la collision
-                gravite = 10;
-            }
-            canJump = false;
-        }
 
+        if (canJump && isCollideDown) {
+            inJump = true;
+            canJump = false;
+            System.out.println("mouvement saut");
+        }
 
     }
 
