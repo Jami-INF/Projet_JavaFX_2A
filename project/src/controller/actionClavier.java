@@ -49,16 +49,21 @@ public class actionClavier {
      * @return
      */
     public Boolean ActionLectureListe(actionClavier action, Joueur j1, Stage stage, ArrayList<Entite> entites) {
+
+        j1.arretmouvement();
         if (action.getInput().contains("LEFT")) {
             j1.mouvementarriereX();
 
-        } else if (action.getInput().contains("RIGHT")) {
+        }
+        if (action.getInput().contains("RIGHT")) {
             j1.mouvementavantX();
 
-        } else if (action.getInput().contains("UP")) {
+        }
+        if (action.getInput().contains("UP")) {
             j1.saut();
 
-        } else if (action.getInput().contains("ESCAPE")) {
+        }
+        if (action.getInput().contains("ESCAPE")) {
             stage.close();
             Parent root = null;
             try {
@@ -70,8 +75,8 @@ public class actionClavier {
             stage.setScene(scene);
 
             return false;
-        } else
-            j1.arretmouvement();
+        }
+
 
         return true;
     }

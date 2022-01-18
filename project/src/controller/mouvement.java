@@ -50,12 +50,12 @@ public class mouvement {
 
         //Vérifie si le joueur souhaite sauter et si il n'est pas en collision au dessu avec un objet ce qui empecherais de monter le saut
         if(j1.isInJump() && (!j1.getiscollideUp())){
-            j1.setGravite(-10);//inverse la gravité
+            j1.setGravite(-15);//inverse la gravité
             j1.setDureesauttmp(j1.getDureesauttmp()+1);//incrémente la durée du saut
         }//else gravité normal
 
         //si la durée du saut est écoulée, le joueur est en l'air et la gravité est réinitialisée
-        if(j1.getDureesauttmp()>10){
+        if(j1.getDureesauttmp()>20){
             j1.setInJump(false);//le joueur n'est plus en saut
             j1.setDureesauttmp(0);//réinitialise la durée du saut
             j1.setGravite(5);//réinitialise la gravité
