@@ -32,9 +32,7 @@ public class collision{
         double HautJ = joueurBound.getMinY();
         double GaucheJ = joueurBound.getMinX()+20;//Permet de résoudre le problème de collision avec les plateformes
         double DroiteJ = joueurBound.getMaxX()-20;//Quand le joueur et dans l'air et qu'il touche une plateforme sur le coté
-        //System.out.println("Gauche J : " + GaucheJ + " Droite J : " + DroiteJ);
-        //System.out.println("Haut J : " + HautJ + " Bas J : " + BasJ);
-        //////////////
+
 
         //////////////Bounding box plateforme + verification collisions avec chaque plateformes
         for(Plateforme p : plateformeList){
@@ -46,21 +44,17 @@ public class collision{
             double HautP = platformBound.getMinY();
             double GaucheP = platformBound.getMinX();
             double DroiteP = platformBound.getMaxX();
-            //System.out.println("Gauche P : " + GaucheP + "Droite P : " + DroiteP);
-            //System.out.println("Haut P : " + HautP + "Bas P : " + BasP);
             //////////////
             //COLLISION TETE Y
             if(HautP >= BasJ && HautJ >= BasP && GaucheJ <= DroiteP && DroiteJ >= GaucheP){
                 j1.setiscollideUp(true);
                 j1.setCanJump(false);
-                System.out.println("collision tete");
             }
 
             //COLLISION SOL
             if(BasJ >= HautP && BasP >= HautJ && GaucheJ <= DroiteP && DroiteJ >= GaucheP){
                 j1.setiscollideDown(true);
                 j1.setCanJump(true);
-                System.out.println("collision sol");
             }
         }
     }
@@ -75,9 +69,7 @@ public class collision{
         double HautJ = joueurBound.getMinY();
         double GaucheJ = joueurBound.getMinX();
         double DroiteJ = joueurBound.getMaxX();
-        //System.out.println("Gauche J : " + GaucheJ + " Droite J : " + DroiteJ);
-        //System.out.println("Haut J : " + HautJ + " Bas J : " + BasJ);
-        //////////////
+
 
         //////////////Bounding box plateforme + verification collisions avec chaque plateformes
         for(Plateforme p : plateformeList){
@@ -89,29 +81,16 @@ public class collision{
             double HautP = platformBound.getMinY();
             double GaucheP = platformBound.getMinX();
             double DroiteP = platformBound.getMaxX();
-            //System.out.println("Gauche P : " + GaucheP + "Droite P : " + DroiteP);
-            //System.out.println("Haut P : " + HautP + "Bas P : " + BasP);
             //////////////
             // COLLISION PAR LA GAUCHE DU JOUEUR X
-            //if(GaucheJ <= DroiteP && HautP <= HautJ && BasP >= BasJ){
             if(GaucheJ <= DroiteP && BasJ >= BasP && HautJ <= HautP && GaucheJ > GaucheP){
                 j1.setiscollideLeft(true);
-                //System.out.println("Gauche J : " + GaucheJ + " Droite J : " + DroiteJ);
-                //System.out.println("Haut J : " + HautJ + " Bas J : " + BasJ);
-                //System.out.println("Gauche P : " + GaucheP + "Droite P : " + DroiteP);
-                //System.out.println("Haut P : " + HautP + "Bas P : " + BasP);
-                //System.out.println("collision gauche");
             }
 
             //COLLISION PAR LA DROITE DU JOUEUR X
             //if(DroiteJ >= GaucheP && HautJ <= HautP && BasJ >= BasP){
             if(DroiteJ >= GaucheP && BasJ >= BasP && HautJ <= HautP && DroiteJ < DroiteP){
                 j1.setiscollideRight(true);
-                //System.out.println("Gauche J : " + GaucheJ + " Droite J : " + DroiteJ);
-                //System.out.println("Haut J : " + HautJ + " Bas J : " + BasJ);
-                //System.out.println("Gauche P : " + GaucheP + "Droite P : " + DroiteP);
-                //System.out.println("Haut P : " + HautP + "Bas P : " + BasP);
-                System.out.println("collision droite");
             }
         }
 

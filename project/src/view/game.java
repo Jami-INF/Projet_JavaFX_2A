@@ -15,6 +15,8 @@ import javafx.scene.image.Image;
 import javafx.scene.Parent;
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.Timer;
+import java.util.TimerTask;
 import controller.mouvement;
 import javafx.event.EventHandler;
 import javafx.geometry.VPos;
@@ -101,18 +103,24 @@ public class game {
             g.getChildren().add(enti.getIV());
         }
 
+        Timer timer = new java.util.Timer();
+
         Thread t = new Thread(() -> {
             while(true){
                 Boolean exit = true;
                 timetmp++;
                 timejeu = timetmp/60;
-                //long startTime = System.nanoTime();
+
 
 
                 //AffichTimeHautEcran(timejeu.toString(), canvas);
 
                 javafx.application.Platform.runLater(() -> {
-                    //j1.update(plateformeArrayList);
+                    timer.schedule(new TimerTask(){
+                        public void run(){
+                            AffichTime(timetmp);
+                        }
+                    }, 1000);
                     ActionMouvement(action);
                     action.ActionLectureListe(action, j1, stage, entites);
                     collisionController.verify(plateformeArrayList, j1);
@@ -127,32 +135,11 @@ public class game {
                 }
             }
         });
+
         t.setDaemon(true);
         t.start();
         stage.show();
 
-        /*new AnimationTimer() {
-            public void handle(long currentNanoTime) {
-                Boolean exit = true;
-                timetmp++;
-                timejeu = timetmp/60;
-                //long startTime = System.nanoTime();
-
-
-                //AffichTimeHautEcran(timejeu.toString(), canvas);
-
-                //isCollide = mouvementJoueur.CheckCollision(j1, plateformeArrayList);
-                j1.update(plateformeArrayList);
-                mouvementJoueur.ActionLectureListe(mouvementJoueur, j1, stage, entites);
-
-
-
-
-            }
-        }.start();*/
-        stage.setScene(s);
-        stage.show();
-        //Long.toString(System.currentTimeMillis()-currentNanoTime)
     }
 /*
     private void AffichTimeHautEcran(String time, Canvas canvas){
@@ -164,6 +151,12 @@ public class game {
         graphicsContext.setFill(Color.WHITESMOKE);
     }
 */
+
+    private static void AffichTime(double i){
+        System.out.println(i);
+        //affichage dans le jeu
+    }
+
     private static void ActionMouvement (actionClavier action) {
         s.setOnKeyPressed(
                 new EventHandler<KeyEvent>() {
