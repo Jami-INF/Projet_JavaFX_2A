@@ -22,7 +22,7 @@ public class mouvement {
      */
     public void UpdateJoueur(Joueur j1){
         //Gestion collision sol
-        if(!j1.getiscollideDown()){
+        if(!j1.getiscollideDown() || j1.getiscollideDown() && j1.isInJump() && !j1.getiscollideUp()){
             j1.setVelociteY(j1.getVelociteY()+j1.getGravite());//ajoute la gravité au joueur
             j1.getIV().setY(j1.getIV().getY() + j1.getVelociteY());//modifie emplacement IV
         }
@@ -56,7 +56,7 @@ public class mouvement {
         }//else gravité normal
 
         //si la durée du saut est écoulée, le joueur est en l'air et la gravité est réinitialisée
-        if(j1.getDureesauttmp()>20){
+        if(j1.getDureesauttmp()>13){
             j1.setInJump(false);//le joueur n'est plus en saut
             j1.setDureesauttmp(0);//réinitialise la durée du saut
             j1.setGravite(10);//réinitialise la gravité
