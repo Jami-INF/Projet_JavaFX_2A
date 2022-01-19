@@ -37,6 +37,7 @@ import javafx.scene.text.Font;
 
 public class game{
     static Scene s;
+    manager m;
 
     long timegame = 0;
     private Integer timejeu = 0;
@@ -48,18 +49,22 @@ public class game{
         Group g = new Group();
         s = new Scene(g,1280,720);
         stage.setScene(s);
+        this.m = manager;
         collision collisionController = new collision();
         actionClavier action = new actionClavier();
         mouvement mouvementJoueur = new mouvement();
 
 
         ////Chargement des scores :
-        List<score> listeScores = new ArrayList<score>();
-        //listeScores = manager.getScoresParties();
+        List<score> listeScores;
+        listeScores = m.getScoresParties();
         System.out.println("voici la liste des scores : ");
         for(score sc : listeScores){
             System.out.println(sc.getPseudo() + " : " + sc.getTemps());
         }
+
+        m.ajouterScore("Jami", 30);
+        m.sauvegarderResultat();
         ////BACKGROUND
 
         ImageView backgroundIV = new ImageView (getClass().getClassLoader().getResource("image/background.jpg").toExternalForm());

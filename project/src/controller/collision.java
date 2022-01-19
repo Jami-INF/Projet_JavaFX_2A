@@ -56,7 +56,7 @@ public class collision{
             if(HautJ <= BasP && GaucheJ <= DroiteP && DroiteJ >= GaucheP && BasP < BasJ){
                 j1.setiscollideUp(true);
                 j1.setCanJump(false);
-                System.out.println("collision haut");
+                //System.out.println("collision haut");
 
             }
 
@@ -64,10 +64,10 @@ public class collision{
             if(BasJ >= HautP && GaucheJ <= DroiteP && DroiteJ >= GaucheP && HautP > HautJ){
                 j1.setiscollideDown(true);
                 j1.setCanJump(true);
-                System.out.println("collision bas");
+                //System.out.println("collision bas");
                 if(p.getClass().toString().equals("class model.checkPoint")){
                     System.out.println("Il y a un checkpoint en bas");
-                    //return true;
+                    return true;
                 }
             }
         }
@@ -99,7 +99,7 @@ public class collision{
             //////////////
             // COLLISION PAR LA GAUCHE DU JOUEUR X
             if(GaucheJ <= DroiteP && BasJ >= BasP && HautJ <= HautP && GaucheJ > GaucheP){
-                System.out.println("collision gauche");
+                //System.out.println("collision gauche");
                 j1.setiscollideLeft(true);
 
             }
@@ -107,7 +107,7 @@ public class collision{
             //COLLISION PAR LA DROITE DU JOUEUR X
             //if(DroiteJ >= GaucheP && HautJ <= HautP && BasJ >= BasP){
             if(DroiteJ >= GaucheP && BasJ >= BasP && HautJ <= HautP && DroiteJ < DroiteP){
-                System.out.println("collision droite");
+                //System.out.println("collision droite");
                 j1.setiscollideRight(true);
 
             }

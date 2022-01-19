@@ -6,6 +6,8 @@ import javafx.scene.control.Label;
 import javafx.scene.layout.*;
 import javafx.stage.Stage;
 import model.manager;
+import model.persistance.IPersistanceTemps;
+import model.persistance.ISauvegardeTxt;
 import view.game;
 import java.io.IOException;
 
@@ -17,10 +19,11 @@ public class accueil {
 
     @FXML
     private void cliqueSurBoutonNewGame(){
+        manager m = new manager(new ISauvegardeTxt());
         Stage stage = (Stage) Jouer.getScene().getWindow();
         stage.close();
         game g = new game();
-        g.startgame(stage, manager);
+        g.startgame(stage, m);
     }
 
     @FXML

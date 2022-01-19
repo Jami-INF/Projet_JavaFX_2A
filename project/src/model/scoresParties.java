@@ -1,5 +1,6 @@
 package model;
 
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -12,7 +13,10 @@ public class scoresParties {
         this.listeScores = listeScores;
     }
     public List<score> getListeScores() {
+        List<score> listeScores = new ArrayList<score>();
+        listeScores.add(new score("Joueur1", 10));
         return listeScores;
+        //return listeScores;
     }
 
     public void setListeScores(List<score> listeScores) {
