@@ -18,6 +18,7 @@ public abstract class Entite extends ImageView {
     private Image skin;
     private double velociteX;
     private double velociteY;
+    private double time;
 
     ImageView IV;
 
@@ -32,6 +33,7 @@ public abstract class Entite extends ImageView {
 
 
     }
+
     public ImageView getIV(){
         return IV;
     }

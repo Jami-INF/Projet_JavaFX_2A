@@ -120,13 +120,11 @@ public class game {
 
 
 
-                    //AffichTimeHautEcran(timejeu.toString(), canvas);
 
                     javafx.application.Platform.runLater(() -> {
                         timer.schedule(new TimerTask(){
                             public void run(){
                                 timerBind.setText(timejeu.toString());
-                                //AffichTime(timetmp);
                             }
                         }, 1000);
                         ActionMouvement(action);
@@ -154,21 +152,6 @@ public class game {
             stage.show();
 
     }
-/*
-    private void AffichTimeHautEcran(String time, Canvas canvas){
-        graphicsContext.clearRect(20, 20, canvas.getWidth(),30);
-        graphicsContext.setTextAlign(TextAlignment.CENTER);
-        graphicsContext.setTextBaseline(VPos.CENTER);
-        graphicsContext.setFont(new Font(30));
-        graphicsContext.fillText(time, Math.round(canvas.getWidth()  / 2), 30);
-        graphicsContext.setFill(Color.WHITESMOKE);
-    }
-*/
-
-    private static void AffichTime(double i){
-        System.out.println(i);
-        //affichage dans le jeu
-    }
 
     private static void ActionMouvement (actionClavier action) {
         s.setOnKeyPressed(
@@ -180,7 +163,6 @@ public class game {
                     }
                 });
         s.setOnKeyReleased(
-
                 new EventHandler<KeyEvent>() {
                     public void handle(KeyEvent e) {
                         String in = e.getCode().toString();

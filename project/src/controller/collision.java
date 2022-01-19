@@ -16,7 +16,7 @@ import model.checkPoint;
 public class collision{
 
     public boolean verify(ArrayList<Entite> entites, Joueur j1){
-        boolean finPartie, finPartie2 = false;
+        boolean finPartie, finPartie2;
         j1.setiscollideUp(false);
         j1.setiscollideDown(false);
         j1.setiscollideLeft(false);
@@ -59,7 +59,7 @@ public class collision{
                 //System.out.println("collision haut");
                 if(p.getClass().toString().equals("class model.checkPoint")){
                     System.out.println("Il y a un checkpoint en haut");
-                    return true;
+                    //return true;
                 }
             }
 
@@ -70,7 +70,7 @@ public class collision{
                 //System.out.println("collision bas");
                 if(p.getClass().toString().equals("class model.checkPoint")){
                     System.out.println("Il y a un checkpoint en bas");
-                    return true;
+                    //return true;
                 }
             }
         }
@@ -103,9 +103,9 @@ public class collision{
             // COLLISION PAR LA GAUCHE DU JOUEUR X
             if(GaucheJ <= DroiteP && BasJ >= BasP && HautJ <= HautP && GaucheJ > GaucheP){
                 j1.setiscollideLeft(true);
-                if(p.getClass().toString().equals("class model.checkPointeferf")){
+                if(p.getClass().toString().equals("class model.checkPoint")){
                     System.out.println("Il y a un checkpoint a gauche");
-                    return true;
+                    //return true;
                 }
             }
 
@@ -113,9 +113,9 @@ public class collision{
             //if(DroiteJ >= GaucheP && HautJ <= HautP && BasJ >= BasP){
             if(DroiteJ >= GaucheP && BasJ >= BasP && HautJ <= HautP && DroiteJ < DroiteP){
                 j1.setiscollideRight(true);
-                if(p.getClass().toString().equals("class model.checkPoint eferferf")){
+                if(p.getClass().toString().equals("class model.checkPoint")){
                     System.out.println("Il y a un checkpoint a droite");
-                    return true;
+                    //return true;
                 }
             }
 
