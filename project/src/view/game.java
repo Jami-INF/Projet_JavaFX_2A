@@ -127,7 +127,7 @@ public class game {
                                 timerBind.setText(timejeu.toString());
                             }
                         }, 1000);
-                        ActionMouvement(action);
+                        ActionJoueur(action);
                         action.ActionLectureListe(action, j1, stage, entites);
                         finPartie = collisionController.verify(entites, j1);
                         mouvementJoueur.UpdateJoueur(j1);
@@ -153,7 +153,7 @@ public class game {
 
     }
 
-    private static void ActionMouvement (actionClavier action) {
+    private static void ActionJoueur (actionClavier action) {
         s.setOnKeyPressed(
                 new EventHandler<KeyEvent>() {
                     public void handle(KeyEvent e) {
