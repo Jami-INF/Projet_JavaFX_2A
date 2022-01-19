@@ -19,8 +19,8 @@ public class manager {
 
         return persT.chargerTemps();
     }
-    public void sauvegarderResultat() {
-        persT.sauverTemps(scoresPartie.getListeScores());
+    public void sauvegarderResultat(List<score> sc) {
+        persT.sauverTemps(sc);
     }
     public void ajouterScore(String pseudo, int score) {
         scoresPartie.ajouterScore(pseudo, score);

@@ -59,12 +59,12 @@ public class game{
         List<score> listeScores;
         listeScores = m.getScoresParties();
         System.out.println("voici la liste des scores : ");
+
         for(score sc : listeScores){
             System.out.println(sc.getPseudo() + " : " + sc.getTemps());
         }
 
-        m.ajouterScore("Jami", 30);
-        m.sauvegarderResultat();
+
         ////BACKGROUND
 
         ImageView backgroundIV = new ImageView (getClass().getClassLoader().getResource("image/background.jpg").toExternalForm());
@@ -149,6 +149,8 @@ public class game{
                     mouvementJoueur.UpdateJoueur(j1);
                     if(finPartie){
                         System.out.println("FIN");
+                        m.ajouterScore("Jami", timejeu);
+                        m.sauvegarderResultat(listeScores);
                         threadEnCours = false;
                     }
 

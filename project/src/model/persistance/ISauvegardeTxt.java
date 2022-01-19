@@ -20,7 +20,7 @@ public class ISauvegardeTxt implements IPersistanceTemps  {
         try {
             File fi =new File("scores");
             if(!fi.exists()) {
-                flux = getClass().getClassLoader().getResourceAsStream("Resultats/scores");
+                flux = getClass().getClassLoader().getResourceAsStream("scores");
                 assert flux != null;
             }
             else {
