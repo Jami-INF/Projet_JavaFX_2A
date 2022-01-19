@@ -15,8 +15,10 @@ import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.image.Image;
 import javafx.scene.Parent;
 
+import java.io.*;
+
 import java.awt.*;
-import java.io.IOException;
+import java.io.FileInputStream;
 import java.util.ArrayList;
 import java.util.Timer;
 import java.util.TimerTask;
@@ -144,13 +146,16 @@ public class game {
                         e.printStackTrace();
                     }
                 }
-                //fermer la fenetre
             });
-
             t.setDaemon(true);
             t.start();
             stage.show();
 
+            /*int time;
+            File fichier = new File(getClass().getClassLoader().getResource("persistance/BestTime.xml").getPath());
+            ObjectInputStream ois = new ObjectInputStream(new FileInputStream(fichier));
+            time = (Integer)ois.readObject();
+            ois.writeObject(time);*/
     }
 
     private static void ActionMouvement (actionClavier action) {
