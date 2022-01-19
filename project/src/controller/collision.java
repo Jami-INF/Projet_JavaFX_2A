@@ -37,8 +37,8 @@ public class collision{
         BoundingBox joueurBound = new BoundingBox(jIV.getX(), jIV.getY(), WidthJ, HeightJ);//BoundingBox Joueur
         double BasJ = joueurBound.getMaxY();
         double HautJ = joueurBound.getMinY();
-        double GaucheJ = joueurBound.getMinX()+10;//Permet de résoudre le problème de collision avec les plateformes
-        double DroiteJ = joueurBound.getMaxX()-10;//Quand le joueur et dans l'air et qu'il touche une plateforme sur le coté
+        double GaucheJ = joueurBound.getMinX()+5;//Permet de résoudre le problème de collision avec les plateformes
+        double DroiteJ = joueurBound.getMaxX()-5;//Quand le joueur et dans l'air et qu'il touche une plateforme sur le coté
 
 
         //////////////Bounding box plateforme + verification collisions avec chaque plateformes

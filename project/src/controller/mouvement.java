@@ -19,14 +19,16 @@ public class mouvement {
      * @param j1
      */
     public void UpdateJoueur(Joueur j1){
+        gestionSaut(j1);//appel de la fonction de gestion des sauts
         //Gestion collision sol
-        if(!j1.getiscollideDown() || j1.getiscollideDown() && j1.isInJump() && !j1.getiscollideUp()){
+        if(!j1.getiscollideDown()&&!j1.getiscollideUp() || j1.getiscollideDown() && j1.isInJump() && !j1.getiscollideUp()){
             j1.setVelociteY(j1.getGravite());//ajoute la gravité au joueur
             j1.getIV().setY(j1.getIV().getY() + j1.getVelociteY());//modifie emplacement IV
         }
         //Gestion collision tete
-        if(j1.getiscollideUp()){
-            j1.setVelociteY(j1.getGravite());
+        if(j1.getiscollideUp() && !j1.isInJump()){
+            j1.setGravite(5);
+            j1.getIV().setY(j1.getIV().getY() + j1.getGravite());//modifie emplacement IV
             //j1.setVelociteY(0);//remet la vélocité à 0
         }
         //Gestion collision gauche
@@ -40,7 +42,7 @@ public class mouvement {
             j1.getIV().setX(j1.getIV().getX() + j1.getVelociteX());//modifie emplacement IV
             //System.out.println("mouvement avant");
         }
-        gestionSaut(j1);//appel de la fonction de gestion des sauts
+
     }
     /**
      * Fonction qui permet de gérer les sauts du joueur en inversant la gravité
@@ -49,16 +51,18 @@ public class mouvement {
     public void gestionSaut(Joueur j1){
 
         //Vérifie si le joueur souhaite sauter et si il n'est pas en collision au dessu avec un objet ce qui empecherais de monter le saut
-        if(j1.isInJump() && (!j1.getiscollideUp())){
+        if(j1.isInJump() && !j1.getiscollideUp()){
             j1.setGravite(-15);//inverse la gravité
-            j1.setDureesauttmp(j1.getDureesauttmp()+1);//incrémente la durée du saut
+
         }//else gravité normal
 
         //si la durée du saut est écoulée, le joueur est en l'air et la gravité est réinitialisée
-        if(j1.getDureesauttmp()>20){
+        if(j1.getDureesauttmp()>15 && j1.isInJump()){
             j1.setInJump(false);//le joueur n'est plus en saut
             j1.setDureesauttmp(0);//réinitialise la durée du saut
             j1.setGravite(5);//réinitialise la gravité
+        }else{
+            j1.setDureesauttmp(j1.getDureesauttmp()+1);//incrémente la durée du saut
         }
 
     }

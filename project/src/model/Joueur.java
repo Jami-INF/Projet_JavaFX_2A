@@ -337,6 +337,7 @@ public class Joueur extends Entite {
     public void saut() {
 
         if (canJump && isCollideDown) {
+            dureesauttmp = 0;
             inJump = true;
             canJump = false;
             //System.out.println("mouvement saut");
