@@ -11,18 +11,25 @@ import javafx.stage.Stage;
 import model.Entite;
 import model.Joueur;
 import model.Plateforme;
+import model.checkPoint;
 
 public class collision{
 
-    public void verify(ArrayList<Plateforme> p, Joueur j1){
+    public boolean verify(ArrayList<Entite> entites, Joueur j1){
+        boolean finPartie, finPartie2 = false;
         j1.setiscollideUp(false);
         j1.setiscollideDown(false);
         j1.setiscollideLeft(false);
         j1.setiscollideRight(false);
-        checkCollisionHautBas(p, j1); //Fonction vérifiant collision haut-bas
-        checkCollisionDroiteGauche(p, j1);
+        finPartie = checkCollisionDroiteGauche(entites, j1);//verification collision droite gauche
+        finPartie2 = checkCollisionHautBas(entites, j1); //Fonction vérifiant collision haut-bas
+        if(finPartie || finPartie2){
+            System.out.println("collision avec l'arrivé");
+            return true;
+        }
+        return finPartie;
     }
-    private void checkCollisionHautBas(ArrayList<Plateforme> plateformeList, Joueur j1){
+    private boolean checkCollisionHautBas(ArrayList<Entite> entites, Joueur j1){
         //////////////Bounding box Joueur + points max
         ImageView jIV = j1.getIV();
         double WidthJ =  jIV.getImage().getWidth();
@@ -35,7 +42,7 @@ public class collision{
 
 
         //////////////Bounding box plateforme + verification collisions avec chaque plateformes
-        for(Plateforme p : plateformeList){
+        for(Entite p : entites){
             ImageView pIV = p.getIV();
             double WidthP =  pIV.getImage().getWidth();
             double HeightP = pIV.getImage().getHeight();
@@ -50,6 +57,10 @@ public class collision{
                 j1.setiscollideUp(true);
                 j1.setCanJump(false);
                 //System.out.println("collision haut");
+                if(p.getClass().toString().equals("class model.checkPoint")){
+                    System.out.println("Il y a un checkpoint en haut");
+                    return true;
+                }
             }
 
             //COLLISION SOL
@@ -57,11 +68,16 @@ public class collision{
                 j1.setiscollideDown(true);
                 j1.setCanJump(true);
                 //System.out.println("collision bas");
+                if(p.getClass().toString().equals("class model.checkPoint")){
+                    System.out.println("Il y a un checkpoint en bas");
+                    return true;
+                }
             }
         }
+        return false;
     }
 
-    private void checkCollisionDroiteGauche(ArrayList<Plateforme> plateformeList, Joueur j1){
+    private boolean checkCollisionDroiteGauche(ArrayList<Entite> entites, Joueur j1){
         //////////////Bounding box Joueur + points max
         ImageView jIV = j1.getIV();
         double WidthJ =  jIV.getImage().getWidth();
@@ -74,7 +90,7 @@ public class collision{
 
 
         //////////////Bounding box plateforme + verification collisions avec chaque plateformes
-        for(Plateforme p : plateformeList){
+        for(Entite p : entites){
             ImageView pIV = p.getIV();
             double WidthP =  pIV.getImage().getWidth();
             double HeightP = pIV.getImage().getHeight();
@@ -87,14 +103,24 @@ public class collision{
             // COLLISION PAR LA GAUCHE DU JOUEUR X
             if(GaucheJ <= DroiteP && BasJ >= BasP && HautJ <= HautP && GaucheJ > GaucheP){
                 j1.setiscollideLeft(true);
+                if(p.getClass().toString().equals("class model.checkPointeferf")){
+                    System.out.println("Il y a un checkpoint a gauche");
+                    return true;
+                }
             }
 
             //COLLISION PAR LA DROITE DU JOUEUR X
             //if(DroiteJ >= GaucheP && HautJ <= HautP && BasJ >= BasP){
             if(DroiteJ >= GaucheP && BasJ >= BasP && HautJ <= HautP && DroiteJ < DroiteP){
                 j1.setiscollideRight(true);
+                if(p.getClass().toString().equals("class model.checkPoint eferferf")){
+                    System.out.println("Il y a un checkpoint a droite");
+                    return true;
+                }
             }
+
         }
+        return false;
 
     }
 }

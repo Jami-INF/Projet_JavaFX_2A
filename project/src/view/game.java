@@ -38,9 +38,8 @@ public class game {
     long timegame = 0;
     private Integer timejeu = 0;
     private Integer timetmp = 0;
-    Boolean isCollide;
-    int DureeSaut = 10;//surée saut en tick
-    int tmpDureeSaut;
+    private boolean finPartie = false;
+    private boolean threadEnCours = true;
 
     public void startgame(Stage stage) {
             Group g = new Group();
@@ -63,10 +62,9 @@ public class game {
             ////CHECKPOINT
             Image ckpt = new Image(getClass().getClassLoader().getResource("image/checkpoint.png").toExternalForm());
             checkPoint checkpoint = new checkPoint(ckpt, 10, 10, 0.3, 900, 100,0);
-            g.getChildren().add(checkpoint.getIV());
 
 
-            ArrayList<Plateforme> plateformeArrayList = new ArrayList<Plateforme>();
+
             ArrayList<Entite> entites = new ArrayList<Entite>();
 
             Image Platform = new Image(getClass().getClassLoader().getResource("image/platform.png").toExternalForm());
@@ -79,15 +77,15 @@ public class game {
             Plateforme p7 = new Plateforme(Platform, 100, 600, 100, 700, 300,true);
 
 
-
-
+            /*
+            ArrayList<Plateforme> plateformeArrayList = new ArrayList<Plateforme>();
             plateformeArrayList.add(p1);
             plateformeArrayList.add(p2);
             plateformeArrayList.add(p3);
             plateformeArrayList.add(p4);
             plateformeArrayList.add(p5);
             plateformeArrayList.add(p6);
-            plateformeArrayList.add(p7);
+            plateformeArrayList.add(p7);*/
 
             entites.add(j1);
             entites.add(p1);
@@ -97,6 +95,7 @@ public class game {
             entites.add(p5);
             entites.add(p6);
             entites.add(p7);
+            entites.add(checkpoint);
 
 
             for (Entite enti : entites) {
@@ -114,7 +113,7 @@ public class game {
         Timer timer = new java.util.Timer();
 
             Thread t = new Thread(() -> {
-                while(true){
+                while(threadEnCours){
                     Boolean exit = true;
                     timetmp++;
                     timejeu = timetmp/60;
@@ -132,8 +131,12 @@ public class game {
                         }, 1000);
                         ActionMouvement(action);
                         action.ActionLectureListe(action, j1, stage, entites);
-                        collisionController.verify(plateformeArrayList, j1);
+                        finPartie = collisionController.verify(entites, j1);
                         mouvementJoueur.UpdateJoueur(j1);
+                        if(finPartie){
+                            System.out.println("FIN");
+                            threadEnCours = false;
+                        }
 
                     });
 
@@ -143,6 +146,7 @@ public class game {
                         e.printStackTrace();
                     }
                 }
+                //fermer la fenetre
             });
 
             t.setDaemon(true);
