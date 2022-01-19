@@ -1,41 +1,24 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import javafx.scene.control.*?>
+<?import javafx.scene.image.*?>
 <?import javafx.scene.layout.*?>
 
 <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/11.0.2" xmlns:fx="http://javafx.com/fxml/1" fx:controller="view.accueil">
    <children>
-      <Button fx:id="Jouer"
-              alignment="CENTER"
-              layoutX="208.0"
-              layoutY="110.0"
-              mnemonicParsing="false"
-              onAction="#cliqueSurBoutonNewGame"
-              prefHeight="68.0"
-              prefWidth="185.0"
-              text="Nouvelle partie"
-              textAlignment="CENTER"
-              BorderPane.alignment="CENTER" />
-      <Button fx:id="Charger"
-              alignment="CENTER"
-              layoutX="207.0"
-              layoutY="212.0"
-              prefHeight="68.0"
-              prefWidth="185.0"
-              onAction="#cliqueSurBoutonCharger"
-              text="Charger partie" />
-      <Button fx:id="Quit"
-              alignment="CENTER"
-              layoutX="268.0"
-              layoutY="330.0"
-              onAction="#cliqueSurBoutonQuitter"
-              text="Quitter"
-              textAlignment="CENTER" />
-      <Label fx:id="labelAfficher"
-             layoutX="244.0"
-             layoutY="64.0"
-             prefHeight="17.0"
-             prefWidth="111.0" />
+      <Button fx:id="Jouer" alignment="CENTER" layoutX="173.0" layoutY="322.0" mnemonicParsing="false" onAction="#cliqueSurBoutonNewGame" prefHeight="25.0" prefWidth="63.0" text="JOUER" textAlignment="CENTER" BorderPane.alignment="CENTER" />
+      <Button fx:id="Quit" alignment="CENTER" layoutX="89.0" layoutY="322.0" onAction="#cliqueSurBoutonQuitter" text="QUITTER" textAlignment="CENTER" />
+      <Label fx:id="labelPseudo" layoutX="35.0" layoutY="198.0" prefHeight="17.0" prefWidth="124.0" text="Entrez votre pseudo :" />
+      <ImageView fitHeight="122.0" fitWidth="124.0" layoutX="213.0" layoutY="26.0" pickOnBounds="true" preserveRatio="true" />
+      <ComboBox layoutX="22.0" layoutY="107.0" prefWidth="150.0" />
+      <TextField layoutX="201.0" layoutY="194.0" />
+      <TableView layoutX="376.0" layoutY="87.0" prefHeight="200.0" prefWidth="194.0">
+        <columns>
+          <TableColumn prefWidth="120.7142333984375" text="Pseudo" />
+          <TableColumn prefWidth="73.57150268554688" text="Temps (s)" />
+        </columns>
+      </TableView>
+      <Label layoutX="24.0" layoutY="69.0" text="Choisisez un skin :" />
 
    </children>
 </AnchorPane>

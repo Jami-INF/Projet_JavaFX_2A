@@ -44,3 +44,8 @@ out/production/projet_javafx/controller/collision.class
 out/production/projet_javafx/controller/actionClavier.class
 out/production/projet_javafx/image/checkpoint.png
 out/production/projet_javafx/model/checkPoint.class
+out/production/projet_javafx/model/manager.class
+out/production/projet_javafx/model/persistance/IPersistanceTemps.class
+out/production/projet_javafx/model/persistance/ISauvegardeTxt.class
+out/production/projet_javafx/model/score.class
+out/production/projet_javafx/model/scoresParties.class
