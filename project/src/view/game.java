@@ -43,7 +43,7 @@ public class game {
     private boolean finPartie = false;
     private boolean threadEnCours = true;
 
-    public void startgame(Stage stage) {
+    public void startgame(Stage stage) throws FileNotFoundException {
             Group g = new Group();
             s = new Scene(g,1280,720);
             stage.setScene(s);
@@ -110,7 +110,10 @@ public class game {
             timerBind.setTranslateY(40);
             g.getChildren().add(timerBind);
 
-
+        //LECTURE DE LA PERSISTANCE
+        File fichier = new File(getClass().getClassLoader().getResource("persistance/BestTime.xml").getPath());
+        ObjectInputStream ois = new ObjectInputStream(new FileInputStream(fichier));
+        timejeu = (Integer)ois.readObject();
 
         Timer timer = new java.util.Timer();
 
@@ -151,11 +154,10 @@ public class game {
             t.start();
             stage.show();
 
-            /*int time;
-            File fichier = new File(getClass().getClassLoader().getResource("persistance/BestTime.xml").getPath());
-            ObjectInputStream ois = new ObjectInputStream(new FileInputStream(fichier));
-            time = (Integer)ois.readObject();
-            ois.writeObject(time);*/
+
+            //ECRITURE DE LA PERSISTANCE
+            /*ObjectOutputStream oos = new ObjectOutputStream();
+            oos.writeObject(time);*/
     }
 
     private static void ActionJoueur (actionClavier action) {
