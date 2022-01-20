@@ -27,6 +27,7 @@ import javafx.geometry.VPos;
 import javafx.scene.input.KeyEvent;
 import javafx.scene.paint.Color;
 import controller.*;
+import launch.Launch;
 import model.Joueur;
 import model.*;
 import javafx.animation.AnimationTimer;
@@ -48,7 +49,8 @@ public class game{
      * @param stage
      * @param manager
      */
-    public void startgame(Stage stage, manager manager) {
+    public void startgame(Stage stage, String pseudo, manager manager) {
+        System.out.println(pseudo);
         Group g = new Group();
         s = new Scene(g,1280,720);
         stage.setScene(s);
@@ -75,7 +77,12 @@ public class game{
 
         ////JOUEUR
         Image Skin = new Image(getClass().getClassLoader().getResource("image/testpers.png").toExternalForm());
-        Joueur j1 = new Joueur(Skin, 10, 10, 10, 0, 0,"Joueur1");
+
+        if(pseudo.equals("")){
+            pseudo = "Invité";
+        }
+
+        Joueur j1 = new Joueur(Skin, 10, 10, 10, 0, 0, pseudo);
 
         ////CHECKPOINT
         Image ckpt = new Image(getClass().getClassLoader().getResource("image/checkpoint.png").toExternalForm());
@@ -151,9 +158,17 @@ public class game{
                     mouvementJoueur.UpdateJoueur(j1);
                     if(finPartie){
                         System.out.println("FIN");
-                        m.ajouterScore("Jami", timejeu);
+                        m.ajouterScore(j1.getPseudo(), timejeu);
                         m.sauvegarderResultat(listeScores);
                         threadEnCours = false;
+
+                        stage.close();
+                        Launch l = new Launch();
+                        try {
+                            l.start(stage);
+                        } catch (IOException e) {
+                            e.printStackTrace();
+                        }
                     }
 
                 });

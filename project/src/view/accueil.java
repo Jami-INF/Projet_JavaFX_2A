@@ -16,17 +16,20 @@ public class accueil {
     private javafx.scene.control.Button Jouer;
     private Label labelAfficher;
     private model.manager manager;
-
+    @FXML
+    private javafx.scene.control.TextField Pseudo;
     /**
      * Fonction qui nous permet de lancer une scene depuis un bouton sur une vue
      */
     @FXML
     private void cliqueSurBoutonNewGame(){
+        String pseudo = Pseudo.getText();
+        //System.out.println(pseudo);
         manager m = new manager(new ISauvegardeTxt());
         Stage stage = (Stage) Jouer.getScene().getWindow();
         stage.close();
         game g = new game();
-        g.startgame(stage, m);
+        g.startgame(stage, pseudo, m);
     }
 
     /**
@@ -37,7 +40,6 @@ public class accueil {
     @FXML
     private void cliqueSurBoutonQuitter(){
         Stage stage = (Stage) Quit.getScene().getWindow();
-        labelAfficher.setText("Aurevoir!");
         stage.close();
     }
 }

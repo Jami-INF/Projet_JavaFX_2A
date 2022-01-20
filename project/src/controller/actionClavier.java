@@ -24,14 +24,25 @@ public class actionClavier {
         return input;
     }
 
+    /**
+     * Fonction qui permet d'ajouter les actions du clavier de la liste
+     * @param s
+     */
     public void addInput(String s) {
         input.add(s);
     }
 
+    /**
+     * Fonction qui permet de supprimer les actions du clavier de la liste
+     * @param s
+     */
     public void removeInput(String s) {
         input.remove(s);
     }
 
+    /**
+     * Fonction qui permet de supprimer toutes les actions de la liste
+     */
     public void clearInput() {
         for (String in : input) {
             input.remove(in);

@@ -11,7 +11,7 @@
       <Label fx:id="labelPseudo" layoutX="35.0" layoutY="198.0" prefHeight="17.0" prefWidth="124.0" text="Entrez votre pseudo :" />
       <ImageView fitHeight="122.0" fitWidth="124.0" layoutX="213.0" layoutY="26.0" pickOnBounds="true" preserveRatio="true" />
       <ComboBox layoutX="22.0" layoutY="107.0" prefWidth="150.0" />
-      <TextField layoutX="201.0" layoutY="194.0" />
+      <TextField fx:id="Pseudo" layoutX="201.0" layoutY="194.0" />
       <TableView layoutX="376.0" layoutY="87.0" prefHeight="200.0" prefWidth="194.0">
         <columns>
           <TableColumn prefWidth="120.7142333984375" text="Pseudo" />

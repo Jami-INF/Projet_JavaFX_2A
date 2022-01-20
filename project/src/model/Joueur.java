@@ -42,7 +42,7 @@ public class Joueur extends Entite {
     public Joueur(Image Skin, double VelociteX, double VelociteY, double Size, double SpawnX, double SpawnY, String Pseudo) {
         super(Skin, VelociteX, VelociteY, Size, SpawnX, SpawnY);
         vie=10;//A modifier peut etre ?
-        Pseudo = pseudo;
+        pseudo = Pseudo;
         isMouvementArriere=false;
         isMouvementAvant = false;
         velociteX = VelociteX;
@@ -201,13 +201,7 @@ public class Joueur extends Entite {
         return velociteY;
     }
 
-    public void setJumpHauteur(double jumpHauteur) {
-        this.jumpHauteur = jumpHauteur;
-    }
 
-    public double getJumpHauteur() {
-        return jumpHauteur;
-    }
 
     /**
      * Methode qui permet de seter la gravité pour le joueur
@@ -225,48 +219,66 @@ public class Joueur extends Entite {
         return gravite;
     }
 
+    /**
+     * Methode qui permet de seter la taille du joueur
+     * @param size
+     */
     public void setSize(double size) {
         this.size = size;
     }
 
+    /**
+     * Methode qui permet de recupérer la taille du joueur
+     * @return
+     */
     public double getSize() {
         return size;
     }
 
+    /**
+     * Methode qui permet de seter le skin du joueur
+     * @param skin
+     */
     public void setSkin(Image skin) {
         this.skin = skin;
     }
 
+    /**
+     * Methode qui permet de recupérer le skin du joueur
+     * @return
+     */
     public Image getSkin() {
         return skin;
     }
 
+    /**
+     * Methode qui permet de seter l'image du skin du joueur
+     * @param imageSize
+     */
     public void setImageSize(double imageSize) {
         this.imageSize = imageSize;
     }
 
+    /**
+     * Methode qui permet de recupérer l'image du skin du joueur
+     * @return
+     */
     public double getImageSize() {
         return imageSize;
     }
 
-    public void setIsMouvementAvant(boolean isMouvementAvant) {
-        this.isMouvementAvant = isMouvementAvant;
-    }
-
-    public void setIsMouvementArriere(boolean isMouvementArriere) {
-        this.isMouvementArriere = isMouvementArriere;
-    }
-
-    public boolean isMouvementAvant() {
-        return isMouvementAvant;
-    }
-
-    public boolean isMouvementArriere() {
-        return isMouvementArriere;
-    }
+    /**
+     * Methode qui permet de récuperer la durée du saut en cours du joueur
+     * @return
+     */
     public int getDureesauttmp() {
         return dureesauttmp;
     }
+
+    /**
+     * Methode qui permet de seter la durée du saut en cours du joueur
+     * @param dureesauttmp
+     */
     public void setDureesauttmp(int dureesauttmp) {
         this.dureesauttmp = dureesauttmp;
     }
