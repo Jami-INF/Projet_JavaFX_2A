@@ -42,7 +42,7 @@ public class Joueur extends Entite {
     public Joueur(Image Skin, double VelociteX, double VelociteY, double Size, double SpawnX, double SpawnY, String Pseudo) {
         super(Skin, VelociteX, VelociteY, Size, SpawnX, SpawnY);
         vie=10;//A modifier peut etre ?
-        Pseudo = pseudo;
+        pseudo = Pseudo;
         isMouvementArriere=false;
         isMouvementAvant = false;
         velociteX = VelociteX;
