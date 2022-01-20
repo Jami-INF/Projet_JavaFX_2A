@@ -50,8 +50,6 @@ public class Joueur extends Entite {
         size = Size;
         skin = Skin;
         imageSize = size;
-        setFitWidth(imageSize);
-        setFitHeight(imageSize);
 
     }
 

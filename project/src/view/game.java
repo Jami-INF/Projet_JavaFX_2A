@@ -82,24 +82,31 @@ public class game{
             pseudo = "Invité";
         }
 
-        Joueur j1 = new Joueur(Skin, 10, 10, 10, 0, 0, pseudo);
+        Joueur j1 = new Joueur(Skin, 10, 10, 0.8, 50, 300, pseudo);
 
         ////CHECKPOINT
         Image ckpt = new Image(getClass().getClassLoader().getResource("image/checkpoint.png").toExternalForm());
-        checkPoint checkpoint = new checkPoint(ckpt, 10, 10, 0.3, 900, 100,0);
+        checkPoint checkpoint = new checkPoint(ckpt, 10, 10, 0.8, 50, 200,0);
 
 
 
         ArrayList<Entite> entites = new ArrayList<Entite>();
 
         Image Platform = new Image(getClass().getClassLoader().getResource("image/platform.png").toExternalForm());
-        Plateforme p1 = new Plateforme(Platform, 100, 600, 100, 100, 200, true);
-        Plateforme p2 = new Plateforme(Platform, 100, 600, 100,300, 500,true);
-        Plateforme p3 = new Plateforme(Platform, 100, 600, 100, 500, 500,true);
-        Plateforme p4 = new Plateforme(Platform, 100, 600, 100, 700, 500,true);
-        Plateforme p5 = new Plateforme(Platform, 100, 600, 100, 900, 500,true);
-        Plateforme p6 = new Plateforme(Platform, 100, 600, 100, 800, 400,true);
-        Plateforme p7 = new Plateforme(Platform, 100, 600, 100, 700, 300,true);
+        Plateforme p1 = new Plateforme(Platform, 100, 600, 0.8, 50, 600, true);
+        Plateforme p2 = new Plateforme(Platform, 100, 600, 0.8,180, 500,true);//1 plateforme = 130
+        Plateforme p3 = new Plateforme(Platform, 100, 600, 0.8, 310, 400,true);
+        Plateforme p4 = new Plateforme(Platform, 100, 600, 0.8, 440, 600,true);
+        Plateforme p7 = new Plateforme(Platform, 100, 600, 0.8, 830, 600,true);
+        Plateforme p8 = new Plateforme(Platform, 100, 600, 0.8, 960, 600,true);
+        Plateforme p9 = new Plateforme(Platform, 100, 600, 0.8, 1090, 400,true);
+
+        Plateforme p10 = new Plateforme(Platform, 100, 600, 0.8, 200, 200,true);
+        Plateforme p11 = new Plateforme(Platform, 100, 600, 0.8, 330, 200,true);
+        Plateforme p12 = new Plateforme(Platform, 100, 600, 0.8, 460, 200,true);
+        Plateforme p13 = new Plateforme(Platform, 100, 600, 0.8, 590, 200,true);
+        Plateforme p16 = new Plateforme(Platform, 100, 600, 0.8, 980, 200,true);
+
 
 
         /*
@@ -117,9 +124,18 @@ public class game{
         entites.add(p2);
         entites.add(p3);
         entites.add(p4);
-        entites.add(p5);
-        entites.add(p6);
+        //entites.add(p5);
+        //entites.add(p6);
         entites.add(p7);
+        entites.add(p8);
+        entites.add(p9);
+        entites.add(p10);
+        entites.add(p11);
+        entites.add(p12);
+        entites.add(p13);
+        //entites.add(p14);
+        //entites.add(p15);
+        entites.add(p16);
         entites.add(checkpoint);
 
 

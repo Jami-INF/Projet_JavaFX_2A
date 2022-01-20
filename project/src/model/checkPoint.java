@@ -21,9 +21,6 @@ public class checkPoint extends Entite {
     public checkPoint(Image Skin, double VelociteX, double VelociteY, double Size, double SpawnX, double SpawnY, Integer Temps) {
         super(Skin, VelociteX, VelociteY, Size, SpawnX, SpawnY);
         this.temps = Temps;
-        getIV().setFitHeight(getIV().getImage().getHeight());
-        getIV().setFitWidth(getIV().getImage().getWidth());
-
     }
 
     /**

@@ -69,7 +69,7 @@ public class accueil {
     private void initialize() {
         //imageFond = new ImageView (getClass().getClassLoader().getResource("image/background.jpg").toExternalForm());
         Image image = new Image (getClass().getClassLoader().getResource("image/background.jpg").toExternalForm());
-        imageFond.setImage(image);
+        //imageFond.setImage(image);
         lc = FXCollections.observableArrayList(m.getScoresParties());
 
         tablePseudo.setCellValueFactory(new PropertyValueFactory<score, String>("Pseudo"));

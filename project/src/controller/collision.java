@@ -45,8 +45,8 @@ public class collision{
     private boolean checkCollisionHautBas(ArrayList<Entite> entites, Joueur j1){
         //////////////Bounding box Joueur + points max
         ImageView jIV = j1.getIV();
-        double WidthJ =  jIV.getImage().getWidth();
-        double HeightJ = jIV.getImage().getHeight();
+        double WidthJ =  jIV.getFitWidth();
+        double HeightJ = jIV.getFitHeight();
         BoundingBox joueurBound = new BoundingBox(jIV.getX(), jIV.getY(), WidthJ, HeightJ);//BoundingBox Joueur
         double BasJ = joueurBound.getMaxY();
         double HautJ = joueurBound.getMinY();
@@ -57,8 +57,8 @@ public class collision{
         //////////////Bounding box plateforme + verification collisions avec chaque plateformes
         for(Entite p : entites){
             ImageView pIV = p.getIV();
-            double WidthP =  pIV.getImage().getWidth();
-            double HeightP = pIV.getImage().getHeight();
+            double WidthP =  pIV.getFitWidth();
+            double HeightP = pIV.getFitHeight();
             BoundingBox platformBound = new BoundingBox(pIV.getX(), pIV.getY(), WidthP, HeightP);//BoundingBox Platform
             double BasP = platformBound.getMaxY();
             double HautP = platformBound.getMinY();
@@ -96,8 +96,8 @@ public class collision{
     private boolean checkCollisionDroiteGauche(ArrayList<Entite> entites, Joueur j1){
         //////////////Bounding box Joueur + points max
         ImageView jIV = j1.getIV();
-        double WidthJ =  jIV.getImage().getWidth();
-        double HeightJ = jIV.getImage().getHeight();
+        double WidthJ =  jIV.getFitWidth();
+        double HeightJ = jIV.getFitHeight();
         BoundingBox joueurBound = new BoundingBox(jIV.getX(), jIV.getY(), WidthJ, HeightJ);//BoundingBox Joueur
         double BasJ = joueurBound.getMaxY();
         double HautJ = joueurBound.getMinY();
@@ -108,8 +108,8 @@ public class collision{
         //////////////Bounding box plateforme + verification collisions avec chaque plateformes
         for(Entite p : entites){
             ImageView pIV = p.getIV();
-            double WidthP =  pIV.getImage().getWidth();
-            double HeightP = pIV.getImage().getHeight();
+            double WidthP =  pIV.getFitWidth();
+            double HeightP = pIV.getFitHeight();
             BoundingBox platformBound = new BoundingBox(pIV.getX(), pIV.getY(), WidthP, HeightP);//BoundingBox Platform
             double BasP = platformBound.getMaxY();
             double HautP = platformBound.getMinY();

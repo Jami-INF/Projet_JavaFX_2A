@@ -17,6 +17,7 @@ public abstract class Entite extends ImageView {
     private double velociteY;
     private double time;
     public ImageView IV;
+    private double size;
 
     /**
      * Constructeur de la classe Entite
@@ -30,11 +31,19 @@ public abstract class Entite extends ImageView {
     public Entite(Image Skin, double VelociteX, double VelociteY, double Size, double SpawnX, double SpawnY){
         IV = new ImageView(Skin);
         skin = Skin;
+        size = Size;
+
+        IV.setFitHeight(IV.getImage().getHeight()*size);
+        IV.setFitWidth(IV.getImage().getWidth()*size);
+
+
         IV.setY(SpawnY);
         IV.setX(SpawnX);
 
-        VelociteY = velociteY;
-        VelociteX = velociteX;
+        velociteY = VelociteY;
+        velociteX = VelociteX;
+
+
 
 
     }
