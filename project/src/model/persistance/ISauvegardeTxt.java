@@ -55,8 +55,10 @@ public class ISauvegardeTxt implements IPersistanceTemps  {
         try {
             File fi =new File("scores");
             try (BufferedWriter out = new BufferedWriter(new FileWriter(fi))) {
-                for(score sc : listeScores)
-                    out.write(sc.getPseudo() + " " + sc.getTemps() + "\n");
+                if(listeScores.size()>0) {
+                    for(score sc : listeScores)
+                        out.write(sc.getPseudo() + " " + sc.getTemps() + "\n");
+                }
             }
         } catch (IOException e) {
             e.printStackTrace();

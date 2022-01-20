@@ -142,6 +142,13 @@ public class game{
                 Boolean exit = true;
                 timetmp++;
                 timejeu = timetmp/60;
+                if(finPartie){
+                    System.out.println("FIN");
+                    m.ajouterScore(j1.getPseudo(), timejeu);
+                    m.sauvegarderResultat(listeScores);
+                    threadEnCours = false;
+
+                }
 
 
 
@@ -157,11 +164,6 @@ public class game{
                     finPartie = collisionController.verify(entites, j1);
                     mouvementJoueur.UpdateJoueur(j1);
                     if(finPartie){
-                        System.out.println("FIN");
-                        m.ajouterScore(j1.getPseudo(), timejeu);
-                        m.sauvegarderResultat(listeScores);
-                        threadEnCours = false;
-
                         stage.close();
                         Launch l = new Launch();
                         try {
@@ -169,7 +171,9 @@ public class game{
                         } catch (IOException e) {
                             e.printStackTrace();
                         }
+
                     }
+
 
                 });
 
