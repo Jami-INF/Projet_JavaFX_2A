@@ -17,6 +17,9 @@ public class accueil {
     private Label labelAfficher;
     private model.manager manager;
 
+    /**
+     * Fonction qui nous permet de lancer une scene depuis un bouton sur une vue
+     */
     @FXML
     private void cliqueSurBoutonNewGame(){
         manager m = new manager(new ISauvegardeTxt());
@@ -26,24 +29,15 @@ public class accueil {
         g.startgame(stage, m);
     }
 
+    /**
+     * Fonction qui nous permet de fermer une scene depuis un bouton sur une vue
+     */
     @FXML
     private javafx.scene.control.Button Quit;
     @FXML
     private void cliqueSurBoutonQuitter(){
         Stage stage = (Stage) Quit.getScene().getWindow();
-        //Sauvegarde
         labelAfficher.setText("Aurevoir!");
         stage.close();
-    }
-
-    @FXML
-    private javafx.scene.control.Button Charger;
-
-    @FXML
-    private void cliqueSurBoutonCharger(){
-        Stage stage = (Stage) Charger.getScene().getWindow();
-        stage.close();
-        saves s = new saves();
-        s.sauvegardes(stage);
     }
 }

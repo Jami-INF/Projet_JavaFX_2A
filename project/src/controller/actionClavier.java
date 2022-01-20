@@ -29,7 +29,6 @@ public class actionClavier {
     }
 
     public void removeInput(String s) {
-
         input.remove(s);
     }
 
@@ -42,11 +41,11 @@ public class actionClavier {
 
     /**
      * Fonction qui permet de gerer les actions du clavier
-     * @param action
+     * @param action : une liste d'actions
      * @param j1
-     * @param stage
-     * @param entites
-     * @return
+     * @param stage : notre scene
+     * @param entites : liste d'entite
+     * @return false si le joueur appuie sur ESPAPE sinon true
      */
     public Boolean ActionLectureListe(actionClavier action, Joueur j1, Stage stage, ArrayList<Entite> entites) {
 

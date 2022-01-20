@@ -14,9 +14,7 @@ import javafx.scene.canvas.Canvas;
 import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.image.Image;
 import javafx.scene.Parent;
-
 import java.io.*;
-
 import java.awt.*;
 import java.io.FileInputStream;
 import java.util.ArrayList;
@@ -45,6 +43,11 @@ public class game{
     private boolean finPartie = false;
     private boolean threadEnCours = true;
 
+    /**
+     * Fonction gérant les différents appels de nos controller
+     * @param stage
+     * @param manager
+     */
     public void startgame(Stage stage, manager manager) {
         Group g = new Group();
         s = new Scene(g,1280,720);
@@ -66,7 +69,6 @@ public class game{
 
 
         ////BACKGROUND
-
         ImageView backgroundIV = new ImageView (getClass().getClassLoader().getResource("image/background.jpg").toExternalForm());
         g.getChildren().add(backgroundIV);
         ////////////
@@ -174,6 +176,10 @@ public class game{
         ois.writeObject(time);*/
     }
 
+    /**
+     * Fonction qui permet de gérer l'ajout ou la suppression d'inputs dans une liste passée en parametre
+     * @param action : liste d'actions
+     */
     private static void ActionJoueur (actionClavier action) {
         s.setOnKeyPressed(
                 new EventHandler<KeyEvent>() {

@@ -15,6 +15,12 @@ import model.checkPoint;
 
 public class collision{
 
+    /**
+     *
+     * @param entites : liste d'entite
+     * @param j1 : joueur
+     * @return true si le joueur entre en collision avec l'entite checkpoint sinon false
+     */
     public boolean verify(ArrayList<Entite> entites, Joueur j1){
         boolean finPartie, finPartie2;
         j1.setiscollideUp(false);
@@ -29,6 +35,13 @@ public class collision{
         }
         return finPartie;
     }
+
+    /**
+     * Fonction vérifiant les collisions de l'axe Y (Haut et Bas) entre une liste d'entite et un joueur
+     * @param entites : liste d'entite
+     * @param j1 : joueur
+     * @return true si le bas du joueur entre en collision avec une entite checkpoint sinon false
+     */
     private boolean checkCollisionHautBas(ArrayList<Entite> entites, Joueur j1){
         //////////////Bounding box Joueur + points max
         ImageView jIV = j1.getIV();
@@ -74,6 +87,12 @@ public class collision{
         return false;
     }
 
+    /**
+     * Fonction vérifiant les collisions de l'axe X (Haut et Bas) entre une liste d'entite et un joueur
+     * @param entites : liste d'entite
+     * @param j1 : joueur
+     * @return
+     */
     private boolean checkCollisionDroiteGauche(ArrayList<Entite> entites, Joueur j1){
         //////////////Bounding box Joueur + points max
         ImageView jIV = j1.getIV();
