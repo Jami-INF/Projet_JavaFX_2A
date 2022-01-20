@@ -305,7 +305,6 @@ public class Joueur extends Entite {
         isMouvementAvant = true;
         isMouvementArriere = false;
         isCollideLeft = false;
-        //IV.setX(IV.getX()+5);
     }
 
     /**
@@ -352,7 +351,6 @@ public class Joueur extends Entite {
             dureesauttmp = 0;
             inJump = true;
             canJump = false;
-            //System.out.println("mouvement saut");
         }
 
     }
