@@ -22,6 +22,15 @@ public abstract class Entite extends ImageView {
 
     ImageView IV;
 
+    /**
+     * Constructeur de la classe Entite
+     * @param Skin
+     * @param VelociteX
+     * @param VelociteY
+     * @param Size
+     * @param SpawnX
+     * @param SpawnY
+     */
     public Entite(Image Skin, double VelociteX, double VelociteY, double Size, double SpawnX, double SpawnY){
         IV = new ImageView(Skin);
         skin = Skin;
@@ -34,6 +43,10 @@ public abstract class Entite extends ImageView {
 
     }
 
+    /**
+     * Méthode récuperant l'imageView de l'entité
+     * @return
+     */
     public ImageView getIV(){
         return IV;
     }
