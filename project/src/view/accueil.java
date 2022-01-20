@@ -40,7 +40,6 @@ public class accueil {
     @FXML
     private void cliqueSurBoutonQuitter(){
         Stage stage = (Stage) Quit.getScene().getWindow();
-        labelAfficher.setText("Aurevoir!");
         stage.close();
     }
 }

@@ -27,6 +27,7 @@ import javafx.geometry.VPos;
 import javafx.scene.input.KeyEvent;
 import javafx.scene.paint.Color;
 import controller.*;
+import launch.Launch;
 import model.Joueur;
 import model.*;
 import javafx.animation.AnimationTimer;
@@ -160,6 +161,14 @@ public class game{
                         m.ajouterScore(j1.getPseudo(), timejeu);
                         m.sauvegarderResultat(listeScores);
                         threadEnCours = false;
+
+                        stage.close();
+                        Launch l = new Launch();
+                        try {
+                            l.start(stage);
+                        } catch (IOException e) {
+                            e.printStackTrace();
+                        }
                     }
 
                 });
