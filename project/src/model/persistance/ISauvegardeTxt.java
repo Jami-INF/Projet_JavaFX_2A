@@ -7,8 +7,12 @@ import java.net.URL;
 import java.util.ArrayList;
 import java.util.List;
 
-public class ISauvegardeTxt implements IPersistanceTemps  {
 
+public class ISauvegardeTxt implements IPersistanceTemps  {
+    /**
+     * Charge les scores d'un fichier texte
+     * @return la liste des scores
+     */
     @Override
     public List chargerTemps() {
         System.out.println("CHARGEMENT DES SCORES");
@@ -42,6 +46,10 @@ public class ISauvegardeTxt implements IPersistanceTemps  {
         return listeScores;
     }
 
+    /**
+     * Sauvegarde les scores dans un fichier texte
+     * @param listeScores
+     */
     @Override
     public void sauverTemps(List<score> listeScores) {
         try {
