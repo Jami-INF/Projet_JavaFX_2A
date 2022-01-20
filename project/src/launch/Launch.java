@@ -16,7 +16,7 @@ public class Launch extends Application {
         //view image fxml
 
         Parent root = (Parent) FXMLLoader.load(getClass().getClassLoader().getResource("fxml/accueil.fxml"));
-        Scene scene = new Scene(root, 900, 520);
+        Scene scene = new Scene(root, 600, 400);
         scene.getStylesheets().addAll(getClass().getClassLoader().getResource("css/style.css").toExternalForm());
 
         //scene.getStylesheets().addAll(this.getClass().getResource("style.css").toExternalForm());
