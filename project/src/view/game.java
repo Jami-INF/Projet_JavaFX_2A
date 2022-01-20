@@ -20,6 +20,7 @@ import java.io.*;
 import java.awt.*;
 import java.io.FileInputStream;
 import java.util.ArrayList;
+import java.util.List;
 import java.util.Timer;
 import java.util.TimerTask;
 import controller.mouvement;
@@ -34,8 +35,9 @@ import javafx.animation.AnimationTimer;
 import javafx.scene.paint.Color;
 import javafx.scene.text.Font;
 
-public class game {
+public class game{
     static Scene s;
+    manager m;
 
     long timegame = 0;
     private Integer timejeu = 0;
@@ -43,121 +45,133 @@ public class game {
     private boolean finPartie = false;
     private boolean threadEnCours = true;
 
-    public void startgame(Stage stage) throws FileNotFoundException {
-            Group g = new Group();
-            s = new Scene(g,1280,720);
-            stage.setScene(s);
-            collision collisionController = new collision();
-            actionClavier action = new actionClavier();
-            mouvement mouvementJoueur = new mouvement();
-
-            ////BACKGROUND
-
-            ImageView backgroundIV = new ImageView (getClass().getClassLoader().getResource("image/background.jpg").toExternalForm());
-            g.getChildren().add(backgroundIV);
-            ////////////
-
-            ////JOUEUR
-            Image Skin = new Image(getClass().getClassLoader().getResource("image/testpers.png").toExternalForm());
-            Joueur j1 = new Joueur(Skin, 10, 10, 10, 0, 0,"Joueur1");
-
-            ////CHECKPOINT
-            Image ckpt = new Image(getClass().getClassLoader().getResource("image/checkpoint.png").toExternalForm());
-            checkPoint checkpoint = new checkPoint(ckpt, 10, 10, 0.3, 900, 100,0);
+    public void startgame(Stage stage, manager manager) {
+        Group g = new Group();
+        s = new Scene(g,1280,720);
+        stage.setScene(s);
+        this.m = manager;
+        collision collisionController = new collision();
+        actionClavier action = new actionClavier();
+        mouvement mouvementJoueur = new mouvement();
 
 
+        ////Chargement des scores :
+        List<score> listeScores;
+        listeScores = m.getScoresParties();
+        System.out.println("voici la liste des scores : ");
 
-            ArrayList<Entite> entites = new ArrayList<Entite>();
-
-            Image Platform = new Image(getClass().getClassLoader().getResource("image/platform.png").toExternalForm());
-            Plateforme p1 = new Plateforme(Platform, 100, 600, 100, 100, 200, true);
-            Plateforme p2 = new Plateforme(Platform, 100, 600, 100,300, 500,true);
-            Plateforme p3 = new Plateforme(Platform, 100, 600, 100, 500, 500,true);
-            Plateforme p4 = new Plateforme(Platform, 100, 600, 100, 700, 500,true);
-            Plateforme p5 = new Plateforme(Platform, 100, 600, 100, 900, 500,true);
-            Plateforme p6 = new Plateforme(Platform, 100, 600, 100, 800, 400,true);
-            Plateforme p7 = new Plateforme(Platform, 100, 600, 100, 700, 300,true);
+        for(score sc : listeScores){
+            System.out.println(sc.getPseudo() + " : " + sc.getTemps());
+        }
 
 
-            /*
-            ArrayList<Plateforme> plateformeArrayList = new ArrayList<Plateforme>();
-            plateformeArrayList.add(p1);
-            plateformeArrayList.add(p2);
-            plateformeArrayList.add(p3);
-            plateformeArrayList.add(p4);
-            plateformeArrayList.add(p5);
-            plateformeArrayList.add(p6);
-            plateformeArrayList.add(p7);*/
+        ////BACKGROUND
 
-            entites.add(j1);
-            entites.add(p1);
-            entites.add(p2);
-            entites.add(p3);
-            entites.add(p4);
-            entites.add(p5);
-            entites.add(p6);
-            entites.add(p7);
-            entites.add(checkpoint);
+        ImageView backgroundIV = new ImageView (getClass().getClassLoader().getResource("image/background.jpg").toExternalForm());
+        g.getChildren().add(backgroundIV);
+        ////////////
+
+        ////JOUEUR
+        Image Skin = new Image(getClass().getClassLoader().getResource("image/testpers.png").toExternalForm());
+        Joueur j1 = new Joueur(Skin, 10, 10, 10, 0, 0,"Joueur1");
+
+        ////CHECKPOINT
+        Image ckpt = new Image(getClass().getClassLoader().getResource("image/checkpoint.png").toExternalForm());
+        checkPoint checkpoint = new checkPoint(ckpt, 10, 10, 0.3, 900, 100,0);
 
 
-            for (Entite enti : entites) {
-                g.getChildren().add(enti.getIV());
-            }
-            Text timerBind = new Text("0");
-            timerBind.setFill(Color.WHITE);
-            timerBind.setFont(Font.font(40));
-            timerBind.setTranslateX(600);
-            timerBind.setTranslateY(40);
-            g.getChildren().add(timerBind);
 
-        //LECTURE DE LA PERSISTANCE
-        File fichier = new File(getClass().getClassLoader().getResource("persistance/BestTime.xml").getPath());
-        ObjectInputStream ois = new ObjectInputStream(new FileInputStream(fichier));
-        timejeu = (Integer)ois.readObject();
+        ArrayList<Entite> entites = new ArrayList<Entite>();
+
+        Image Platform = new Image(getClass().getClassLoader().getResource("image/platform.png").toExternalForm());
+        Plateforme p1 = new Plateforme(Platform, 100, 600, 100, 100, 200, true);
+        Plateforme p2 = new Plateforme(Platform, 100, 600, 100,300, 500,true);
+        Plateforme p3 = new Plateforme(Platform, 100, 600, 100, 500, 500,true);
+        Plateforme p4 = new Plateforme(Platform, 100, 600, 100, 700, 500,true);
+        Plateforme p5 = new Plateforme(Platform, 100, 600, 100, 900, 500,true);
+        Plateforme p6 = new Plateforme(Platform, 100, 600, 100, 800, 400,true);
+        Plateforme p7 = new Plateforme(Platform, 100, 600, 100, 700, 300,true);
+
+
+        /*
+        ArrayList<Plateforme> plateformeArrayList = new ArrayList<Plateforme>();
+        plateformeArrayList.add(p1);
+        plateformeArrayList.add(p2);
+        plateformeArrayList.add(p3);
+        plateformeArrayList.add(p4);
+        plateformeArrayList.add(p5);
+        plateformeArrayList.add(p6);
+        plateformeArrayList.add(p7);*/
+
+        entites.add(j1);
+        entites.add(p1);
+        entites.add(p2);
+        entites.add(p3);
+        entites.add(p4);
+        entites.add(p5);
+        entites.add(p6);
+        entites.add(p7);
+        entites.add(checkpoint);
+
+
+        for (Entite enti : entites) {
+            g.getChildren().add(enti.getIV());
+        }
+        Text timerBind = new Text("0");
+        timerBind.setFill(Color.WHITE);
+        timerBind.setFont(Font.font(40));
+        timerBind.setTranslateX(600);
+        timerBind.setTranslateY(40);
+        g.getChildren().add(timerBind);
+
+
 
         Timer timer = new java.util.Timer();
 
-            Thread t = new Thread(() -> {
-                while(threadEnCours){
-                    Boolean exit = true;
-                    timetmp++;
-                    timejeu = timetmp/60;
+        Thread t = new Thread(() -> {
+            while(threadEnCours){
+                Boolean exit = true;
+                timetmp++;
+                timejeu = timetmp/60;
 
 
 
 
-                    javafx.application.Platform.runLater(() -> {
-                        timer.schedule(new TimerTask(){
-                            public void run(){
-                                timerBind.setText(timejeu.toString());
-                            }
-                        }, 1000);
-                        ActionJoueur(action);
-                        action.ActionLectureListe(action, j1, stage, entites);
-                        finPartie = collisionController.verify(entites, j1);
-                        mouvementJoueur.UpdateJoueur(j1);
-                        if(finPartie){
-                            System.out.println("FIN");
-                            threadEnCours = false;
+                javafx.application.Platform.runLater(() -> {
+                    timer.schedule(new TimerTask(){
+                        public void run(){
+                            timerBind.setText(timejeu.toString());
                         }
-
-                    });
-
-                    try {
-                        Thread.sleep(15);
-                    } catch (InterruptedException e) {
-                        e.printStackTrace();
+                    }, 1000);
+                    ActionJoueur(action);
+                    action.ActionLectureListe(action, j1, stage, entites);
+                    finPartie = collisionController.verify(entites, j1);
+                    mouvementJoueur.UpdateJoueur(j1);
+                    if(finPartie){
+                        System.out.println("FIN");
+                        m.ajouterScore("Jami", timejeu);
+                        m.sauvegarderResultat(listeScores);
+                        threadEnCours = false;
                     }
+
+                });
+
+                try {
+                    Thread.sleep(15);
+                } catch (InterruptedException e) {
+                    e.printStackTrace();
                 }
-            });
-            t.setDaemon(true);
-            t.start();
-            stage.show();
+            }
+        });
+        t.setDaemon(true);
+        t.start();
+        stage.show();
 
-
-            //ECRITURE DE LA PERSISTANCE
-            /*ObjectOutputStream oos = new ObjectOutputStream();
-            oos.writeObject(time);*/
+        /*int time;
+        File fichier = new File(getClass().getClassLoader().getResource("persistance/BestTime.xml").getPath());
+        ObjectInputStream ois = new ObjectInputStream(new FileInputStream(fichier));
+        time = (Integer)ois.readObject();
+        ois.writeObject(time);*/
     }
 
     private static void ActionJoueur (actionClavier action) {
