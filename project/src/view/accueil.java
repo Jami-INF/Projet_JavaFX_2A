@@ -7,6 +7,8 @@ import javafx.scene.Parent;
 import javafx.scene.control.Label;
 import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
 import javafx.scene.layout.*;
 import javafx.stage.Stage;
 import model.manager;
@@ -14,6 +16,8 @@ import model.persistance.IPersistanceTemps;
 import model.persistance.ISauvegardeTxt;
 import model.score;
 import view.game;
+
+import java.awt.*;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
@@ -60,7 +64,12 @@ public class accueil {
     @FXML
     private javafx.scene.control.TableView tableScore;
     @FXML
+    private ImageView imageFond;
+    @FXML
     private void initialize() {
+        //imageFond = new ImageView (getClass().getClassLoader().getResource("image/background.jpg").toExternalForm());
+        Image image = new Image (getClass().getClassLoader().getResource("image/background.jpg").toExternalForm());
+        imageFond.setImage(image);
         lc = FXCollections.observableArrayList(m.getScoresParties());
 
         tablePseudo.setCellValueFactory(new PropertyValueFactory<score, String>("Pseudo"));

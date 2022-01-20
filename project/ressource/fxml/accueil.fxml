@@ -6,11 +6,10 @@
 
 <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/11.0.2" xmlns:fx="http://javafx.com/fxml/1" fx:controller="view.accueil">
    <children>
+       <ImageView fx:id="imageFond" fitHeight="400.0" fitWidth="600.0" pickOnBounds="true" preserveRatio="true" />
       <Button fx:id="Jouer" alignment="CENTER" layoutX="173.0" layoutY="322.0" mnemonicParsing="false" onAction="#cliqueSurBoutonNewGame" prefHeight="25.0" prefWidth="63.0" text="JOUER" textAlignment="CENTER" BorderPane.alignment="CENTER" />
       <Button fx:id="Quit" alignment="CENTER" layoutX="89.0" layoutY="322.0" onAction="#cliqueSurBoutonQuitter" text="QUITTER" textAlignment="CENTER" />
       <Label fx:id="labelPseudo" layoutX="35.0" layoutY="198.0" prefHeight="17.0" prefWidth="124.0" text="Entrez votre pseudo :" />
-      <ImageView fitHeight="122.0" fitWidth="124.0" layoutX="213.0" layoutY="26.0" pickOnBounds="true" preserveRatio="true" />
-      <ComboBox layoutX="22.0" layoutY="107.0" prefWidth="150.0" />
       <TextField fx:id="Pseudo" layoutX="201.0" layoutY="194.0" />
       <TableView fx:id="tableScore" layoutX="376.0" layoutY="87.0" prefHeight="200.0" prefWidth="200">
         <columns>
@@ -18,7 +17,6 @@
           <TableColumn fx:id="tableTemps" prefWidth="80" text="Temps (s)" />
         </columns>
       </TableView>
-      <Label layoutX="24.0" layoutY="69.0" text="Choisisez un skin :" />
 
    </children>
 </AnchorPane>
