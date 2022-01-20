@@ -1,0 +1,58 @@
+Index: project/src/view/game.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>package view;\r\nimport javafx.application.Platform;\r\nimport javafx.beans.binding.Bindings;\r\nimport javafx.beans.binding.When;\r\nimport javafx.fxml.FXMLLoader;\r\nimport javafx.geometry.BoundingBox;\r\nimport javafx.scene.image.ImageView;\r\nimport javafx.scene.layout.*;\r\nimport javafx.stage.Stage;\r\nimport javafx.scene.Scene;\r\nimport javafx.scene.Group;\r\nimport javafx.scene.canvas.Canvas;\r\nimport javafx.scene.canvas.GraphicsContext;\r\nimport javafx.scene.image.Image;\r\nimport javafx.scene.Parent;\r\nimport java.io.IOException;\r\nimport java.util.ArrayList;\r\nimport java.util.Timer;\r\nimport java.util.TimerTask;\r\nimport controller.mouvement;\r\nimport javafx.event.EventHandler;\r\nimport javafx.geometry.VPos;\r\nimport javafx.scene.input.KeyEvent;\r\nimport javafx.scene.paint.Color;\r\nimport javafx.scene.text.Font;\r\nimport javafx.scene.text.TextAlignment;\r\nimport controller.*;\r\nimport model.Joueur;\r\nimport model.*;\r\nimport javafx.animation.AnimationTimer;\r\n\r\npublic class game {\r\n    static Scene s;\r\n\r\n    long timegame = 0;\r\n    private Integer timejeu = 0;\r\n    private Integer timetmp = 0;\r\n    Boolean isCollide;\r\n    int DureeSaut = 10;//surée saut en tick\r\n    int tmpDureeSaut;\r\n\r\n    public void startgame(Stage stage) {\r\n        Group g = new Group();\r\n        s = new Scene(g,1280,720);\r\n        stage.setScene(s);\r\n        collision collisionController = new collision();\r\n        actionClavier action = new actionClavier();\r\n        mouvement mouvementJoueur = new mouvement();\r\n\r\n        //ActionMouvement(mouvementJoueur);\r\n        ////BACKGROUND\r\n        Image background = new Image (getClass().getClassLoader().getResource(\"image/background.jpg\").toExternalForm());\r\n        ImageView backgroundIV = new ImageView (getClass().getClassLoader().getResource(\"image/background.jpg\").toExternalForm());\r\n        g.getChildren().add(backgroundIV);\r\n        ////////////\r\n\r\n        ////JOUEUR\r\n        Image Skin = new Image(getClass().getClassLoader().getResource(\"image/testpers.png\").toExternalForm());\r\n        Joueur j1 = new Joueur(Skin, 10, 10, 10, 0, 0,\"Joueur1\");\r\n\r\n\r\n        //ImageView joueurIV = new ImageView(getClass().getClassLoader().getResource(\"image/testpers.png\").toExternalForm());\r\n        ////////////\r\n\r\n        //Image bg = new Image(getClass().getClassLoader().getResource(\"image/background.png\").toExternalForm());\r\n\r\n        //s.setFill(Color.grayRgb(35));\r\n        ArrayList<Plateforme> plateformeArrayList = new ArrayList<Plateforme>();\r\n        ArrayList<Entite> entites = new ArrayList<Entite>();\r\n\r\n        Image Platform = new Image(getClass().getClassLoader().getResource(\"image/platform.png\").toExternalForm());\r\n        Plateforme p1 = new Plateforme(Platform, 100, 600, 100, 100, 200, true);\r\n        Plateforme p2 = new Plateforme(Platform, 100, 600, 100,300, 500,true);\r\n        Plateforme p3 = new Plateforme(Platform, 100, 600, 100, 500, 500,true);\r\n        Plateforme p4 = new Plateforme(Platform, 100, 600, 100, 700, 500,true);\r\n        Plateforme p5 = new Plateforme(Platform, 100, 600, 100, 900, 500,true);\r\n        Plateforme p6 = new Plateforme(Platform, 100, 600, 100, 800, 400,true);\r\n        Plateforme p7 = new Plateforme(Platform, 100, 600, 100, 700, 300,true);\r\n\r\n\r\n\r\n\r\n        plateformeArrayList.add(p1);\r\n        plateformeArrayList.add(p2);\r\n        plateformeArrayList.add(p3);\r\n        plateformeArrayList.add(p4);\r\n        plateformeArrayList.add(p5);\r\n        plateformeArrayList.add(p6);\r\n        plateformeArrayList.add(p7);\r\n\r\n        entites.add(j1);\r\n        entites.add(p1);\r\n        entites.add(p2);\r\n        entites.add(p3);\r\n        entites.add(p4);\r\n        entites.add(p5);\r\n        entites.add(p6);\r\n        entites.add(p7);\r\n\r\n\r\n        for (Entite enti : entites) {\r\n            g.getChildren().add(enti.getIV());\r\n        }\r\n\r\n        Timer timer = new java.util.Timer();\r\n\r\n        Thread t = new Thread(() -> {\r\n            while(true){\r\n                Boolean exit = true;\r\n                timetmp++;\r\n                timejeu = timetmp/60;\r\n\r\n\r\n\r\n                //AffichTimeHautEcran(timejeu.toString(), canvas);\r\n\r\n                javafx.application.Platform.runLater(() -> {\r\n                    timer.schedule(new TimerTask(){\r\n                        public void run(){\r\n                            AffichTime(timetmp);\r\n                        }\r\n                    }, 1000);\r\n                    ActionMouvement(action);\r\n                    action.ActionLectureListe(action, j1, stage, entites);\r\n                    collisionController.verify(plateformeArrayList, j1);\r\n                    mouvementJoueur.UpdateJoueur(j1);\r\n\r\n                });\r\n\r\n                try {\r\n                    Thread.sleep(20);\r\n                } catch (InterruptedException e) {\r\n                    e.printStackTrace();\r\n                }\r\n            }\r\n        });\r\n\r\n        t.setDaemon(true);\r\n        t.start();\r\n        stage.show();\r\n\r\n    }\r\n/*\r\n    private void AffichTimeHautEcran(String time, Canvas canvas){\r\n        graphicsContext.clearRect(20, 20, canvas.getWidth(),30);\r\n        graphicsContext.setTextAlign(TextAlignment.CENTER);\r\n        graphicsContext.setTextBaseline(VPos.CENTER);\r\n        graphicsContext.setFont(new Font(30));\r\n        graphicsContext.fillText(time, Math.round(canvas.getWidth()  / 2), 30);\r\n        graphicsContext.setFill(Color.WHITESMOKE);\r\n    }\r\n*/\r\n\r\n    private static void AffichTime(double i){\r\n        System.out.println(i);\r\n        //affichage dans le jeu\r\n    }\r\n\r\n    private static void ActionMouvement (actionClavier action) {\r\n        s.setOnKeyPressed(\r\n                new EventHandler<KeyEvent>() {\r\n                    public void handle(KeyEvent e) {\r\n                        String in = e.getCode().toString();\r\n                        if ( !action.getInput().contains(in) )\r\n                            action.addInput( in );\r\n                    }\r\n                });\r\n        s.setOnKeyReleased(\r\n\r\n                new EventHandler<KeyEvent>() {\r\n                    public void handle(KeyEvent e) {\r\n                        String in = e.getCode().toString();\r\n                        action.removeInput( in );\r\n                    }\r\n                });\r\n    }\r\n\r\n\r\n\r\n}\r\n
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/project/src/view/game.java b/project/src/view/game.java
+--- a/project/src/view/game.java	(revision 958d80dceed0c7a682c8b729620262a91a34c871)
++++ b/project/src/view/game.java	(date 1642524978211)
+@@ -134,11 +134,10 @@
+                 }
+             }
+         });
+-
+         t.setDaemon(true);
+         t.start();
+         stage.show();
+-
++        //timer.cancel();
+     }
+ /*
+     private void AffichTimeHautEcran(String time, Canvas canvas){
+@@ -153,7 +152,7 @@
+ 
+     private static void AffichTime(double i){
+         System.out.println(i);
+-        //affichage dans le jeu
++        //affichage dans le terminal
+     }
+ 
+     private static void ActionMouvement (actionClavier action) {
+Index: project/src/model/Entite.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>package model;\r\nimport javafx.geometry.BoundingBox;\r\nimport javafx.scene.image.Image;\r\nimport javafx.scene.image.ImageView;\r\n\r\nimport java.util.ArrayList;\r\n\r\npublic abstract class Entite extends ImageView {\r\n\r\n    private double vitesse = 300;\r\n\r\n    private double gravite = 5;\r\n\r\n    private double imageSize;\r\n\r\n    private double x;\r\n    private double y;\r\n    private Image skin;\r\n    private double velociteX;\r\n    private double velociteY;\r\n\r\n    ImageView IV;\r\n\r\n    public Entite(Image Skin, double VelociteX, double VelociteY, double Size, double SpawnX, double SpawnY){\r\n        IV = new ImageView(Skin);\r\n        skin = Skin;\r\n        IV.setY(SpawnY);\r\n        IV.setX(SpawnX);\r\n\r\n        VelociteY = velociteY;\r\n        VelociteX = velociteX;\r\n\r\n\r\n    }\r\n    public ImageView getIV(){\r\n        return IV;\r\n    }\r\n}\r\n
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/project/src/model/Entite.java b/project/src/model/Entite.java
+--- a/project/src/model/Entite.java	(revision 958d80dceed0c7a682c8b729620262a91a34c871)
++++ b/project/src/model/Entite.java	(date 1642524986025)
+@@ -18,6 +18,7 @@
+     private Image skin;
+     private double velociteX;
+     private double velociteY;
++    private double time;
+ 
+     ImageView IV;
+ 
+@@ -32,6 +33,7 @@
+ 
+ 
+     }
++
+     public ImageView getIV(){
+         return IV;
+     }
