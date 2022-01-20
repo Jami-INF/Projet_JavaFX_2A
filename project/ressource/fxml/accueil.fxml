@@ -12,11 +12,10 @@
       <ImageView fitHeight="122.0" fitWidth="124.0" layoutX="213.0" layoutY="26.0" pickOnBounds="true" preserveRatio="true" />
       <ComboBox layoutX="22.0" layoutY="107.0" prefWidth="150.0" />
       <TextField fx:id="Pseudo" layoutX="201.0" layoutY="194.0" />
-      <TableView layoutX="376.0" layoutY="87.0" prefHeight="200.0" prefWidth="194.0">
+      <TableView fx:id="tableScore" layoutX="376.0" layoutY="87.0" prefHeight="200.0" prefWidth="200">
         <columns>
-          <TableColumn prefWidth="120.7142333984375" text="Pseudo" />
-listeScore
-          <TableColumn prefWidth="73.57150268554688" text="Temps (s)" />
+          <TableColumn fx:id="tablePseudo" prefWidth="120" text="Pseudo" />
+          <TableColumn fx:id="tableTemps" prefWidth="80" text="Temps (s)" />
         </columns>
       </TableView>
       <Label layoutX="24.0" layoutY="69.0" text="Choisisez un skin :" />
