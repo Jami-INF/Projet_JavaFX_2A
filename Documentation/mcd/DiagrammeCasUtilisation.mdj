@@ -3198,8 +3198,8 @@
 							},
 							"fillColor": "#ffff00",
 							"font": "Arial;13;0",
-							"left": 568,
-							"top": 264,
+							"left": 328,
+							"top": 536,
 							"width": 196.3671875,
 							"height": 65,
 							"text": "Un joueur n'est pas obligé d'ouvrir son inventaire pour utiliser un objet"
